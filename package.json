@@ -1,0 +1,11 @@
+{
+  "name": "faculty_recruitment",
+  "version": "1.0.0",
+  "description": "Manit faculty recruitment web page and corrosponding system.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sadar-e-Alam (itisalam@gmail.com)",
+  "license": "ISC"
+}
