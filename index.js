@@ -1,11 +1,37 @@
-const express = require('express')
+var path = require('path');
+var express = require('express');
+var http = require('http');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+const bodyParser = require("body-parser");
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+
 const app = express()
 const port = 3000
 
 app.set('view engine', 'pug')
 
-app.get('/', function (req, res) {
-    res.render('index', { title: 'Hey', message: 'Hello there!' })
-  })
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(cookieParser(secret='manit_cse_yesalam'))
+app.use(session({ secret: 'manit_cse_yesalam', cookie: { maxAge: 60000 }}))
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// passport config
+var Account = require('./models/account');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+
+// mongoose
+mongoose.connect('mongodb://localhost/passport_local_mongoose',{useNewUrlParser:true});
+
+// routes
+require('./routes')(app);
 
 app.listen(port, () => console.log(`app listening on port ${port}!`))
