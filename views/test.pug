@@ -1,0 +1,49 @@
+doctype html
+html
+  include includes/head.pug
+  body
+  .container
+    include includes/manit_header.pug
+    .container(id="form-container")
+      h1 Register
+      p.lead Sign up for Faculty Recruitment Portal.
+      br
+      form(role='form', action="/register",method="post", style='max-width: 300px;')
+        .form-group
+          label(for="name") Full Name
+          input.form-control(type='text',id="name",name="name",placeholder='Full Name',required)
+          .form-control-feedback
+        .form-group
+          label(for="username") Email
+          input.form-control(type='email', id="username",name="username", placeholder='Enter E-mail', pattern!="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$", required)
+          .form-control-feedback
+        .form-group
+          label(for="password") Password
+          input.form-control(type='password', id="password",name="password", placeholder='Password', required)
+          .form-control-feedback
+        .form-group
+          label(for="cnfm_password") Confirm Password
+          input.form-control(type='password', id="cnfm_password",name="cnfm_password", placeholder='Confirm Password', required)
+          .form-control-feedback
+        .form-group(align="left")
+          button.btn.btn-primary(type='submit') Submit
+      br
+      a(href='login', bgcolor="white") Log in 
+    
+      br
+      a(href='forgot') Lost your Password ? 
+  script.
+    $(function(){
+      $("form").validate({
+        rules:{
+          cnfm_password:{
+            required:true,
+            equalTo:"#password"
+          }
+        },
+        submitHandler: function(form){
+          form.submit();
+        }
+      });
+    });
+    
