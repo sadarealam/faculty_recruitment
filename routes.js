@@ -18,16 +18,14 @@ module.exports = function (app) {
   }));
 
   app.get('/home',isLoggedIn,function(req,res){
-    res.render('index', { user : req.user });
+    res.render('home', { user : req.user });
   });
 
   app.post('/home',isLoggedIn,function(req,res){
-    res.render('index', { user : req.user });
+    res.render('home', { user : req.user });
   });
 
   app.all('/test',function(req,res){
-    console.log(req.flash('loginMessage')[0]);
-    console.log(req.flash('loginMessage')[0]);
       res.render('index',{ message : req.flash('loginMessage')[0],user : req.user });
   });
 
