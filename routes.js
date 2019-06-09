@@ -1,6 +1,7 @@
 var passport = require('passport');
 var Account = require('./models/account');
 var Application = require('./models/application');
+var Const = require('./const');
 
 module.exports = function (app) {
 
@@ -13,7 +14,13 @@ module.exports = function (app) {
   });
 
   app.get('/my',isLoggedIn, function(req, res){
-    res.render('my', { user : req.user });
+    var email = req.user.username;
+    Application.find({email:email}, function(err,applications){
+      if (err) console.log('Error in finding applications');
+      if (applications) res.render('my',{user : req.user, applications:applications})
+      //res.render('my', { user : req.user });
+    });
+   
   });
 
   app.post('/createnew',isLoggedIn, function(req,res){ 
@@ -28,7 +35,7 @@ module.exports = function (app) {
       post_applied_for: post_applied_for
     }, function(err,application){
       if (err) console.log('Error is finding applications');
-      if (application) res.render('new',{message:'This application is already created.'});
+      if (application) res.render('new',{message:'This application is already created.',user: req.user});
       else {
         Application.countDocuments({}, function(err, count){
           if (err) console.log('Error in counting applications');
@@ -39,6 +46,8 @@ module.exports = function (app) {
         application.department = department;
         application.post_applied_for = post_applied_for;
         application.status = 'Pending';
+        application.department_full = Const.departments()[department];
+        application.post_applied = Const.posts()[post_applied_for];
         console.log(application.department);
         application.save(function(err){
           if (err) console.log('Error in creating application');

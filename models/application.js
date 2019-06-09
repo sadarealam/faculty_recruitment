@@ -8,7 +8,9 @@ var mongoose = require('mongoose'),
         name: String,
         adv_no: String,
         department: String,
+        department_full: String,
         post_applied_for: String,
+        post_applied: String,
         status: String
     });
 

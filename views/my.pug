@@ -3,11 +3,11 @@ mixin application_row(application)
         .col-2
             p   #{application.no}
         .col-3
-            p   #{application.department}
+            p   #{application.department_full}
         .col-3
-            p   #{application.post_applied_for}
+            p   #{application.post_applied}
         .col-2
-            a.btn.btn-primary(href=`/application?action=view&no=${application.no}`, role="button") View
+            a.btn(href=`/application?action=view&no=${application.no}`, role="button") View
             a.btn.btn-primary(href=`/application?action=edit&no=${application.no}`, role="button") Edit                
         .col-2
             p    #{application.status}
@@ -22,8 +22,7 @@ html
         .row
             .col
                 div(align='center',style='color:#fdfbfb;bgcolor:#00a2d1 !important')
-                    label
-                        b List of Applications
+                    h3    List of Applications
         .row
             .col-2
                 p 
