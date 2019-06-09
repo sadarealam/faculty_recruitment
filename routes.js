@@ -52,11 +52,8 @@ module.exports = function (app) {
         application.save(function(err){
           if (err) console.log('Error in creating application');
           res.redirect('/my');
-        })
-        
-        });
-
-        
+        })        
+        });        
       }
     })
   });
