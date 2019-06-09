@@ -14,22 +14,24 @@ const app = express()
 const port = 3000
 
 // mongoose
-mongoose.connect('mongodb://localhost/passport_local_mongoose',{useNewUrlParser:true});
+mongoose.connect('mongodb://localhost/passport_local_mongoose', { useNewUrlParser: true });
 
 app.set('view engine', 'pug')
-app.set('views', path.join(__dirname,"views"));
+app.set('views', path.join(__dirname, "views"));
 
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use(cookieParser(secret='manit_cse_yesalam'))
-app.use(session({ 
-    secret: 'manit_cse_yesalam', 
+app.use(cookieParser(secret = 'manit_cse_yesalam'))
+app.use(session({
+    secret: 'manit_cse_yesalam',
     saveUninitialized: false,
-    resave: false, 
-    store: new MongoStore({ mongooseConnection: mongoose.connection,
-                            ttl: 14 * 24 * 60 * 60 })       
-    }))
+    resave: false,
+    store: new MongoStore({
+        mongooseConnection: mongoose.connection,
+        ttl: 14 * 24 * 60 * 60
+    })
+}))
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
