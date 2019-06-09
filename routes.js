@@ -8,8 +8,7 @@ module.exports = function (app) {
   });
 
   app.get('/register', function(req, res) {
-    console.log(req.flash('signupMessage'))
-      res.render('register', { message:req.flash('signupMessage')});
+      res.render('register', { message:req.flash('signupMessage')[0]});
   });
 
   app.post('/register', passport.authenticate('local-signup',{
@@ -26,13 +25,14 @@ module.exports = function (app) {
     res.render('index', { user : req.user });
   });
 
-  app.get('/test',function(req,res){
-      res.render('test',{});
+  app.all('/test',function(req,res){
+    console.log(req.flash('loginMessage')[0]);
+    console.log(req.flash('loginMessage')[0]);
+      res.render('index',{ message : req.flash('loginMessage')[0],user : req.user });
   });
 
   app.get('/login', function(req, res) {
-      console.log(req.flash('loginMessage'))
-      res.render('login', { message:req.flash('loginMessage'),user : req.user });
+      res.render('login', { message : req.flash('loginMessage')[0],user : req.user });
   });
 
   app.post('/login', passport.authenticate('local-login',

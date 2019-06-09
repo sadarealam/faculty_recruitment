@@ -9,6 +9,8 @@ html
       p.lead Faculty Recruitment Portal.
       br
       form(role='form', action="/login",method="post", style='max-width: 300px;')
+        if (message)
+          .alert.alert-danger(role='alert') #{message}
         .form-group
           label(for="username") Email
           input.form-control(type='email', id="username", name="username", placeholder='Enter E-mail', required)

@@ -9,6 +9,8 @@ html
       p.lead Sign up for Faculty Recruitment Portal.
       br
       form(role='form', action="/register",method="post", style='max-width: 300px;')
+        if (message)
+          .alert.alert-danger(role='alert') #{message}
         .form-group
           label(for="name") Full Name
           input.form-control(type='text',id="name",name="name",placeholder='Full Name',required)
