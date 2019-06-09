@@ -60,7 +60,7 @@ module.exports = function (app) {
     if(req.isAuthenticated()){
       return next();
   }
-  res.redirect('/');
+  res.render('login',{message: 'OPPS ! Log In please'});
   }
   
   

@@ -10,26 +10,23 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
           span.sr-only (current)
       li.nav-item
         a.nav-link(href='/new') New Application
-      if (user)
-        li.nav-item
-            a.nav-link(href='/my') My Application(s)
+    //-   li.nav-item
+    //-     a.nav-link(href='/my') My Application(s)
     //-   li.nav-item
     //-     a.nav-link(href='#') Print
     //-   li.nav-item
     //-     a.nav-link(href='#') Submit
     if (!user)
-        form.form-inline(role='form', action="/register",method="get")
+        form.form-inline(role='form', action="/login",method="get")
             //input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')      
-            button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Register        
-        form.form-inline(role='form', action="/login",method="get", style="margin-left:5px")
-            //input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')      
-            button.btn.btn-outline-light.my-2.my-sm-0(type='submit') login      
-        
-    if (user)
+            button.btn.btn-outline-light.my-2.my-sm-0(type='submit') login
+        br
+        a(href="/register") Register
+    if (user)        
         ul.nav.navbar-nav.navbar-right
             li.nav-item
                 a.nav-item.nav-link.disabled(href='#', tabindex='-1', aria-disabled='true') #{user.name}
         form.form-inline(role='form', action="/logout",method="get")
-            //input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')      
-            button.btn.btn-outline-light.my-2.my-sm-0(type='submit') logout
+        //input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')      
+        button.btn.btn-outline-light.my-2.my-sm-0(type='submit') logout
 
