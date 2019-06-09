@@ -1,3 +1,16 @@
+mixin application_row(application)
+    .row
+        .col-2
+            p   #{application.no}
+        .col-3
+            p   #{application.department}
+        .col-3
+            p   #{application.post_applied_for}
+        .col-2
+            a.btn.btn-primary(href=`/application?action=view&no=${application.no}`, role="button") View
+            a.btn.btn-primary(href=`/application?action=edit&no=${application.no}`, role="button") Edit                
+        .col-2
+            p    #{application.status}
 doctype html
 html
   include includes/head.pug  
@@ -5,3 +18,58 @@ html
   .container
     include includes/manit_header.pug    
     include includes/navbar.pug
+    .container(style="width:100%;margin-top:45px")
+        .row
+            .col
+                div(align='center',style='color:#fdfbfb;bgcolor:#00a2d1 !important')
+                    label
+                        b List of Applications
+        .row
+            .col-2
+                p 
+                    b Applicaton No.
+            .col-3
+                p 
+                    b Department
+            .col-3
+                p 
+                    b Post Applied
+            .col-2
+                p 
+                    b Action
+            .col-2
+                p 
+                    b Status
+        //- .row
+        //-     .col-2
+        //-         p   AP3CSE3361
+        //-     .col-3
+        //-         p   Computer Science & Engineering
+        //-     .col-3
+        //-         p   Assistant Professor PB-3 with Grade pay of Rs.8000
+        //-     .col-2
+        //-         input#btn1(type='submit', value='View', name='Save & Next')
+        //-         input#btn1(type='submit', formaction='apedit.php', value='Edit ', name='edit')
+        //-         input#btn1(type='submit', formaction='apedit.php', value='Print ', name='edit')         
+        //-     .col-2
+        //-         p   Pending   
+        if (applications) 
+            each application in applications
+                +application_row(application)
+        if (!applications)
+            .row 
+                .col-12
+                    label(style="color:Purple") No application Found
+        //- .row
+        //-     .col-2
+        //-         p   AP3CSE3361
+        //-     .col-3
+        //-         p   Computer Science & Engineering
+        //-     .col-3
+        //-         p   Assistant Professor PB-3 with Grade pay of Rs.8000
+        //-     .col-2
+        //-         a.btn.btn-primary(href="#",role="button") View
+        //-         a.btn.btn-primary(href="#",role="button") Edit                
+        //-     .col-2
+        //-         p   Pending
+        
