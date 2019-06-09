@@ -4,37 +4,42 @@ var Account = require('./models/account');
 module.exports = function (app) {
 
   app.get('/', function (req, res) {
-      res.render('index', { user : req.user });
+      res.render('index', {user : req.user });
   });
 
   app.get('/register', function(req, res) {
-      res.render('register', { });
+    console.log(req.flash('signupMessage'))
+      res.render('register', { message:req.flash('signupMessage')});
   });
 
-  app.post('/register', function(req, res) {
-    Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
-        if (err) {
-            return res.render('register', { account : account });
-        }
+  app.post('/register', passport.authenticate('local-signup',{
+    successRedirect:'/home',
+    failureRedirect:'/register',
+    failureFlash:true
+  }));
 
-        passport.authenticate('local')(req, res, function () {
-          res.redirect('/');
-        });
-    });
+  app.get('/home',isLoggedIn,function(req,res){
+    res.render('index', { user : req.user });
   });
 
+  app.post('/home',isLoggedIn,function(req,res){
+    res.render('index', { user : req.user });
+  });
 
   app.get('/test',function(req,res){
       res.render('test',{});
   });
 
   app.get('/login', function(req, res) {
-      res.render('login', { user : req.user });
+      console.log(req.flash('loginMessage'))
+      res.render('login', { message:req.flash('loginMessage'),user : req.user });
   });
 
-  app.post('/login', passport.authenticate('local'), function(req, res) {
-      res.redirect('/');
-  });
+  app.post('/login', passport.authenticate('local-login',
+                        {successRedirect:'/home',
+                         failureRedirect:'/login',
+                         failureFlash:true,
+                        }));
 
   app.get('/logout', function(req, res) {
       req.logout();
@@ -45,4 +50,13 @@ module.exports = function (app) {
       res.send("pong!", 200);
   });
 
+  function isLoggedIn(req,res,next){
+    if(req.isAuthenticated()){
+      return next();
+  }
+  res.redirect('/');
+  }
+  
 };
+
+

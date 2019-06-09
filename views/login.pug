@@ -22,4 +22,13 @@ html
     
       br
       a(href='forgot') Lost your Password ? 
-      
+  script.
+    $(function(){
+      $("form").validate({
+        rules:{          
+        },
+        submitHandler: function(form){
+          form.submit();
+        }
+      });
+    });

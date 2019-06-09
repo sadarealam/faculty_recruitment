@@ -7,6 +7,7 @@ var LocalStrategy = require('passport-local').Strategy;
 const bodyParser = require("body-parser");
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var flash = require('connect-flash')
 
 const app = express()
 const port = 3000
@@ -21,12 +22,9 @@ app.use(session({ secret: 'manit_cse_yesalam', cookie: { maxAge: 60000 }}))
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
 
-// passport config
-var Account = require('./models/account');
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
+require('./passport')
 
 // mongoose
 mongoose.connect('mongodb://localhost/passport_local_mongoose',{useNewUrlParser:true});
