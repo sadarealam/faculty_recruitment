@@ -7,6 +7,14 @@ module.exports = function (app) {
       res.render('index', {user : req.user });
   });
 
+  app.get('/new',isLoggedIn, function(req, res){
+    res.render('new', { user : req.user });
+  });
+
+  app.get('/my',isLoggedIn, function(req, res){
+    res.render('my', { user : req.user });
+  });
+
   app.get('/register', function(req, res) {
       res.render('register', { message:req.flash('signupMessage')[0]});
   });
@@ -26,7 +34,7 @@ module.exports = function (app) {
   });
 
   app.all('/test',function(req,res){
-      res.render('index',{ message : req.flash('loginMessage')[0],user : req.user });
+      res.render('test',{ message : req.flash('loginMessage')[0],user : req.user });
   });
 
   app.get('/login', function(req, res) {
@@ -55,6 +63,8 @@ module.exports = function (app) {
   res.redirect('/');
   }
   
+  
+
 };
 
 
