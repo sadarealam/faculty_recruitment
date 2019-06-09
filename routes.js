@@ -1,5 +1,6 @@
 var passport = require('passport');
 var Account = require('./models/account');
+var Application = require('./models/application');
 
 module.exports = function (app) {
 
@@ -13,6 +14,42 @@ module.exports = function (app) {
 
   app.get('/my',isLoggedIn, function(req, res){
     res.render('my', { user : req.user });
+  });
+
+  app.post('/createnew',isLoggedIn, function(req,res){ 
+    var user = req.user;
+    var adv_no = req.body.advertisement_no;
+    var department = req.body.department;
+    var post_applied_for = req.body.post_applied_for;
+    Application.findOne({
+      email:user.username,
+      adv_no:adv_no,
+      department:department,
+      post_applied_for: post_applied_for
+    }, function(err,application){
+      if (err) console.log('Error is finding applications');
+      if (application) res.render('new',{message:'This application is already created.'});
+      else {
+        Application.countDocuments({}, function(err, count){
+          if (err) console.log('Error in counting applications');
+          var application = new Application();
+        application.adv_no = adv_no ;
+        application.email = user.username;
+        application.no = post_applied_for+department+count;
+        application.department = department;
+        application.post_applied_for = post_applied_for;
+        application.status = 'Pending';
+        console.log(application.department);
+        application.save(function(err){
+          if (err) console.log('Error in creating application');
+          res.redirect('/my');
+        })
+        
+        });
+
+        
+      }
+    })
   });
 
   app.get('/register', function(req, res) {

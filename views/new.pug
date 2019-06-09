@@ -9,7 +9,9 @@ html
       h1 New Application 
       p.lead Faculty Recruitment Portal.
       br
-      form
+      form(role='form', action="/createnew",method="post")
+        if (message)
+          .alert.alert-danger(role='alert') #{message}
         .form-group.row
           label.col-sm-4.col-form-label(for='advertisement_no') Advertisement No.
           .col-sm-8
