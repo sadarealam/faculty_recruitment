@@ -1,0 +1,128 @@
+doctype html
+html
+  include includes/head.pug  
+  body
+  .container
+    include includes/manit_header.pug    
+    include includes/navbar.pug
+    .container(style="width:100%;margin-top:45px")
+        .row
+            .col-4
+                div(align='center',style='color:#fdfbfb;bgcolor:#00a2d1 !important')
+                    h3    Application id : #{no}
+            .col-8                    
+                button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part1   
+                button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part2
+        .containr(style="margin-top:45px")
+                h3 Personal Information
+                form(role='form', action=`/application_1?action=${action}&no=${no}`,method="post")
+                    if (message)
+                        .alert.alert-danger(role='alert') #{message}
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='applicant_name') Name of Applicant
+                        .col-sm-6
+                            input#applicant_name.form-control(type='text',name='applicant_name',placeholder="Name of Applicant",required)
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='father_name') Father’s name
+                        .col-sm-6
+                            input#father_name.form-control(type='text',name='father_name' ,placeholder=" Father’s name",required)
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='mother_name') Mother’s Name
+                        .col-sm-6
+                            input#mother_name.form-control(type='text',name='mother_name' ,placeholder="Mother’s Name",required)
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='spouse_name') Spouse Name
+                        .col-sm-6
+                            input#spouse_name.form-control(type='text',name='spouse_name',placeholder="Spouse Name", )
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='dob') Date of Birth
+                        .col-sm-6
+                            input#dob.form-control(type='date',name='dob' required)
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='Age') Age
+                        .col-sm-2
+                            input#ageyear.form-control(type='text',name='ageyear',placeholder="Years", required)
+                        .col-sm-2
+                            input#agemonth.form-control(type='text',name='agemonth',placeholder="Months", required)
+                        .col-sm-2
+                            input#ageday.form-control(type='text',name='ageday',placeholder="Days", required)
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='nationality') Nationality
+                        .col-sm-6
+                            input#nationality.form-control(type='text',name='nationality' ,placeholder="Nationality",required)
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='religion') Religion
+                        .col-sm-6
+                            input#religion.form-control(type='text',name='religion' ,placeholder="Religion",required)
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='cast') Caste Category  
+                        .col-sm-8
+                            .form-check.form-check-inline
+                                input#castur.form-check-input(type="radio", name="cast", value="UR")
+                                label.form-check-label(for="castur") UR
+                            .form-check.form-check-inline
+                                input#castSC.form-check-input(type="radio", name="cast", value="SC")
+                                label.form-check-label(for="castsc") SC
+                            .form-check.form-check-inline
+                                input#castst.form-check-input(type="radio", name="cast", value="ST")
+                                label.form-check-label(for="castst") ST
+                            .form-check.form-check-inline
+                                input#castobc.form-check-input(type="radio", name="cast", value="OBC")
+                                label.form-check-label(for="castobc") OBC
+                            .form-check.form-check-inline
+                                input#castpwd.form-check-input(type="radio", name="cast", value="PWD")
+                                label.form-check-label(for="castpwd") PWD
+                            .form-check.form-check-inline
+                                input#casturews.form-check-input(type="radio", name="cast", value="UR-EWS")
+                                label.form-check-label(for="casturews") UR-EWS
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='gender') Gender
+                        .col-sm-6
+                            input#gender.form-control(type='text',name='gender' ,placeholder="Gender",required)
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='marital_status') Marital Status
+                        .col-sm-6
+                            input#marital_status.form-control(type='text',name='marital_status' ,placeholder="Marital Status",required)       
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='aadhar') Aadhar No
+                        .col-sm-6
+                            input#aadhar.form-control(type='text',name='aadhar' ,placeholder="Aadhar No",required)
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='identification_no') Identification No (Passport/ Aadhar / Voter ID / Driving License )
+                        .col-sm-6
+                            input#identification_no.form-control(type='text',name='identification_no' ,placeholder="Identification No",required)   
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='correspondence_address') Address For Correspondence (With Pin Code)
+                        .col-sm-6
+                            input#correspondence_address.form-control(type='text',name='correspondence_address' ,placeholder="Address For Correspondence",required)
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='permanent_address') Permanent Address (With Pin Code)
+                        .col-sm-6
+                            input#permanent_address.form-control(type='text',name='permanent_address' ,placeholder="Permanent Address (With Pin Code)",required) 
+                    form-group.row
+                        label.col-sm-4.col-form-label(for='phone_office') Phone No (Office)
+                        .col-sm-6
+                            input#phone_office.form-control(type='text',name='phone_office' ,placeholder="Phone No (Office)")
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='phone_residence') Phone No (Residence)
+                        .col-sm-6
+                            input#phone_residence.form-control(type='text',name='phone_residence' ,placeholder="Phone No (Residence)")  
+                    form-group.row
+                        label.col-sm-4.col-form-label(for='mobile1') Mobile 1
+                        .col-sm-6
+                            input#mobile1.form-control(type='text',name='mobile1' ,placeholder="Mobile 1")
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='mobile2') Mobile 2
+                        .col-sm-6
+                            input#mobile2.form-control(type='text',name='mobile2' ,placeholder="Mobile 2")    
+                    .form-group.row
+                        label.col-sm-4.col-form-label(for='email') Email
+                        .col-sm-6
+                            input#email.form-control(type='text',name='email' ,placeholder="Email")                    
+                    .form-group.row
+                        .col-sm-10
+                        .col-sm-2
+                            button.btn.btn-primary(type='submit') Next
+
+
+

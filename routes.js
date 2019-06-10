@@ -58,6 +58,59 @@ module.exports = function (app) {
     })
   });
 
+  app.get('/application', isLoggedIn, function(req, res){
+    var action = req.query.action;
+    var no = req.query.no;
+    var user = req.user;
+    res.render('application',{user: user,no:no,action:acion})
+  });
+
+  //this is danegorous. remove it
+  app.get('/application1', isLoggedIn, function(req, res){
+    var action = req.query.action;
+    var no = req.query.no;
+    var user = req.user;
+    res.render('application2',{user: user,no:no,action:action})
+  });
+
+  app.post('/application1', isLoggedIn, function(req, res){
+    var action = req.query.action;
+    var no = req.query.no;
+    var user = req.user;
+    res.render('application1',{user: user,no:no,action:acion})
+  });
+
+  //this is danegorous. remove it
+  app.get('/application2', isLoggedIn, function(req, res){
+    var action = req.query.action;
+    var no = req.query.no;
+    var user = req.user;
+    res.render('application3',{user: user,no:no,action:action})
+  });
+
+  app.post('/application2', isLoggedIn, function(req, res){
+    var action = req.query.action;
+    var no = req.query.no;
+    var user = req.user;
+    res.render('application3',{user: user,no:no,action:acion})
+  });
+
+  //this is danegorous. remove it
+  app.get('/application3', isLoggedIn, function(req, res){
+    var action = req.query.action;
+    var no = req.query.no;
+    var user = req.user;
+    res.render('application4',{user: user,no:no,action:action})
+  });
+
+  app.post('/application3', isLoggedIn, function(req, res){
+    var action = req.query.action;
+    var no = req.query.no;
+    var user = req.user;
+    res.render('application4',{user: user,no:no,action:acion})
+  });
+
+
   app.get('/register', function (req, res) {
     res.render('register', { message: req.flash('signupMessage')[0] });
   });

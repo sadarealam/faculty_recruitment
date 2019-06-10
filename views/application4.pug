@@ -1,0 +1,117 @@
+doctype html
+html
+  include includes/head.pug  
+  body
+  .container
+    include includes/manit_header.pug    
+    include includes/navbar.pug
+    .container(style="width:100%;margin-top:45px")
+        .row
+            .col-4
+                div(align='center',style='color:#fdfbfb;bgcolor:#00a2d1 !important')
+                    h3    Application id : #{no}
+            .col-8                    
+                button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part1   
+                button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part2
+        .containr(style="margin-top:45px")
+                //h3 Undertaking
+                form(role='form', action=`/application_4?action=${action}&no=${no}`,method="post")
+                    if (message)
+                        .alert.alert-danger(role='alert') #{message}
+                    h4 Character & Antecedents Report
+                    //h6 Note: Experience of Visiting/ Guest Faculty paid on hourly/ session basis not to be included. Research/ Teaching experience obtained during the study of M Phil/ PhD no to be included.
+                    .form-group.row
+                        label.col-sm-6.col-form-label Subject
+                        label.col-sm-6.col-form-label Comment
+                    .form-group.row
+                        label.col-sm-6.col-form-label(for='car1') Have you ever been subject to any disciplinary action, as a student and/or as an employee, If so give full details.
+                        .col-sm-6
+                            input#car1.form-control(type='text',name='car1',placeholder="Comment",required)
+                    .form-group.row
+                        label.col-sm-6.col-form-label(for='car2') Have you ever been dismissed/suspended from service/employment, if so please give full details 
+                        .col-sm-6
+                            input#car2.form-control(type='text',name='car2',placeholder="Comment",required)
+                    .form-group.row
+                        label.col-sm-6.col-form-label(for='car3') Were you involved in any criminal case, If yes, give full details (like Crime No, Police Station, Section under which crime was registered, acquittal or conviction/ date of order and Case No)
+                        .col-sm-6
+                            input#car3.form-control(type='text',name='car3',placeholder="Comment",required)
+                    .form-group.row
+                        label.col-sm-6.col-form-label(for='car4') Is any criminal case pending against you in the court, If yes, give full details 
+                        .col-sm-6
+                            input#car4.form-control(type='text',name='car4',placeholder="Comment",required)
+                    
+                    h4 Details of Present employment and  Employer’s endorsement 
+                    p (Candidate may produce NoC in lieu of this endorsement at the time of Interview)
+
+                    .form-group.row
+                        label.col-sm-5.col-form-label(for='presenet_emp_org') Name of Organization
+                        .col-sm-5
+                            input#presenet_emp_org.form-control(type='text',name='presenet_emp_org',placeholder="Name of Organization")
+                    .form-group.row
+                        label.col-sm-5.col-form-label(for='presenet_emp_designation') Designation
+                        .col-sm-5
+                            input#presenet_emp_designation.form-control(type='text',name='presenet_emp_designation',placeholder="Designation")
+                    .form-group.row
+                        label.col-sm-5.col-form-label(for='presenet_emp_doa') Date of Appointment
+                        .col-sm-5
+                            input#presenet_emp_doa.form-control(type='date',name='presenet_emp_doa',placeholder="")
+                    .form-group.row
+                        label.col-sm-5.col-form-label(for='presenet_emp_regular') Whether   Regular Permanent/ Temporary
+                        .col-sm-5
+                            .form-check.form-check-inline
+                                input#presenet_emp_regular_r.form-check-input(type="radio", name="presenet_emp_regular", value="R")
+                                label.form-check-label(for="presenet_emp_regular_r") Regular
+                            .form-check.form-check-inline
+                                input#presenet_emp_regular_t.form-check-input(type="radio", name="presenet_emp_regular", value="T")
+                                label.form-check-label(for="presenet_emp_regular_t") Part Time
+                    .form-group.row
+                        label.col-sm-5.col-form-label(for='presenet_emp_payband') Pay-band
+                        .col-sm-5
+                            input#presenet_emp_payband.form-control(type='text',name='presenet_emp_payband',placeholder="Pay-band")
+                    .form-group.row
+                        label.col-sm-5.col-form-label(for='presenet_emp_pb') Pay-in-PB
+                        .col-sm-5
+                            input#presenet_emp_pb.form-control(type='text',name='presenet_emp_pb',placeholder="Pay-in-PB")
+                    .form-group.row
+                        label.col-sm-5.col-form-label(for='presenet_emp_agp') AGP
+                        .col-sm-5
+                            input#presenet_emp_agp.form-control(type='text',name='presenet_emp_agp',placeholder="AGP")
+                    .form-group.row
+                        label.col-sm-5.col-form-label(for='presenet_emp_basic') Basic
+                        .col-sm-5
+                            input#presenet_emp_basic.form-control(type='text',name='presenet_emp_basic',placeholder="Basic")
+                    
+                    
+                    
+                    
+                    h4 Expected Salary/ Pay Protection sought with due Justification for consideration by Selection Committee.
+                    //p (Candidate may produce NoC in lieu of this endorsement at the time of Interview)
+
+                    .form-group.row
+                        label.col-sm-5.col-form-label(for='expectated_ppb') Pay-in-PB (Expectation)
+                        .col-sm-5
+                            input#expectated_ppb.form-control(type='text',name='expectated_ppb',placeholder="Pay-in-PB (Expectation)")
+                    .form-group.row
+                        label.col-sm-5.col-form-label(for='expectated_agp') AGP (Expectation)
+                        .col-sm-5
+                            input#expectated_agp.form-control(type='text',name='expectated_agp',placeholder="AGP (Expectation)")
+                    .form-group.row
+                        label.col-sm-5.col-form-label(for='expectated_basic') Basic (Expectation)
+                        .col-sm-5
+                            input#expectated_basic.form-control(type='text',name='expectated_basic',placeholder="Basic (Expectation)")
+                    .form-group.row
+                        label.col-sm-5.col-form-label(for='justification') Justification
+                        .col-sm-5
+                            input#justification.form-control(type='text',name='justification',placeholder="Justification")
+                    
+                    h5 Declaration
+                    p I hereby declare that I have read carefully and understood the instructions and particulars supplied to me, and that all entries in this form, as well as, in attached sheets are true to the best of my knowledge and belief. At any stage if any of the information furnished by me is found to be false or incorrect, suitable action may be taken against me. If selected, I promise to abide by the rules and regulations of the Institute.
+                    .form-check.form-check-inline
+                        input#declaration.form-check-input(type="checkbox", value="T" required)
+                        label.form-check-label(for="declaration") I Accept                   
+                    
+                   
+                    .form-group.row
+                        .col-sm-10
+                        .col-sm-2
+                            button.btn.btn-primary(type='submit') Submit
