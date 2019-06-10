@@ -62,7 +62,7 @@ module.exports = function (app) {
     var action = req.query.action;
     var no = req.query.no;
     var user = req.user;
-    res.render('application',{user: user,no:no,action:acion})
+    res.render('application',{user: user,no:no,action:action})
   });
 
   //this is danegorous. remove it
