@@ -110,6 +110,23 @@ module.exports = function (app) {
     res.render('application4',{user: user,no:no,action:acion})
   });
 
+   //this is danegorous. remove it
+   app.get('/application4', isLoggedIn, function(req, res){
+    var action = req.query.action;
+    var no = req.query.no;
+    var user = req.user;
+    res.render('credit',{user: user,no:no,action:action})
+  });
+
+  app.post('/application4', isLoggedIn, function(req, res){
+    var action = req.query.action;
+    var no = req.query.no;
+    var user = req.user;
+    res.render('credit',{user: user,no:no,action:acion})
+  });
+
+  
+
 
   app.get('/register', function (req, res) {
     res.render('register', { message: req.flash('signupMessage')[0] });
