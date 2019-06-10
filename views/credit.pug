@@ -16,7 +16,7 @@ html
                     button.btn.btn-primary-light.my-2.my-sm-0(type='submit',disabled) Part2
         .containr(style="margin-top:45px")
                 h3 Credit Point Verification Proforma
-                form(role='form', action=`/application_4?action=${action}&no=${no}`,method="post")
+                form(role='form', action=`/credit?action=${action}&no=${no}`,method="post")
                     if (no)
                         input(type="hidden",name="no",value=`${no}`)
                     if (user)
