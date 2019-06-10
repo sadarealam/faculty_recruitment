@@ -77,7 +77,7 @@ module.exports = function (app) {
     var action = req.query.action;
     var no = req.query.no;
     var user = req.user;
-    res.render('application1',{user: user,no:no,action:acion})
+    res.render('application1',{user: user,no:no,action:action})
   });
 
   //this is danegorous. remove it
@@ -92,7 +92,7 @@ module.exports = function (app) {
     var action = req.query.action;
     var no = req.query.no;
     var user = req.user;
-    res.render('application3',{user: user,no:no,action:acion})
+    res.render('application3',{user: user,no:no,action:action})
   });
 
   //this is danegorous. remove it
@@ -107,7 +107,7 @@ module.exports = function (app) {
     var action = req.query.action;
     var no = req.query.no;
     var user = req.user;
-    res.render('application4',{user: user,no:no,action:acion})
+    res.render('application4',{user: user,no:no,action:action})
   });
 
    //this is danegorous. remove it
@@ -122,7 +122,7 @@ module.exports = function (app) {
     var action = req.query.action;
     var no = req.query.no;
     var user = req.user;
-    res.render('credit',{user: user,no:no,action:acion})
+    res.render('credit',{user: user,no:no,action:action})
   });
 
   
