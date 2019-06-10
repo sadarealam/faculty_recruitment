@@ -16,7 +16,7 @@ html
                     button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part2
         .containr(style="margin-top:45px")
                 h3 Personal Information
-                form(role='form', action=`/application_1?action=${action}&no=${no}`,method="post")
+                form(role='form', action=`/application1?action=${action}&no=${no}`,method="post")
                     if (no)
                         input(type="hidden",name="no",value=`${no}`)
                     if (user)
@@ -83,7 +83,10 @@ html
                     .form-group.row
                         label.col-sm-4.col-form-label(for='gender') Gender
                         .col-sm-6
-                            input#gender.form-control(type='text',name='gender' ,placeholder="Gender",required)
+                            select#department.form-control(name='gender',required)
+                                option(value='') Select Gender
+                                option(value='M') Male
+                                option(value='F') Female                               
                     .form-group.row
                         label.col-sm-4.col-form-label(for='marital_status') Marital Status
                         .col-sm-6
