@@ -16,7 +16,7 @@ html
                     button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part2
         .containr(style="margin-top:45px")
                 h3 Educationl Qualification
-                form(role='form', action=`/application_2?action=${action}&no=${no}`,method="post")
+                form(role='form', action=`/application2?action=${action}&no=${no}`,method="post")
                     if (no)
                         input(type="hidden",name="no",value=`${no}`)
                     if (user)
@@ -148,7 +148,7 @@ html
                         .col-sm-3
                             input#pdf_duration_from.form-control(type='date',name='pdf_duration_from')
                         .col-sm-3
-                            input#pdf_duration_from.form-control(type='date',name='pdf_duration_from')                    
+                            input#pdf_duration_t0.form-control(type='date',name='pdf_duration_t0')                    
                     .form-group.row
                         label.col-sm-4.col-form-label(for='pdf_area') Area of Research
                         .col-sm-6
