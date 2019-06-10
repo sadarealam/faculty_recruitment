@@ -17,6 +17,10 @@ html
         .containr(style="margin-top:45px")
                 h3 Educationl Qualification
                 form(role='form', action=`/application_2?action=${action}&no=${no}`,method="post")
+                    if (no)
+                        input(type="hidden",name="no",value=`${no}`)
+                    if (user)
+                        input(type="hidden",naem="username",value=`${user.username}`)
                     if (message)
                         .alert.alert-danger(role='alert') #{message}
                     h4 UG Degree onwards

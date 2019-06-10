@@ -12,11 +12,15 @@ html
                     h3    Application id : #{no}
             .col-8                    
                 form.form-inline(role='form', action=`/application?no=${no}`,method="get", style="margin-left:5px")
-                    button.btn.btn-primary-light.my-2.my-sm-0(type='submit') Part1   
-                    button.btn.btn-outline-light.my-2.my-sm-0(type='submit',disabled) Part2
+                    button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part1   
+                    button.btn.btn-primary-light.my-2.my-sm-0(type='submit',disabled) Part2
         .containr(style="margin-top:45px")
                 h3 Credit Point Verification Proforma
                 form(role='form', action=`/application_4?action=${action}&no=${no}`,method="post")
+                    if (no)
+                        input(type="hidden",name="no",value=`${no}`)
+                    if (user)
+                        input(type="hidden",naem="username",value=`${user.username}`)
                     if (message)
                         .alert.alert-danger(role='alert') #{message}
                     h4 Research Projects Undertaken (Please provide proof (award letter) for each project)
