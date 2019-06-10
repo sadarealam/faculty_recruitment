@@ -185,6 +185,10 @@ module.exports = function (app) {
     res.redirect('/');
   });
 
+  app.get('/forgot',function(req,res){
+res.send('<H2> We are Sorry );, We are building it</h2><h6> Come back again </h6>');
+  });
+
   app.get('/ping', function (req, res) {
     res.send("pong!", 200);
   });
