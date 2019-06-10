@@ -10,9 +10,10 @@ html
             .col-4
                 div(align='center',style='color:#fdfbfb;bgcolor:#00a2d1 !important')
                     h3    Application id : #{no}
-            .col-8                    
-                button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part1   
-                button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part2
+            .col-8
+                form.form-inline(role='form', action=`/credit?no=${no}`,method="get", style="margin-left:5px")
+                    button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part1   
+                    button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part2
         .containr(style="margin-top:45px")
                 h3 Personal Information
                 form(role='form', action=`/application_1?action=${action}&no=${no}`,method="post")
