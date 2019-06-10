@@ -125,6 +125,20 @@ module.exports = function (app) {
     res.render('credit',{user: user,no:no,action:action})
   });
 
+  app.get('/credit',isLoggedIn, function(req,res){
+    var action = req.query.action;
+    var no = req.query.no;
+    var user = req.user;
+    res.render('credit',{user: user,no:no,action:action})
+  });
+
+  app.post('/credit',isLoggedIn, function(req,res){
+    var action = req.query.action;
+    var no = req.query.no;
+    var user = req.user;
+    res.render('credit',{user: user,no:no,action:action})
+  });
+
   
 
 
