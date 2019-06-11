@@ -138,10 +138,11 @@ module.exports = function (app) {
 
   app.post('/credit',isLoggedIn, function(req,res){
     var action = req.query.action;
-    var no = req.query.no;
-    var user = req.user;
-    //console.log(req.body);
-    res.redirect('/my');
+    var no = req.body.no;
+    var user = req.user;    
+    console.log(req.body);
+    if (!no) res.redirect('/my');
+    if (no) res.render('credit',{no: no,user: user,action: action});   
   });
 
   
@@ -165,7 +166,13 @@ module.exports = function (app) {
     res.render('home', { user: req.user });
   });
 
-  app.all('/test', function (req, res) {
+  app.get('/test', function (req, res) {
+    console.log(req.body);
+    res.render('test', { message: req.flash('loginMessage')[0], user: req.user });
+  });
+
+  app.post('/test', function (req, res) {
+    console.log(req.body);
     res.render('test', { message: req.flash('loginMessage')[0], user: req.user });
   });
 
