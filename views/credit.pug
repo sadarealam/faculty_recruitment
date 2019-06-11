@@ -11,7 +11,9 @@ html
                     div(align='center',style='color:#fdfbfb;bgcolor:#00a2d1 !important')
                         h3    Application id : #{no}
                 .col-6                    
-                    form.form-inline(role='form', action=`/application?no=${no}`,method="get", style="margin-left:5px")
+                    form.form-inline(role='form', action=`/application`,method="ppst", style="margin-left:5px")
+                        if (no)
+                            input(type="hidden",name="no",value=`${no}`)
                         button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part-A 
                         button.btn.btn-primary-light.my-2.my-sm-0(type='submit',disabled) Part-B
     div(style="margin-top:45px;margin-left:150px;margin-right:150px")
