@@ -70,15 +70,17 @@ module.exports = function (app) {
     var action = req.query.action;
     var no = req.query.no;
     var user = req.user;
-    res.render('application2',{user: user,no:no,action:action})
+    if (!no) res.redirect('my');
+    if (no)  res.render('application2',{user: user,no:no,action:action})
   });
 
   app.post('/application1', isLoggedIn, function(req, res){
-    var action = req.query.action;
-    var no = req.query.no;
+    var action = req.body.action;
+    var no = req.body.no;
     var user = req.user;
     //console.log(req.body);
-    res.render('application2',{user: user,no:no,action:action})
+    if (!no) res.redirect('my');
+    if (no)  res.render('application2',{user: user,no:no,action:action})
   });
 
   //this is danegorous. remove it
@@ -86,15 +88,17 @@ module.exports = function (app) {
     var action = req.query.action;
     var no = req.query.no;
     var user = req.user;
-    res.render('application3',{user: user,no:no,action:action})
+    if (!no) res.redirect('my');
+    if (no)  res.render('application3',{user: user,no:no,action:action})
   });
 
   app.post('/application2', isLoggedIn, function(req, res){
-    var action = req.query.action;
-    var no = req.query.no;
+    var action = req.body.action;
+    var no = req.body.no;
     var user = req.user;
     //console.log(req.body);
-    res.render('application3',{user: user,no:no,action:action})
+    if (!no) res.redirect('my');
+    if (no) res.render('application3',{user: user,no:no,action:action})
   });
 
   //this is danegorous. remove it
@@ -102,15 +106,17 @@ module.exports = function (app) {
     var action = req.query.action;
     var no = req.query.no;
     var user = req.user;
-    res.render('application4',{user: user,no:no,action:action})
+    if (!no) res.redirect('my');
+    if (no) res.render('application4',{user: user,no:no,action:action})
   });
 
   app.post('/application3', isLoggedIn, function(req, res){
-    var action = req.query.action;
-    var no = req.query.no;
+    var action = req.body.action;
+    var no = req.body.no;
     var user = req.user;
    // console.log(req.body);
-    res.render('application4',{user: user,no:no,action:action})
+    if (!no) res.redirect('my');
+    if (no) res.render('application4',{user: user,no:no,action:action});
   });
 
    //this is danegorous. remove it
@@ -118,26 +124,29 @@ module.exports = function (app) {
     var action = req.query.action;
     var no = req.query.no;
     var user = req.user;
-    res.render('credit',{user: user,no:no,action:action})
+    if (!no) res.redirect('/my');
+    if (no) res.redirect('credit?no='+no+'&action='+action)    
   });
 
   app.post('/application4', isLoggedIn, function(req, res){
-    var action = req.query.action;
-    var no = req.query.no;
+    var action = req.body.action;
+    var no = req.body.no;
     var user = req.user;
-    //console.log(req.body);
-    res.redirect('credit?no='+no+'&action='+action)
+    console.log(req.body);
+    if (!no) res.redirect('/my');
+    if (no) res.redirect('credit?no='+no+'&action='+action)
   });
 
   app.get('/credit',isLoggedIn, function(req,res){
     var action = req.query.action;
     var no = req.query.no;
     var user = req.user;
-    res.render('credit',{user: user,no:no,action:action})
+    if (!no) res.redirect('/my');
+    if (no) res.render('credit',{no: no,user: user,action: action});   
   });
 
   app.post('/credit',isLoggedIn, function(req,res){
-    var action = req.query.action;
+    var action = req.body.action;
     var no = req.body.no;
     var user = req.user;    
     console.log(req.body);
