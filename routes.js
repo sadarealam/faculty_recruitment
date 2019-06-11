@@ -1,6 +1,7 @@
 var passport = require('passport');
 var Account = require('./models/account');
 var Application = require('./models/application');
+var Credit = require('./models/credit');
 var Const = require('./const');
 
 module.exports = function (app) {
@@ -151,7 +152,16 @@ module.exports = function (app) {
     var user = req.user;    
     console.log(req.body);
     if (!no) res.redirect('/my');
-    if (no) res.render('credit',{no: no,user: user,action: action});   
+    var query = {'username': user.username, 'no':no};  
+
+    Credit.findOneAndUpdate(query, req.body, {upsert:true}, function(err, credit){
+      if (err) {
+        console.log(err);
+        res.render('credit', {no: no,user: user,action: action,message:'Opps something wrong. ask help'});
+      }
+      else res.render('my',{no: no,user: user,action: action});   
+    });
+    
   });
 
   

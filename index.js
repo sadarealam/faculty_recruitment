@@ -14,7 +14,7 @@ const app = express()
 const port = 3000
 
 // mongoose
-mongoose.connect('mongodb://localhost/passport_local_mongoose', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/passport_local_mongoose', { useNewUrlParser: true, 'useFindAndModify':false });
 
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, "views"));
