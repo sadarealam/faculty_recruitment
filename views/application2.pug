@@ -12,10 +12,10 @@ html
                     h3    Application id : #{no}
             .col-8                    
                 form.form-inline(role='form', action=`/credit?no=${no}`,method="get", style="margin-left:5px")
-                    button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part1   
-                    button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part2
+                    button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part-A  
+                    button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part-B
         .containr(style="margin-top:45px")
-                h3 Educationl Qualification
+                h3 2 Educationl Qualification
                 form(role='form', action=`/application2?action=${action}&no=${no}`,method="post")
                     if (no)
                         input(type="hidden",name="no",value=`${no}`)
@@ -23,7 +23,7 @@ html
                         input(type="hidden",naem="username",value=`${user.username}`)
                     if (message)
                         .alert.alert-danger(role='alert') #{message}
-                    h4 UG Degree onwards
+                    h4 UG Degree onwards*
                     .form-group.row
                         label.col-sm-1.col-form-label Degree(s)
                         label.col-sm-3.col-form-label Subject / discipline
@@ -83,7 +83,7 @@ html
                             input#divison4.form-control(type='text',name='divison4',placeholder="Divison")
                         .col-sm-2
                             input#yop4.form-control(type='text',name='yop4',placeholder="Year")
-                    h4 Details of PhD.
+                    h4 3 Details of PhD.
 
                     .form-group.row
                         label.col-sm-4.col-form-label(for='dor_phd') Date of Registration 
@@ -118,53 +118,40 @@ html
                         label.col-sm-4.col-form-label(for='phd_title') Title of Thesis
                         .col-sm-6
                             input#phd_title.form-control(type='text',name='phd_title' ,placeholder="Title of Thesis")
-                    p Paper published in the area of  research during the course of PhD with impact factor
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='phd_paper_1') Paper 1
-                        .col-sm-6
-                            input#phd_paper_1.form-control(type='text',name='phd_paper_1' ,placeholder="Paper 1")
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='phd_paper_2') Paper 2
-                        .col-sm-6
-                            input#phd_paper_2.form-control(type='text',name='phd_paper_2' ,placeholder="Paper 2")
                     
                     
-                    h4 Details of PDF(Post Doctoral Fellowship).
+                    h4 4 Details of PDF(Post Doctoral Fellowship).
+                    .form-group.row                       
+                        label.col-sm-5.col-form-label University/ Institution
+                        label.col-sm-3.col-form-label Duration (From)     
+                        label.col-sm-2.col-form-label Duration (sTo)                      
 
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='dor_pdf') Date of Registration 
-                        .col-sm-6
-                            input#dor_pdf.form-control(type='date',name='dor_pdf')                    
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='pdf_department') Discipline/ Department
-                        .col-sm-6
-                            input#pdf_department.form-control(type='text',name='pdf_department' ,placeholder="Department")
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='pdf_university') University/ Institution 
-                        .col-sm-6
-                            input#pdf_university.form-control(type='text',name='pdf_university',placeholder="University")
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='pdf_duration') Duration of PDF
-                        .col-sm-3
-                            input#pdf_duration_from.form-control(type='date',name='pdf_duration_from')
-                        .col-sm-3
-                            input#pdf_duration_t0.form-control(type='date',name='pdf_duration_t0')                    
+                    .form-group.row                        
+                        .col-sm-5
+                            input#pdf_university1.form-control(type='text',name='pdf_university1',placeholder="University") 
+                        .col-sm-5
+                            .row
+                                .col-sm-6
+                                    input#pdf_duration_from1.form-control(type="date",name='pdf_duration_from1')  
+                                .col-sm-6 
+                                    input#pdf_duration_to1.form-control(type="date",name='pdf_duration_to1')     
+                    .form-group.row                        
+                        .col-sm-5
+                            input#pdf_university2.form-control(type='text',name='pdf_university2',placeholder="University") 
+                        .col-sm-5
+                            .row
+                                .col-sm-6
+                                    input#pdf_duration_from2.form-control(type="date",name='pdf_duration_from2')  
+                                .col-sm-6 
+                                    input#pdf_duration_to2.form-control(type="date",name='pdf_duration_to2')     
                     .form-group.row
                         label.col-sm-4.col-form-label(for='pdf_area') Area of Research
                         .col-sm-6
                             input#pdf_area.form-control(type='text',name='pdf_area' ,placeholder="Area of Research")
-                    p Paper published in the area of  research during the course of PDF with impact factor
+                    
+                    h4 5 UGC-NET/SLET
                     .form-group.row
-                        label.col-sm-4.col-form-label(for='pdf_paper_1') Paper 1
-                        .col-sm-6
-                            input#pdf_paper_1.form-control(type='text',name='pdf_paper_1' ,placeholder="Paper 1")
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='pdf_paper_2') Paper 2
-                        .col-sm-6
-                            input#pdf_paper_2.form-control(type='text',name='pdf_paper_2' ,placeholder="Paper 2")
-                    h4 UGC-NET/SLET
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='ugc_qualified') Whether  qualified  UGC- NET/ SLET   ( All India Level) 
+                        label.col-sm-4.col-form-label(for='ugc_qualified') Whether  qualified  UGC- NET/ SLET   ( All India Level)*
                         .col-sm-6
                             .form-check.form-check-inline
                                 input#ugc_yes.form-check-input(type="radio", name="ugc_yes", value="T")
