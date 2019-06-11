@@ -7,10 +7,10 @@ html
     include includes/navbar.pug
     .container(style="width:100%;margin-top:45px")
         .row
-            .col-4
+            .col-6
                 div(align='center',style='color:#fdfbfb;bgcolor:#00a2d1 !important')
                     h3    Application id : #{no}
-            .col-8                    
+            .col-6                    
                 form.form-inline(role='form', action=`/credit?no=${no}`,method="get", style="margin-left:5px")
                     button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part-A
                     button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part-B
