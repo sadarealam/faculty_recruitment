@@ -1,3 +1,226 @@
+mixin research_default
+    .form-group.row
+        .col-sm-2
+            input#research_project_title.form-control(type='text',name='research_project_title',placeholder="")
+        .col-sm-1                   
+            select#reserch_project_pi.form-control(name='reserch_project_pi')
+                option(value='') Select
+                option(value='PI') PI
+                option(value='Co-PI') Co-PI
+        .col-sm-3
+            input#research_project_agency.form-control(type='text',name='research_project_agency',placeholder="")
+        
+        .col-sm-1
+            input#research_project_amount.form-control(type='number',name='research_project_amount')                           
+        .col-sm-4
+            .row
+                .col-sm-6                     
+                    input#research_project_periodfrom.form-control(type='date',name='research_project_periodfrom',placeholder="")                            
+                .col-sm-6
+                    input#research_project_periodto.form-control(type='date',name='research_project_periodto')
+        .col-sm-1
+            input#research_project_creditclaimed.form-control(type='number',name='research_project_creditclaimed',placeholder="")
+mixin research(credit,i)
+    .form-group.row
+        .col-sm-2
+            input#research_project_title.form-control(type='text',name='research_project_title',value=`${credit.research_project_title[i]}`)
+        .col-sm-1                   
+            select.form-control(id=`reserch_project_pi${i}`,name='reserch_project_pi')
+                option(value='') Select
+                option(value='PI') PI
+                option(value='Co-PI') Co-PI
+        .col-sm-3
+            input#research_project_agency.form-control(type='text',name='research_project_agency',value=`${credit.research_project_agency[i]}`)
+        
+        .col-sm-1
+            input#research_project_amount.form-control(type='number',name='research_project_amount',value=`${credit.research_project_amount[i]}`)                           
+        .col-sm-4
+            .row
+                .col-sm-6                     
+                    input#research_project_periodfrom.form-control(type='date',name='research_project_periodfrom',value=`${credit.research_project_periodfrom[i]}`)                            
+                .col-sm-6
+                    input#research_project_periodto.form-control(type='date',name='research_project_periodto',value=`${credit.research_project_periodto[i]}`)
+        .col-sm-1
+            input#research_project_creditclaimed.form-control(type='number',name='research_project_creditclaimed',value=`${credit.research_project_creditclaimed[i]}`)
+        script.
+            document.getElementById('reserch_project_pi#{i}').value='#{credit.reserch_project_pi[i]}'
+
+mixin patent_default
+    .form-group.row
+        .col-sm-4
+            input#patent_title.form-control(type='text',name='patent_title',placeholder="")
+        .col-sm-2                            
+            select#patent_pi.form-control(name='patent_pi')
+                option(value='') Select PI & CO-PI
+                option(value='PI') PI
+                option(value='Co-PI') Co-PI
+        .col-sm-2
+            input#patent_no.form-control(type='text',name='patent_no',placeholder="")
+        .col-sm-3
+            input#patent_authority.form-control(type='text',name='patent_authority')                           
+        .col-sm-1                            
+                input#patent_creditclaimed.form-control(type='number',name='patent_creditclaimed',placeholder="")
+mixin patent(credit,i)
+    .form-group.row
+        .col-sm-4
+            input#patent_title.form-control(type='text',name='patent_title',value=`${credit.patent_title[i]}`)
+        .col-sm-2                            
+            select.form-control(id=`patent_pi${i}`,name='patent_pi')
+                option(value='') Select PI & CO-PI
+                option(value='PI') PI
+                option(value='Co-PI') Co-PI
+        .col-sm-2
+            input#patent_no.form-control(type='text',name='patent_no',value=`${credit.patent_no[i]}`)
+        .col-sm-3
+            input#patent_authority.form-control(type='text',name='patent_authority',value=`${credit.patent_authority[i]}`)                           
+        .col-sm-1                            
+                input#patent_creditclaimed.form-control(type='number',name='patent_creditclaimed',value=`${credit.patent_creditclaimed[i]}`)
+    script.
+        document.getElementById('patent_pi#{i}').value='#{credit.patent_pi[i]}'
+
+mixin consultancy_default
+    .form-group.row                        
+        .col-sm-3
+            input#consultancy_project_title.form-control(type='text',name='consultancy_project_title',placeholder="")
+        .col-sm-1                            
+            select#consultancy_pi.form-control(name='consultancy_pi')
+                option(value='') Select PI & CO-PI
+                option(value='PI') PI
+                option(value='Co-PI') Co-PI
+        .col-sm-2
+            input#consultancy_project_agency.form-control(type='text',name='consultancy_project_agency',placeholder="")
+        .col-sm-1
+            input#consultancy_project_amount.form-control(type='number',name='consultancy_project_amount')                           
+        .col-sm-4
+            .row
+                .col-sm-6                        
+                    input#consultancy_project_periodfrom.form-control(type='date',name='consultancy_project_periodfrom',placeholder="")                            
+                .col-sm-6
+                    input#consultancy_project_periodto.form-control(type='date',name='consultancy_project_periodto',placeholder="")
+        .col-sm-1
+            input#consultancy_project_creditclaimed.form-control(type='number',name='consultancy_project_creditclaimed',placeholder="")
+mixin consultancy(credit,i)
+    .form-group.row                        
+        .col-sm-3
+            input#consultancy_project_title.form-control(type='text',name='consultancy_project_title',value=`${credit.consultancy_project_title[i]}`)
+        .col-sm-1                            
+            select.form-control(id=`consultancy_pi${i}`,name='consultancy_pi')
+                option(value='') Select PI & CO-PI
+                option(value='PI') PI
+                option(value='Co-PI') Co-PI
+        .col-sm-2
+            input#consultancy_project_agency.form-control(type='text',name='consultancy_project_agency',value=`${credit.consultancy_project_agency[i]}`)
+        .col-sm-1
+            input#consultancy_project_amount.form-control(type='number',name='consultancy_project_amount',value=`${credit.consultancy_project_amount[i]}`)                           
+        .col-sm-4
+            .row
+                .col-sm-6                        
+                    input#consultancy_project_periodfrom.form-control(type='date',name='consultancy_project_periodfrom',value=`${credit.consultancy_project_periodfrom[i]}`)                            
+                .col-sm-6
+                    input#consultancy_project_periodto.form-control(type='date',name='consultancy_project_periodto',value=`${credit.consultancy_project_periodto[i]}`)
+        .col-sm-1
+            input#consultancy_project_creditclaimed.form-control(type='number',name='consultancy_project_creditclaimed',value=`${credit.consultancy_project_creditclaimed[i]}`)
+    script.
+        document.getElementById('consultancy_pi#{i}').value='#{credit.consultancy_pi[i]}'
+
+mixin phd_default
+    .form-group.row
+        .col-sm-2
+            input#phd_credit_name.form-control(type='text',name='phd_credit_name',placeholder="")
+        .col-sm-2                          
+            select#phd_credit_pi.form-control(name='phd_credit_pi')
+                option(value='') Select Supervisor and Co-supervisor
+                option(value='Supervisor') Supervisor
+                option(value='Co-supervisor') Co-supervisor
+        .col-sm-3
+            input#phd_credit_title.form-control(type='text',name='phd_credit_title',placeholder="")
+        .col-sm-1
+            .form-check.form-check-inline
+                input#phdy.form-check-input(type="radio", name="phd_credit_awarded", value="Y")
+                label.form-check-label(for="phdy") Submitted
+            .form-check.form-check-inline
+                input#phdn.form-check-input(type="radio", name="phd_credit_awarded", value="N")
+                label.form-check-label(for="phdn") Awarded  
+        .col-sm-3
+            input#phd_credit_yoa.form-control(type='text',name='phd_credit_yoa')                           
+        .col-sm-1                          
+                input#phd_creditclaimed.form-control(type='number',name='phd_creditclaimed',placeholder="")
+mixin phd(credit,i)
+    .form-group.row
+        .col-sm-2
+            input#phd_credit_name.form-control(type='text',name='phd_credit_name',value=`${credit.phd_credit_name[i]}`)
+        .col-sm-2                          
+            select.form-control(id=`phd_credit_pi${i}`,name='phd_credit_pi')
+                option(value='') Select Supervisor and Co-supervisor
+                option(value='Supervisor') Supervisor
+                option(value='Co-supervisor') Co-supervisor
+        .col-sm-3
+            input#phd_credit_title.form-control(type='text',name='phd_credit_title',value=`${credit.phd_credit_title[i]}`)
+        .col-sm-1
+            .form-check.form-check-inline
+                input#phd_Y.form-check-input(type="radio", name="phd_credit_awarded", value="Y")
+                label.form-check-label(for="phd_Y") Submitted
+            .form-check.form-check-inline
+                input#phd_N.form-check-input(type="radio", name="phd_credit_awarded", value="N")
+                label.form-check-label(for="phd_N") Awarded  
+        .col-sm-3
+            input#phd_credit_yoa.form-control(type='text',name='phd_credit_yoa',value=`${credit.phd_credit_yoa[i]}`)                           
+        .col-sm-1                          
+                input#phd_creditclaimed.form-control(type='number',name='phd_creditclaimed',value=`${credit.phd_creditclaimed[i]}`)
+    script.
+        document.getElementById('phd_credit_pi#{i}').value='#{credit.phd_credit_pi[i]}'
+        document.getElementById('phd_#{credit.phd_credit_awarded[i]}').checked = true;
+
+mixin sci_default
+    .form-group.row
+        .col-sm-3
+            input#sci_paper_title.form-control(type='text',name='sci_paper_title',placeholder="")
+        .col-sm-3
+            input#sci_paper_journal.form-control(type='text',name='sci_paper_journal',placeholder="")
+        .col-sm-2
+            input#sci_paper_volume.form-control(type='text',name='sci_paper_volume')                           
+        .col-sm-2                
+            .row            
+                .col-sm-6
+                    input#sci_author_from.form-control(type='number',name='sci_author_from',placeholder="")
+                .col-sm-6
+                    input#sci_author_total.form-control(type='number',name='sci_author_total',placeholder="")
+        .col-sm-1
+            .form-check.form-check-inline
+                input#sci_main_supervisor_t.form-check-input(type="radio", name="sci_main_supervisor", value="T")
+                label.form-check-label(for="sci_main_supervisor_t") Yes
+            .form-check.form-check-inline
+                input#sci_main_supervisor_f.form-check-input(type="radio", name="sci_main_supervisor", value="F")
+                label.form-check-label(for="sci_main_supervisor_f") No                       
+        .col-sm-1                            
+                input#sci_main_creditclaimed.form-control(type='number',name='sci_main_creditclaimed',placeholder="")
+mixin sci(credit,i)
+    .form-group.row
+        .col-sm-3
+            input#sci_paper_title.form-control(type='text',name='sci_paper_title',value=`${credit.sci_paper_title[i]}`)
+        .col-sm-3
+            input#sci_paper_journal.form-control(type='text',name='sci_paper_journal',value=`${credit.sci_paper_journal[i]}`)
+        .col-sm-2
+            input#sci_paper_volume.form-control(type='text',name='sci_paper_volume',value=`${credit.sci_paper_volume[i]}`)                           
+        .col-sm-2                
+            .row            
+                .col-sm-6
+                    input#sci_author_from.form-control(type='number',name='sci_author_from',value=`${credit.sci_author_from[i]}`)
+                .col-sm-6
+                    input#sci_author_total.form-control(type='number',name='sci_author_total',value=`${credit.sci_author_total[i]}`)
+        .col-sm-1
+            .form-check.form-check-inline
+                input#sci_main_supervisor_T.form-check-input(type="radio", name="sci_main_supervisor", value="T")
+                label.form-check-label(for="sci_main_supervisor_t") Yes
+            .form-check.form-check-inline
+                input#sci_main_supervisor_F.form-check-input(type="radio", name="sci_main_supervisor", value="F")
+                label.form-check-label(for="sci_main_supervisor_f") No                       
+        .col-sm-1                            
+                input#sci_main_creditclaimed.form-control(type='number',name='sci_main_creditclaimed',value=`${credit.sci_main_creditclaimed[i]}`)
+        script.
+            //document.getElementById('phd_credit_pi#{i}').value='#{credit.phd_credit_pi[i]}'
+            document.getElementById('sci_main_supervisor_#{credit.sci_main_supervisor[i]}').checked = true;
+
 doctype html
 html
   include includes/head.pug  
@@ -18,7 +241,7 @@ html
                         button.btn.btn-primary-light.my-2.my-sm-0(type='submit',disabled) Part-B
     div(style="margin-top:45px;margin-left:150px;margin-right:150px")
             h3 Credit Point Verification Proforma
-            form(role='form', action=`/credit?action=${action}&no=${no}`,method="post")
+            form(role='form', action=`/submit?action=${action}&no=${no}`,method="post")
                 if (no)
                     input(type="hidden",name="no",value=`${no}`)
                 if (user)
@@ -36,29 +259,19 @@ html
                     label.col-sm-1.col-form-label Amount Sanctioned
                     label.col-sm-4.col-form-label Period of Project(From & To)
                     label.col-sm-1.col-form-label Credit Points Claimed
-                div#research
-                  .form-group.row
-                      .col-sm-2
-                          input#research_project_title.form-control(type='text',name='research_project_title',placeholder="")
-                      .col-sm-1                   
-                          select#reserch_project_pi.form-control(name='reserch_project_pi')
-                              option(value='') Select
-                              option(value='PI') PI
-                              option(value='Co-PI') Co-PI
-                      .col-sm-3
-                          input#research_project_agency.form-control(type='text',name='research_project_agency',placeholder="")
-                      
-                      .col-sm-1
-                          input#research_project_amount.form-control(type='number',name='research_project_amount')                           
-                      .col-sm-4
-                        .row
-                          .col-sm-6                     
-                              input#research_project_periodfrom.form-control(type='date',name='research_project_periodfrom',placeholder="")                            
-                          .col-sm-6
-                              input#research_project_periodto.form-control(type='date',name='research_project_periodto')
-                      .col-sm-1
-                          input#research_project_creditclaimed.form-control(type='number',name='research_project_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#research").after($("#research").html())})();return false;') +
+                
+                if (!credit)
+                    +research_default
+                else if(credit.research_project_title.length==0)
+                    +research_default              
+
+                if (credit && credit.research_project_title.length>0)
+                    //- h1 #{credit.research_project_title.length}
+                    //- +research(credit,2)
+                    - for(var i=0;i<credit.research_project_title.length;i++)
+                        +research(credit,i)
+                div#research                
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#research",research_row)') +
                 
                 h4 1B.
                 h4 Patents Granted (Only granted patents are considered)
@@ -71,22 +284,17 @@ html
                     label.col-sm-2.col-form-label File Number/ Patent Award Number
                     label.col-sm-3.col-form-label Patent Granting Authority
                     label.col-sm-1.col-form-label Credit Points Claimed
-                div#patent
-                  .form-group.row
-                      .col-sm-4
-                          input#patent_title.form-control(type='text',name='patent_title',placeholder="")
-                      .col-sm-2                            
-                          select#patent_pi.form-control(name='patent_pi')
-                              option(value='') Select PI & CO-PI
-                              option(value='PI') PI
-                              option(value='Co-PI') Co-PI
-                      .col-sm-2
-                          input#patent_no.form-control(type='text',name='patent_no',placeholder="")
-                      .col-sm-3
-                          input#patent_authority.form-control(type='text',name='patent_authority')                           
-                      .col-sm-1                            
-                              input#patent_creditclaimed.form-control(type='number',name='patent_creditclaimed',placeholder="")     
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#patent").after($("#patent").html())})();return false;') +                         
+                if (!credit)
+                    +patent_default
+                else if(credit.patent_title.length==0)
+                    +patent_default              
+
+                if (credit && credit.patent_title.length>0)
+                    - for(var i=0;i<credit.patent_title.length;i++)
+                        +patent(credit,i)
+                
+                div#patent                       
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#patent",patent_row)') +                         
                     
                 h4 2. 
                 h4 Consultancy  Projects Undertaken
@@ -99,28 +307,17 @@ html
                     label.col-sm-1.col-form-label Amount Sanctioned
                     label.col-sm-4.col-form-label Period of Project(From To)
                     label.col-sm-1.col-form-label Credit Points Claimed
+                if (!credit)
+                    +consultancy_default
+                else if(credit.consultancy_project_title.length==0)
+                    +consultancy_default              
+
+                if (credit && credit.consultancy_project_title.length>0)
+                    - for(var i=0;i<credit.consultancy_project_title.length;i++)
+                        +consultancy(credit,i)
+                
                 div#consultancy
-                  .form-group.row                        
-                      .col-sm-3
-                          input#consultancy_project_title.form-control(type='text',name='consultancy_project_title',placeholder="")
-                      .col-sm-1                            
-                          select#consultancy_pi.form-control(name='consultancy_pi')
-                              option(value='') Select PI & CO-PI
-                              option(value='PI') PI
-                              option(value='Co-PI') Co-PI
-                      .col-sm-2
-                          input#consultancy_project_agency.form-control(type='text',name='consultancy_project_agency',placeholder="")
-                      .col-sm-1
-                          input#consultancy_project_amount.form-control(type='number',name='consultancy_project_amount')                           
-                      .col-sm-4
-                        .row
-                          .col-sm-6                        
-                              input#consultancy_project_periodfrom.form-control(type='date',name='consultancy_project_periodfrom',placeholder="")                            
-                          .col-sm-6
-                              input#consultancy_project_periodto.form-control(type='date',name='consultancy_project_periodto',placeholder="")
-                      .col-sm-1
-                          input#consultancy_project_creditclaimed.form-control(type='number',name='consultancy_project_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#consultancy").after($("#consultancy").html())})();return false;') + 
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#consultancy",consultancy_row)') + 
 
 
 
@@ -135,29 +332,24 @@ html
                     label.col-sm-1.col-form-label Status Submitted/ Awarded
                     label.col-sm-3.col-form-label Year of Award
                     label.col-sm-1.col-form-label Credit Points Claimed
+                
+                if (!credit)
+                    +phd_default
+                else if(credit.phd_credit_name.length==0)
+                    +phd_default              
+
+                if (credit && credit.phd_credit_name.length>0)
+                    - for(var i=0;i<credit.phd_credit_name.length;i++)
+                        +phd(credit,i)
+                
                 div#phd
-                  .form-group.row
-                      .col-sm-2
-                          input#phd_credit_name.form-control(type='text',name='phd_credit_name',placeholder="")
-                      .col-sm-2                          
-                          select#phd_credit_pi.form-control(name='phd_credit_pi')
-                              option(value='') Select Supervisor and Co-supervisor
-                              option(value='Supervisor') Supervisor
-                              option(value='Co-supervisor') Co-supervisor
-                      .col-sm-3
-                          input#phd_credit_title.form-control(type='text',name='phd_credit_title',placeholder="")
-                      .col-sm-1
-                          .form-check.form-check-inline
-                              input#phdy.form-check-input(type="radio", name="phd_credit_awarded", value="Y")
-                              label.form-check-label(for="phdy") Submitted
-                          .form-check.form-check-inline
-                              input#phdn.form-check-input(type="radio", name="phd_credit_awarded", value="N")
-                              label.form-check-label(for="phdn") Awarded  
-                      .col-sm-3
-                          input#phd_credit_yoa.form-control(type='text',name='phd_credit_yoa')                           
-                      .col-sm-1                          
-                              input#phd_creditclaimed.form-control(type='number',name='phd_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#phd").after($("#phd").html())})();return false;') +          
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#phd",phd_row)') + 
+
+                
+                
+               
+                  
+                
                 
 
                 h4 4A. 
@@ -176,32 +368,20 @@ html
                     label.col-sm-2.col-form-label Paper  published in SCI indexed journal (as cited in paper)
                     label.col-sm-1.col-form-label Whether Main Supervisor Yes/No
                     label.col-sm-1.col-form-label Credit Points Claimed
-                div#sci
-                    .form-group.row
-                        .col-sm-3
-                            input#sci_paper_title.form-control(type='text',name='sci_paper_title',placeholder="")
-                        .col-sm-3
-                            input#sci_paper_journal.form-control(type='text',name='sci_paper_journal',placeholder="")
-                        .col-sm-2
-                            input#sci_paper_volume.form-control(type='text',name='sci_paper_volume')                           
-                        .col-sm-2                
-                            .row            
-                                .col-sm-6
-                                    input#sci_author_from.form-control(type='number',name='sci_author_from',placeholder="")
-                                .col-sm-6
-                                    input#sci_author_total.form-control(type='number',name='sci_author_total',placeholder="")
-                        .col-sm-1
-                            .form-check.form-check-inline
-                                input#sci_main_supervisor_t.form-check-input(type="radio", name="sci_main_supervisor", value="T")
-                                label.form-check-label(for="sci_main_supervisor_t") Yes
-                            .form-check.form-check-inline
-                                input#sci_main_supervisor_f.form-check-input(type="radio", name="sci_main_supervisor", value="F")
-                                label.form-check-label(for="sci_main_supervisor_f") No                       
-                        .col-sm-1                            
-                                input#sci_main_creditclaimed.form-control(type='number',name='sci_main_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#sci").after($("#sci").html())})();return false;') +     
                 
+                
+                if (!credit)
+                    +sci_default
+                else if(credit.phd_credit_name.length==0)
+                    +sci_default              
 
+                if (credit && credit.phd_credit_name.length>0)
+                    - for(var i=0;i<credit.phd_credit_name.length;i++)
+                        +sci(credit,i)
+                
+                div#sci
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#sci",sci_row)') + 
+                
                 h4 4B. 
                 h4 Published Research Papers in Scopus Journals (Paid Journals not allowed). 
                 h6 
@@ -218,7 +398,8 @@ html
                     label.col-sm-2.col-form-label Paper  published in SCI indexed journal (as cited in paper)
                     label.col-sm-1.col-form-label Whether Main Supervisor Yes/No
                     label.col-sm-1.col-form-label Credit Points Claimed
-                div#scopus
+                
+                mixin scopus_default
                     .form-group.row
                         .col-sm-3
                             input#scopus_paper_title.form-control(type='text',name='scopus_paper_title',placeholder="")
@@ -241,7 +422,45 @@ html
                                 label.form-check-label(for="scopus_main_supervisor_f") No                       
                         .col-sm-1                            
                                 input#scopus_main_creditclaimed.form-control(type='number',name='scopus_main_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#scopus").after($("#scopus").html())})();return false;') +     
+                mixin scopus(credit,i)
+                    .form-group.row
+                        .col-sm-3
+                            input#scopus_paper_title.form-control(type='text',name='scopus_paper_title',value=`${credit.scopus_paper_title[i]}`)
+                        .col-sm-3
+                            input#scopus_paper_journal.form-control(type='text',name='scopus_paper_journal',value=`${credit.scopus_paper_journal[i]}`)
+                        .col-sm-2
+                            input#scopus_paper_volume.form-control(type='text',name='scopus_paper_volume',value=`${credit.scopus_paper_volume[i]}`)                           
+                        .col-sm-2         
+                            .row  
+                                .col-sm-6                   
+                                    input#scopus_author_from.form-control(type='number',name='scopus_author_from',value=`${credit.scopus_author_from[i]}`)
+                                .col-sm-6
+                                    input#scopus_author_total.form-control(type='number',name='scopus_author_total',value=`${credit.scopus_author_total[i]}`)
+                        .col-sm-1
+                            .form-check.form-check-inline
+                                input#scopus_main_supervisor_T.form-check-input(type="radio", name="scopus_main_supervisor", value="T")
+                                label.form-check-label(for="scopus_main_supervisor_t") Yes
+                            .form-check.form-check-inline
+                                input#scopus_main_supervisor_F.form-check-input(type="radio", name="scopus_main_supervisor", value="F")
+                                label.form-check-label(for="scopus_main_supervisor_f") No                       
+                        .col-sm-1                            
+                                input#scopus_main_creditclaimed.form-control(type='number',name='scopus_main_creditclaimed',value=`${credit.scopus_main_creditclaimed[i]}`)
+                    script.
+                        //document.getElementById('phd_credit_pi#{i}').value='#{credit.phd_credit_pi[i]}'
+                        document.getElementById('scopus_main_supervisor_#{credit.scopus_main_supervisor[i]}').checked = true;
+                
+                if (!credit)
+                    +scopus_default
+                else if(credit.scopus_paper_title.length==0)
+                    +scopus_default              
+
+                if (credit && credit.scopus_paper_title.length>0)
+                    - for(var i=0;i<credit.scopus_paper_title.length;i++)
+                        +scopus(credit,i)
+                
+                
+                div#scopus
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#scopus",scopus_row)') +     
 
 
 
@@ -259,7 +478,8 @@ html
                     label.col-sm-2.col-form-label Authors Position out of Total Number of Authors
                     label.col-sm-1.col-form-label Whether Main Supervisor Yes/No
                     label.col-sm-1.col-form-label Credit Points Claimed
-                div#conference
+                
+                mixin conference_default
                     .form-group.row
                         .col-sm-3
                             input#conference_paper_title.form-control(type='text',name='conference_paper_title',placeholder="")
@@ -282,7 +502,42 @@ html
                                 label.form-check-label(for="sci_main_supervisor_f") No                       
                         .col-sm-1                            
                                 input#conference_main_creditclaimed.form-control(type='number',name='conference_main_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#conference").after($("#conference").html())})();return false;') +     
+                mixin conference(credit,i)
+                    .form-group.row
+                        .col-sm-3
+                            input#conference_paper_title.form-control(type='text',name='conference_paper_title',value=`${credit.conference_paper_title[i]}`)
+                        .col-sm-3
+                            input#conference_detail.form-control(type='text',name='conference_detail',value=`${credit.conference_detail[i]}`)
+                        .col-sm-2
+                            input#conference_paper_volume.form-control(type='text',name='conference_paper_volume',value=`${credit.conference_paper_volume[i]}`)                           
+                        .col-sm-2                      
+                            .row
+                                .col-sm-6      
+                                    input#conference_author_from.form-control(type='number',name='conference_author_from',value=`${credit.conference_author_from[i]}`)
+                                .col-sm-6
+                                    input#conference_author_total.form-control(type='number',name='conference_author_total',value=`${credit.conference_author_total[i]}`)
+                        .col-sm-1
+                            .form-check.form-check-inline
+                                input#conference_main_supervisor_T.form-check-input(type="radio", name="conference_main_supervisor", value="T")
+                                label.form-check-label(for="conference_main_supervisor_T") Yes
+                            .form-check.form-check-inline
+                                input#conference_main_supervisor_F.form-check-input(type="radio", name="conference_main_supervisor", value="F")
+                                label.form-check-label(for="conference_main_supervisor_T") No                       
+                        .col-sm-1                            
+                                input#conference_main_creditclaimed.form-control(type='number',name='conference_main_creditclaimed',value=`${credit.conference_main_creditclaimed[i]}`)
+                    script.
+                        //document.getElementById('phd_credit_pi#{i}').value='#{credit.phd_credit_pi[i]}'
+                        document.getElementById('conference_main_supervisor_#{credit.conference_main_supervisor[i]}').checked = true;
+                if (!credit)
+                    +conference_default
+                else if(credit.conference_paper_title.length==0)
+                    +conference_default              
+
+                if (credit && credit.conference_paper_title.length>0)
+                    - for(var i=0;i<credit.conference_paper_title.length;i++)
+                        +conference(credit,i)
+                div#conference
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#conference",conference_row)') +     
                 
                 h4 6. 
                 h4 Institute Level Additional  Responsibilities.
@@ -295,7 +550,7 @@ html
                     label.col-sm-4.col-form-label Duration(From To)
                     label.col-sm-2.col-form-label No. of Semesters(Months)
                     label.col-sm-2.col-form-label Credit Points Claimed
-                div#ilar
+                mixin ilar_default
                     .form-group.row
                         .col-sm-4
                             input#institute_post.form-control(type='text',name='institute_post',placeholder="")
@@ -309,7 +564,31 @@ html
                             input#institute_nos.form-control(type='number',name='institute_nos')                           
                         .col-sm-2                            
                             input#institute_creditclaimed.form-control(type='number',name='institute_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#ilar").after($("#ilar").html())})();return false;') +   
+                mixin ilar(credit,i)
+                    .form-group.row
+                        .col-sm-4
+                            input#institute_post.form-control(type='text',name='institute_post',value=`${credit.institute_post[i]}`)
+                        .col-sm-4
+                            .row
+                                .col-sm-6
+                                    input#institute_duration_from.form-control(type='date',name='institute_duration_from',value=`${credit.institute_duration_from[i]}`)
+                                .col-sm-6
+                                    input#institute_duration_to.form-control(type='date',name='institute_duration_to',value=`${credit.institute_duration_to[i]}`)
+                        .col-sm-2
+                            input#institute_nos.form-control(type='number',name='institute_nos',value=`${credit.institute_nos[i]}`)                           
+                        .col-sm-2                            
+                            input#institute_creditclaimed.form-control(type='number',name='institute_creditclaimed',value=`${credit.institute_creditclaimed[i]}`)
+                if (!credit)
+                    +ilar_default
+                else if(credit.institute_post.length==0)
+                    +ilar_default              
+
+                if (credit && credit.institute_post.length>0)
+                    - for(var i=0;i<credit.institute_post.length;i++)
+                        +ilar(credit,i)
+                
+                div#ilar
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#ilar",ilar_row)') +   
                 
                 h4 7. 
                 h4 Other Institute Level Additional  Responsibilities.
@@ -321,7 +600,7 @@ html
                     label.col-sm-4.col-form-label Duration(From To)
                     label.col-sm-2.col-form-label No. of Semesters(Months)
                     label.col-sm-2.col-form-label Credit Points Claimed
-                div#oilar
+                mixin oilar_default
                     .form-group.row
                         .col-sm-4
                             input#other_institute_post.form-control(type='text',name='other_institute_post',placeholder="")
@@ -335,7 +614,31 @@ html
                             input#other_institute_nos.form-control(type='number',name='other_institute_nos')                           
                         .col-sm-2                            
                             input#other_institute_creditclaimed.form-control(type='number',name='other_institute_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#oilar").after($("#oilar").html())})();return false;') +   
+                mixin oilar(credit,i)
+                    .form-group.row
+                        .col-sm-4
+                            input#other_institute_post.form-control(type='text',name='other_institute_post',value=`${credit.other_institute_post[i]}`)
+                        .col-sm-4
+                            .row
+                                .col-sm-6
+                                    input#other_institute_duration_from.form-control(type='date',name='other_institute_duration_from',value=`${credit.other_institute_duration_from[i]}`)
+                                .col-sm-6
+                                    input#other_institute_duration_to.form-control(type='date',name='other_institute_duration_to',value=`${credit.other_institute_duration_to[i]}`)
+                        .col-sm-2
+                            input#other_institute_nos.form-control(type='number',name='other_institute_nos',value=`${credit.other_institute_nos[i]}`)                           
+                        .col-sm-2                            
+                            input#other_institute_creditclaimed.form-control(type='number',name='other_institute_creditclaimed',value=`${credit.other_institute_creditclaimed[i]}`)
+                if (!credit)
+                    +oilar_default
+                else if(credit.other_institute_post.length==0)
+                    +oilar_default              
+
+                if (credit && credit.other_institute_post.length>0)
+                    - for(var i=0;i<credit.other_institute_post.length;i++)
+                        +oilar(credit,i)
+                
+                div#oilar
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#oilar",oilar_row)') +   
                
                 h4 8.
                 h4 Chairman and Convener of different Standing Committees and Special Committees (Ex-officio status will  not be considered). Faculty in-charges (Each for one year duration) of different Units or equivalent.
@@ -348,7 +651,7 @@ html
                     label.col-sm-4.col-form-label Duration(From To)
                     label.col-sm-2.col-form-label No. of Semesters(Months)
                     label.col-sm-2.col-form-label Credit Points Claimed
-                div#ccscsp
+                mixin ccscsp_default
                     .form-group.row
                         .col-sm-4
                             input#chairman_institute_post.form-control(type='text',name='chairman_institute_post',placeholder="")
@@ -362,7 +665,30 @@ html
                             input#chairman_institute_nos.form-control(type='number',name='chairman_institute_nos')                           
                         .col-sm-2                            
                             input#chairman_institute_creditclaimed.form-control(type='number',name='chairman_institute_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#ccscsp").after($("#ccscsp").html())})();return false;') +   
+                mixin ccscsp(credit,i)
+                    .form-group.row
+                        .col-sm-4
+                            input#chairman_institute_post.form-control(type='text',name='chairman_institute_post',value=`${credit.other_institute_post[i]}`)
+                        .col-sm-4
+                            .row
+                                .col-sm-6
+                                    input#chairman_institute_duration_from.form-control(type='date',name='chairman_institute_duration_from',value=`${credit.chairman_institute_duration_from[i]}`)
+                                .col-sm-6
+                                    input#chairman_institute_duration_to.form-control(type='date',name='chairman_institute_duration_to',value=`${credit.chairman_institute_duration_to[i]}`)
+                        .col-sm-2
+                            input#chairman_institute_nos.form-control(type='number',name='chairman_institute_nos',value=`${credit.chairman_institute_nos[i]}`)                           
+                        .col-sm-2                            
+                            input#chairman_institute_creditclaimed.form-control(type='number',name='chairman_institute_creditclaimed',value=`${credit.chairman_institute_creditclaimed[i]}`)
+                if (!credit)
+                    +ccscsp_default
+                else if(credit.chairman_institute_post.length==0)
+                    +ccscsp_default              
+
+                if (credit && credit.chairman_institute_post.length>0)
+                    - for(var i=0;i<credit.chairman_institute_post.length;i++)
+                        +ccscsp(credit,i)
+                div#ccscsp
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#ccscsp",ccscsp_row)') +   
                
                 h4 9. 
                 h4 Departmental  activities  identified  by  Head  of the  Department  like  Lab  in Charges, or Department  Level  Committee for  a  minimum period of one year.
@@ -375,7 +701,7 @@ html
                     label.col-sm-4.col-form-label Duration(From To)
                     label.col-sm-2.col-form-label No. of Semesters(Months)
                     label.col-sm-2.col-form-label Credit Points Claimed
-                div#daihod
+                mixin daihod_default
                     .form-group.row
                         .col-sm-4
                             input#department_post.form-control(type='text',name='department_post',placeholder="")
@@ -389,7 +715,30 @@ html
                             input#department_nos.form-control(type='text',name='department_nos')                           
                         .col-sm-2                            
                             input#department_creditclaimed.form-control(type='number',name='department_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#daihod").after($("#daihod").html())})();return false;') +   
+                mixin daihod(credit,i)
+                    .form-group.row
+                        .col-sm-4
+                            input#department_post.form-control(type='text',name='department_post',value=`${credit.department_post[i]}`)
+                        .col-sm-4
+                            .row
+                                .col-sm-6
+                                    input#department_duration_from.form-control(type='date',name='department_duration_from',value=`${credit.department_duration_from[i]}`)
+                                .col-sm-6
+                                    input#department_duration_to.form-control(type='date',name='department_duration_to',value=`${credit.department_duration_to[i]}`)
+                        .col-sm-2
+                            input#department_nos.form-control(type='text',name='department_nos',value=`${credit.department_nos[i]}`)                           
+                        .col-sm-2                            
+                            input#department_creditclaimed.form-control(type='number',name='department_creditclaimed',value=`${credit.department_creditclaimed[i]}`)
+                if (!credit)
+                    +daihod_default
+                else if(credit.chairman_institute_post.length==0)
+                    +daihod_default              
+
+                if (credit && credit.chairman_institute_post.length>0)
+                    - for(var i=0;i<credit.chairman_institute_post.length;i++)
+                        +daihod(credit,i)
+                div#daihod
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#daihod",daihod_row)') +   
                                  
                 h4 10. 
                 h4 Workshop or Faculty Development Program or Short  Term  Courses  of  min  05  working  days duration offered as Coordinator or Convener
@@ -403,7 +752,7 @@ html
                     label.col-sm-4.col-form-label Duration(From To)
                     label.col-sm-1.col-form-label Total No. of Days
                     label.col-sm-1.col-form-label Credit Points Claimed
-                div#wfdp
+                mixin wfdp_default
                     .form-group.row
                         .col-sm-3
                             input#fdp_post.form-control(type='text',name='fdp_post',placeholder="")
@@ -419,7 +768,33 @@ html
                             input#fdp_nos.form-control(type='number',name='fdp_nos')                           
                         .col-sm-1                            
                             input#fdp_creditclaimed.form-control(type='number',name='fdp_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#wfdp").after($("#wfdp").html())})();return false;') +   
+                mixin wfdp(credit,i)
+                    .form-group.row
+                        .col-sm-3
+                            input#fdp_post.form-control(type='text',name='fdp_post',value=`${credit.fdp_post[i]}`)
+                        .col-sm-3
+                            input#fdp_detail.form-control(type='text',name='fdp_detail',value=`${credit.fdp_detail[i]}`)
+                        .col-sm-4
+                            .row
+                                .col-sm-6
+                                    input#fdp_duration_from.form-control(type='date',name='fdp_duration_from',value=`${credit.fdp_duration_from[i]}`)
+                                .col-sm-6
+                                    input#fdp_duration_to.form-control(type='date',name='fdp_duration_to',value=`${credit.fdp_duration_to[i]}`)
+                        .col-sm-1
+                            input#fdp_nos.form-control(type='number',name='fdp_nos',value=`${credit.fdp_nos[i]}`)                           
+                        .col-sm-1                            
+                            input#fdp_creditclaimed.form-control(type='number',name='fdp_creditclaimed',value=`${credit.fdp_creditclaimed[i]}`)
+                
+                if (!credit)
+                    +wfdp_default
+                else if(credit.fdp_post.length==0)
+                    +wfdp_default              
+
+                if (credit && credit.fdp_post.length>0)
+                    - for(var i=0;i<credit.fdp_post.length;i++)
+                        +wfdp(credit,i)
+                div#wfdp
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#wfdp",wfdp_row)') +   
                         
 
                 h4 11. Conducting National  Programs  like  Global Initiative of Academic Networks etc. as Course Coordinator
@@ -433,7 +808,7 @@ html
                     label.col-sm-4.col-form-label Duration(From To)
                     label.col-sm-2.col-form-label Total No. of Days
                     label.col-sm-2.col-form-label Credit Points Claimed
-                div#cplgian
+                mixin cplgian_default
                     .form-group.row
                         .col-sm-4
                             input#national_program_detail.form-control(type='text',name='national_program_detail',placeholder="")
@@ -447,7 +822,30 @@ html
                             input#natinal_program_nos.form-control(type='text',name='natinal_program_nos')                           
                         .col-sm-2                            
                             input#national_program_creditclaimed.form-control(type='number',name='national_program_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#cplgian").after($("#cplgian").html())})();return false;') +   
+                mixin cplgian(credit,i)
+                    .form-group.row
+                        .col-sm-4
+                            input#national_program_detail.form-control(type='text',name='national_program_detail',value=`${credit.national_program_detail[i]}`)
+                        .col-sm-4
+                            .row
+                                .col-sm-6
+                                    input#national_program_duration_from.form-control(type='date',name='national_program_duration_from',value=`${credit.national_program_duration_from[i]}`)
+                                .col-sm-6
+                                    input#national_program_duration_to.form-control(type='date',name='national_program_duration_to',value=`${credit.national_program_duration_to[i]}`)
+                        .col-sm-2
+                            input#natinal_program_nos.form-control(type='text',name='natinal_program_nos',value=`${credit.natinal_program_nos[i]}`)                           
+                        .col-sm-2                            
+                            input#national_program_creditclaimed.form-control(type='number',name='national_program_creditclaimed',value=`${credit.national_program_creditclaimed[i]}`)
+                if (!credit)
+                    +cplgian_default
+                else if(credit.national_program_detail.length==0)
+                    +cplgian_default              
+
+                if (credit && credit.national_program_detail.length>0)
+                    - for(var i=0;i<credit.national_program_detail.length;i++)
+                        +cplgian(credit,i)
+                div#cplgian
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#cplgian",cplgian_row)') +   
                 
                 
                 
@@ -464,7 +862,7 @@ html
                     label.col-sm-4.col-form-label Duration(From To)
                     label.col-sm-1.col-form-label Total No. of Days
                     label.col-sm-1.col-form-label Credit Points Claimed
-                div#nicocs
+                mixin nicocs_default
                     .form-group.row
                         .col-sm-3                          
                             select#national_conference_post1.form-control(name='national_conference_post')
@@ -483,7 +881,38 @@ html
                             input#national_conference_nos.form-control(type='text',name='national_conference_nos')                           
                         .col-sm-1                            
                             input#national_conference_creditclaimed.form-control(type='number',name='national_conference_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#nicocs").after($("#nicocs").html())})();return false;') +   
+                mixin nicocs(credit,i)
+                    .form-group.row
+                        .col-sm-3                          
+                            select.form-control(id=`national_conference_post${i}`,name='national_conference_post')
+                                option(value='') Select Chairman or Secretary
+                                option(value='PI') Chairman 
+                                option(value='Co-PI') Secretary        
+                        .col-sm-3            
+                            input#national_conference_detail.form-control(type='text',name='national_conference_detail',value=`${credit.national_conference_detail[i]}`)
+                        .col-sm-4
+                            .row
+                                .col-sm-6
+                                    input#national_conference_duration_from.form-control(type='date',name='national_conference_duration_from',value=`${credit.national_conference_duration_from[i]}`)
+                                .col-sm-6
+                                    input#national_conference_duration_to.form-control(type='date',name='national_conference_duration_to',value=`${credit.national_conference_duration_to[i]}`)
+                        .col-sm-1
+                            input#national_conference_nos.form-control(type='text',name='national_conference_nos',value=`${credit.national_conference_nos[i]}`)                           
+                        .col-sm-1                            
+                            input#national_conference_creditclaimed.form-control(type='number',name='national_conference_creditclaimed',value=`${credit.national_conference_creditclaimed[i]}`)
+                    script.
+                        document.getElementById('national_conference_post#{i}').value='#{credit.national_conference_post[i]}'
+                        //document.getElementById('conference_main_supervisor_#{credit.conference_main_supervisor[i]}').checked = true;
+                if (!credit)
+                    +nicocs_default
+                else if(credit.national_conference_post.length==0)
+                    +nicocs_default              
+
+                if (credit && credit.national_conference_post.length>0)
+                    - for(var i=0;i<credit.national_conference_post.length;i++)
+                        +nicocs(credit,i)
+                div#nicocs
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#nicocs",nicocs_row)') +   
                 
 
                 h4 13. 
@@ -500,7 +929,7 @@ html
                     label.col-sm-4.col-form-label Duration(From To)
                     label.col-sm-1.col-form-label Total No. of Semesters
                     label.col-sm-1.col-form-label Credit Points Claimed
-                div#lsoa
+                mixin lsoa_default
                     .form-group.row
                         .col-sm-3
                             input#over_service_designation.form-control(type='text',name='over_service_designation',placeholder="")
@@ -516,7 +945,32 @@ html
                             input#over_service_nos.form-control(type='text',name='over_service_nos')                           
                         .col-sm-1                            
                             input#over_service_creditclaimed.form-control(type='number',name='over_service_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#lsoa").after($("#lsoa").html())})();return false;') +   
+                mixin lsoa(credit,i)
+                    .form-group.row
+                        .col-sm-3
+                            input#over_service_designation.form-control(type='text',name='over_service_designation',value=`${credit.over_service_designation[i]}`)
+                        .col-sm-3
+                            input#over_service_org.form-control(type='text',name='over_service_org',value=`${credit.over_service_org[i]}`)
+                        .col-sm-4
+                            .row
+                                .col-sm-6
+                                    input#over_service_duration_from.form-control(type='date',name='over_service_duration_from',value=`${credit.over_service_duration_from[i]}`)
+                                .col-sm-6
+                                    input#over_service_duration_to.form-control(type='date',name='over_service_duration_to',value=`${credit.over_service_duration_to[i]}`)
+                        .col-sm-1
+                            input#over_service_nos.form-control(type='text',name='over_service_nos',value=`${credit.over_service_nos[i]}`)                           
+                        .col-sm-1                            
+                            input#over_service_creditclaimed.form-control(type='number',name='over_service_creditclaimed',value=`${credit.over_service_creditclaimed[i]}`)
+                if (!credit)
+                    +lsoa_default
+                else if(credit.over_service_designation.length==0)
+                    +lsoa_default              
+
+                if (credit && credit.over_service_designation.length>0)
+                    - for(var i=0;i<credit.over_service_designation.length;i++)
+                        +lsoa(credit,i)
+                div#lsoa
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#lsoa",lsoa_row)') +   
                 
 
                 h4 14. 
@@ -529,7 +983,7 @@ html
                     label.col-sm-4.col-form-label Organization
                     label.col-sm-2.col-form-label Year of Establishment of Lab
                     label.col-sm-2.col-form-label Credit Points Claimed
-                div#eonl
+                mixin eonl_default
                     .form-group.row
                         .col-sm-4
                             input#lab_estl_name.form-control(type='text',name='lab_estl_name',placeholder="")
@@ -539,7 +993,26 @@ html
                             input#lab_estl_years.form-control(type='number',name='lab_estl_years')                           
                         .col-sm-2                            
                             input#lab_estl_creditclaimed.form-control(type='number',name='lab_estl_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#eonl").after($("#eonl").html())})();return false;') +   
+                mixin eonl(credit,i)
+                    .form-group.row
+                        .col-sm-4
+                            input#lab_estl_name.form-control(type='text',name='lab_estl_name',value=`${credit.lab_estl_name[i]}`)
+                        .col-sm-4
+                            input#lab_estl_org.form-control(type='date',name='lab_estl_org',value=`${credit.lab_estl_org[i]}`)
+                        .col-sm-2
+                            input#lab_estl_years.form-control(type='number',name='lab_estl_years',value=`${credit.lab_estl_years[i]}`)                           
+                        .col-sm-2                            
+                            input#lab_estl_creditclaimed.form-control(type='number',name='lab_estl_creditclaimed',value=`${credit.lab_estl_creditclaimed[i]}`)
+                if (!credit)
+                    +eonl_default
+                else if(credit.lab_estl_name.length==0)
+                    +eonl_default              
+
+                if (credit && credit.lab_estl_name.length>0)
+                    - for(var i=0;i<credit.lab_estl_name.length;i++)
+                        +eonl(credit,i)
+                div#eonl
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#eonl",eonl_row)') +   
                 
                 h4 15. 
                 h4 Theory Teaching of over and above 6 credit hrs. course
@@ -552,7 +1025,7 @@ html
                     label.col-sm-3.col-form-label Name of Department
                     label.col-sm-2.col-form-label Credit of the Course Taught
                     label.col-sm-1.col-form-label Credit Points Claimed
-                div#ttoa
+                mixin ttoa_default
                     .form-group.row
                         .col-sm-3
                             input#over_teach_course.form-control(type='text',name='over_teach_course',placeholder="")
@@ -564,7 +1037,28 @@ html
                             input#over_teach_credit.form-control(type='number',name='over_teach_credit')                           
                         .col-sm-1                            
                             input#over_teach_creditclaimed.form-control(type='number',name='over_teach_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#ttoa").after($("#ttoa").html())})();return false;') +   
+                mixin ttoa(credit,i)
+                    .form-group.row
+                        .col-sm-3
+                            input#over_teach_course.form-control(type='text',name='over_teach_course',value=`${credit.over_teach_course[i]}`)
+                        .col-sm-3
+                            input#over_teach_cpoints.form-control(type='number',name='over_teach_cpoints',value=`${credit.over_teach_cpoints[i]}`)
+                        .col-sm-3
+                            input#over_teach_department.form-control(type='text',name='over_teach_department',value=`${credit.over_teach_department[i]}`)
+                        .col-sm-2
+                            input#over_teach_credit.form-control(type='number',name='over_teach_credit',value=`${credit.over_teach_credit[i]}`)                           
+                        .col-sm-1                            
+                            input#over_teach_creditclaimed.form-control(type='number',name='over_teach_creditclaimed',value=`${credit.over_teach_creditclaimed[i]}`)
+                if (!credit)
+                    +ttoa_default
+                else if(credit.over_teach_course.length==0)
+                    +ttoa_default              
+
+                if (credit && credit.over_teach_course.length>0)
+                    - for(var i=0;i<credit.over_teach_course.length;i++)
+                        +ttoa(credit,i)
+                div#ttoa
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#ttoa",ttoa_row)') +   
                 
                 h4 16. 
                 h4 Post Graduate Dissertations Guided 
@@ -576,7 +1070,7 @@ html
                     label.col-sm-4.col-form-label Title of Dissertation
                     label.col-sm-2.col-form-label Year of award
                     label.col-sm-2.col-form-label Credit Points Claimed
-                div#pgdg
+                mixin pgdg_default
                     .form-group.row
                         .col-sm-4
                             input#post_grade_candidate.form-control(type='text',name='post_grade_candidate',placeholder="")
@@ -586,7 +1080,26 @@ html
                             input#post_grade_yoa.form-control(type='number',name='post_grade_yoa')                           
                         .col-sm-2                            
                             input#post_grade_creditclaimed.form-control(type='number',name='post_grade_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#pgdg").after($("#pgdg").html())})();return false;') +   
+                mixin pgdg(credit,i)
+                    .form-group.row
+                        .col-sm-4
+                            input#post_grade_candidate.form-control(type='text',name='post_grade_candidate',value=`${credit.post_grade_candidate[i]}`)
+                        .col-sm-4
+                            input#post_grade_title.form-control(type='text',name='post_grade_title',value=`${credit.post_grade_title[i]}`)
+                        .col-sm-2
+                            input#post_grade_yoa.form-control(type='number',name='post_grade_yoa',value=`${credit.post_grade_yoa[i]}`)                           
+                        .col-sm-2                            
+                            input#post_grade_creditclaimed.form-control(type='number',name='post_grade_creditclaimed',value=`${credit.post_grade_creditclaimed[i]}`)
+                if (!credit)
+                    +pgdg_default
+                else if(credit.post_grade_candidate.length==0)
+                    +pgdg_default              
+
+                if (credit && credit.post_grade_candidate.length>0)
+                    - for(var i=0;i<credit.post_grade_candidate.length;i++)
+                        +pgdg(credit,i)
+                div#pgdg
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#pgdg",pgdg_row)') +   
                 
                 h4 17. 
                 h4 Under Graduate Projects Guided
@@ -598,7 +1111,7 @@ html
                     label.col-sm-4.col-form-label Title of Project
                     label.col-sm-2.col-form-label Year of award
                     label.col-sm-2.col-form-label Credit Points Claimed
-                div#ugpg
+                mixin ugpg_default
                     .form-group.row
                         .col-sm-4
                             input#under_grade_candidate.form-control(type='text',name='under_grade_candidate',placeholder="")
@@ -608,7 +1121,28 @@ html
                             input#under_grade_yoa.form-control(type='number',name='under_grade_yoa')                           
                         .col-sm-2                            
                             input#under_grade_creditclaimed.form-control(type='number',name='under_grade_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#ugpg").after($("#ugpg").html())})();return false;') +   
+                mixin ugpg(credit,i)
+                    .form-group.row
+                        .col-sm-4
+                            input#under_grade_candidate.form-control(type='text',name='under_grade_candidate',value=`${credit.under_grade_candidate[i]}`)
+                        .col-sm-4
+                            input#under_grade_title.form-control(type='text',name='under_grade_title',value=`${credit.under_grade_title[i]}`)
+                        .col-sm-2
+                            input#under_grade_yoa.form-control(type='number',name='under_grade_yoa',value=`${credit.under_grade_yoa[i]}`)                           
+                        .col-sm-2                            
+                            input#under_grade_creditclaimed.form-control(type='number',name='under_grade_creditclaimed',value=`${credit.under_grade_creditclaimed[i]}`)
+                if (!credit)
+                    +ugpg_default
+                else if(credit.under_grade_candidate.length==0)
+                    +ugpg_default              
+
+                if (credit && credit.under_grade_candidate.length>0)
+                    - for(var i=0;i<credit.under_grade_candidate.length;i++)
+                        +ugpg(credit,i)
+                
+                
+                div#ugpg
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#ugpg",ugpg_row)') +   
                 
                 h4 18. 
                 h4 Text or Reference Books published on relevant subjects from reputed international publishers 
@@ -620,7 +1154,7 @@ html
                     label.col-sm-4.col-form-label Name of Publisher with ISSN/ISBN No. 
                     label.col-sm-2.col-form-label Year of Publication
                     label.col-sm-2.col-form-label Credit Points Claimed
-                div#trbp
+                mixin trbp_default
                     .form-group.row
                         .col-sm-4
                             input#text_book_title.form-control(type='text',name='text_book_title',placeholder="")
@@ -630,7 +1164,26 @@ html
                             input#text_book_yop.form-control(type='number',name='text_book_yop')                           
                         .col-sm-2                            
                             input#text_book_creditclaimed.form-control(type='number',name='text_book_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#trbp").after($("#trbp").html())})();return false;') +   
+                mixin trbp
+                    .form-group.row
+                        .col-sm-4
+                            input#text_book_title.form-control(type='text',name='text_book_title',value=`${credit.text_book_title[i]}`)
+                        .col-sm-4
+                            input#text_book_publisher.form-control(type='text',name='text_book_publisher',value=`${credit.text_book_publisher[i]}`)
+                        .col-sm-2
+                            input#text_book_yop.form-control(type='number',name='text_book_yop',value=`${credit.text_book_yop[i]}`)                           
+                        .col-sm-2                            
+                            input#text_book_creditclaimed.form-control(type='number',name='text_book_creditclaimed',value=`${credit.text_book_creditclaimed[i]}`)
+                if (!credit)
+                    +trbp_default
+                else if(credit.text_book_title.length==0)
+                    +trbp_default              
+
+                if (credit && credit.text_book_title.length>0)
+                    - for(var i=0;i<credit.text_book_title.length;i++)
+                        +trbp(credit,i)
+                div#trbp
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#trbp",trbp_row)') +   
                 
                 h4 19.
                 h4 A.	Text  or  Reference  book  published  on  relevant subjects  from  reputed  national  publishers
@@ -644,7 +1197,7 @@ html
                     label.col-sm-4.col-form-label Name of Publisher with ISSN/ISBN No.  
                     label.col-sm-2.col-form-label Year of Publication
                     label.col-sm-2.col-form-label Credit Points Claimed
-                div#trbpn
+                mixin trbpn_default
                     .form-group.row
                         .col-sm-4
                             input#book_national_title.form-control(type='text',name='book_national_title',placeholder="")
@@ -654,7 +1207,26 @@ html
                             input#book_national_yop.form-control(type='number',name='book_national_yop')                           
                         .col-sm-2                            
                             input#book_national_creditclaimed.form-control(type='number',name='book_national_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#trbpn").after($("#trbpn").html())})();return false;') +   
+                mixin trbpn(credit,i)
+                    .form-group.row
+                        .col-sm-4
+                            input#book_national_title.form-control(type='text',name='book_national_title',value=`${credit.book_national_title[i]}`)
+                        .col-sm-4
+                            input#book_national_publisher.form-control(type='text',name='book_national_publisher',value=`${credit.book_national_publisher[i]}`)
+                        .col-sm-2
+                            input#book_national_yop.form-control(type='number',name='book_national_yop',value=`${credit.book_national_yop[i]}`)                           
+                        .col-sm-2                            
+                            input#book_national_creditclaimed.form-control(type='number',name='book_national_creditclaimed',value=`${credit.book_national_creditclaimed[i]}`)
+                if (!credit)
+                    +trbpn_default
+                else if(credit.book_national_title.length==0)
+                    +trbpn_default              
+
+                if (credit && credit.book_national_title.length>0)
+                    - for(var i=0;i<credit.book_national_title.length;i++)
+                        +trbpn(credit,i)
+                div#trbpn
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#trbpn",trbpn_row)') +   
 
                 h4 20.
                 h4 Significant outreach activities 
@@ -665,7 +1237,7 @@ html
                     label.col-sm-5.col-form-label Name and Details of Outreach Activity
                     label.col-sm-5.col-form-label Duration (From To)
                     label.col-sm-2.col-form-label Credit Points Claimed
-                div#soa
+                mixin soa_default
                     .form-group.row
                         .col-sm-5
                             input#outreach_name.form-control(type='text',name='outreach_name',placeholder="")
@@ -677,7 +1249,29 @@ html
                                     input#outreach_duration_to.form-control(type='date',name='outreach_duration_to',placeholder="")                          
                         .col-sm-2                            
                             input#out_reach_creditclaimed.form-control(type='number',name='out_reach_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#soa").after($("#soa").html())})();return false;') +   
+                mixin soa(credit,i)
+                    .form-group.row
+                        .col-sm-5
+                            input#outreach_name.form-control(type='text',name='outreach_name',value=`${credit.outreach_name[i]}`)
+                        .col-sm-5
+                            .row
+                                .col-sm-6
+                                    input#outreach_duration_from.form-control(type='date',name='outreach_duration_from',value=`${credit.outreach_duration_from[i]}`)
+                                .col-sm-6
+                                    input#outreach_duration_to.form-control(type='date',name='outreach_duration_to',value=`${credit.outreach_duration_to[i]}`)                          
+                        .col-sm-2                            
+                            input#out_reach_creditclaimed.form-control(type='number',name='out_reach_creditclaimed',value=`${credit.out_reach_creditclaimed[i]}`)
+                if (!credit)
+                    +soa_default
+                else if(credit.outreach_name.length==0)
+                    +soa_default              
+
+                if (credit && credit.outreach_name.length>0)
+                    - for(var i=0;i<credit.outreach_name.length;i++)
+                        +soa(credit,i)                
+                
+                div#soa
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#soa",soa_row)') +   
                 
                 h4 21.
                 h4 Fellow IEEE, FNA, FNAE, FNASc   
@@ -689,7 +1283,7 @@ html
                     label.col-sm-4.col-form-label Date of Award
                     label.col-sm-2.col-form-label Total Duration of Award
                     label.col-sm-2.col-form-label Credit Points Claimed
-                div#fiff
+                mixin fiff_default
                     .form-group.row
                         .col-sm-4
                             input#fellow_name.form-control(type='text',name='fellow_name',placeholder="")
@@ -699,7 +1293,26 @@ html
                             input#fellow_tdoa.form-control(type='number',name='fellow_tdoa')                           
                         .col-sm-2                            
                             input#fellow_creditclaimed.form-control(type='number',name='fellow_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#fiff").after($("#fiff").html())})();return false;') +   
+                mixin fiff
+                    .form-group.row
+                        .col-sm-4
+                            input#fellow_name.form-control(type='text',name='fellow_name',value=`${credit.fellow_name[i]}`)
+                        .col-sm-4
+                            input#fellow_doa.form-control(type='date',name='fellow_doa',value=`${credit.fellow_doa[i]}`)
+                        .col-sm-2
+                            input#fellow_tdoa.form-control(type='number',name='fellow_tdoa',value=`${credit.fellow_tdoa[i]}`)                           
+                        .col-sm-2                            
+                            input#fellow_creditclaimed.form-control(type='number',name='fellow_creditclaimed',value=`${credit.fellow_creditclaimed[i]}`)
+                if (!credit)
+                    +fiff_default
+                else if(credit.fellow_name.length==0)
+                    +fiff_default              
+
+                if (credit && credit.fellow_name.length>0)
+                    - for(var i=0;i<credit.fellow_name.length;i++)
+                        +fiff(credit,i)   
+                div#fiff
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#fiff",fiff_row)') +   
                
                 h4 22.
                 h4 Placement percentage (only for the placement cell officers or Faculty in-charge of Placement)   
@@ -715,7 +1328,7 @@ html
                     label.col-sm-4.col-form-label Number of Selections more than 85%
                     label.col-sm-2.col-form-label Number of Selections more than 75% to 84%
                     label.col-sm-2.col-form-label Credit Points Claimed
-                div#pper
+                mixin pper_default
                     .form-group.row
                         .col-sm-4
                             input#tpo_name.form-control(type='text',name='tpo_name',placeholder="")
@@ -725,7 +1338,26 @@ html
                             input#tpo_less.form-control(type='number',name='tpo_less')                           
                         .col-sm-2                            
                             input#tpo_creditclaimed.form-control(type='number',name='tpo_creditclaimed',placeholder="")
-                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='(function(){$("#pper").after($("#pper").html())})();return false;') +   
+                mixin pper(credit,i)
+                    .form-group.row
+                        .col-sm-4
+                            input#tpo_name.form-control(type='text',name='tpo_name',value=`${credit.tpo_name[i]}`)
+                        .col-sm-4
+                            input#tpo_more.form-control(type='number',name='tpo_more',value=`${credit.tpo_more[i]}`)
+                        .col-sm-2
+                            input#tpo_less.form-control(type='number',name='tpo_less',value=`${credit.tpo_less[i]}`)                           
+                        .col-sm-2                            
+                            input#tpo_creditclaimed.form-control(type='number',name='tpo_creditclaimed',value=`${credit.tpo_creditclaimed[i]}`)
+                if (!credit)
+                    +pper_default
+                else if(credit.tpo_name.length==0)
+                    +pper_default              
+
+                if (credit && credit.tpo_name.length>0)
+                    - for(var i=0;i<credit.tpo_name.length;i++)
+                        +pper(credit,i) 
+                div#pper
+                button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#pper",pper_row)') +   
 
 
                 h4 DECLARATION
@@ -739,3 +1371,31 @@ html
                     .col-sm-10
                     .col-sm-2
                         button.btn.btn-primary(type='submit') Submit Part-B
+script.
+    var research_row = '<div class="form-group row"><div class="col-sm-2"><input class="form-control" id="research_project_title" type="text" name="research_project_title" placeholder=""></div><div class="col-sm-1">                  <select class="form-control" id="reserch_project_pi" name="reserch_project_pi"><option value="">Select</option><option value="PI">PI</option><option value="Co-PI">Co-PI</option></select></div><div class="col-sm-3"><input class="form-control" id="research_project_agency" type="text" name="research_project_agency" placeholder=""></div><div class="col-sm-1"><input class="form-control" id="research_project_amount" type="number" name="research_project_amount"></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="research_project_periodfrom" type="date" name="research_project_periodfrom" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="research_project_periodto" type="date" name="research_project_periodto"></div></div></div><div class="col-sm-1"><input class="form-control" id="research_project_creditclaimed" type="number" name="research_project_creditclaimed" placeholder=""></div></div>';
+    var patent_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="patent_title" type="text" name="patent_title" placeholder=""></div><div class="col-sm-2">                           <select class="form-control" id="patent_pi" name="patent_pi"><option value="">Select PI &amp; CO-PI</option><option value="PI">PI</option><option value="Co-PI">Co-PI</option></select></div><div class="col-sm-2"><input class="form-control" id="patent_no" type="text" name="patent_no" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="patent_authority" type="text" name="patent_authority"></div><div class="col-sm-1">                           <input class="form-control" id="patent_creditclaimed" type="number" name="patent_creditclaimed" placeholder=""></div></div>';
+    var consultancy_row= '<div class="form-group row">                       <div class="col-sm-3"><input class="form-control" id="consultancy_project_title" type="text" name="consultancy_project_title" placeholder=""></div><div class="col-sm-1">                           <select class="form-control" id="consultancy_pi" name="consultancy_pi"><option value="">Select PI &amp; CO-PI</option><option value="PI">PI</option><option value="Co-PI">Co-PI</option></select></div><div class="col-sm-2"><input class="form-control" id="consultancy_project_agency" type="text" name="consultancy_project_agency" placeholder=""></div><div class="col-sm-1"><input class="form-control" id="consultancy_project_amount" type="number" name="consultancy_project_amount"></div><div class="col-sm-4"><div class="row"><div class="col-sm-6">                       <input class="form-control" id="consultancy_project_periodfrom" type="date" name="consultancy_project_periodfrom" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="consultancy_project_periodto" type="date" name="consultancy_project_periodto" placeholder=""></div></div></div><div class="col-sm-1"><input class="form-control" id="consultancy_project_creditclaimed" type="number" name="consultancy_project_creditclaimed" placeholder=""></div></div>';
+    var phd_row = '<div class="form-group row"><div class="col-sm-2"><input class="form-control" id="phd_credit_name" type="text" name="phd_credit_name" placeholder=""></div><div class="col-sm-2">                         <select class="form-control" id="phd_credit_pi" name="phd_credit_pi"><option value="">Select Supervisor and Co-supervisor</option><option value="Supervisor">Supervisor</option><option value="Co-supervisor">Co-supervisor</option></select></div><div class="col-sm-3"><input class="form-control" id="phd_credit_title" type="text" name="phd_credit_title" placeholder=""></div><div class="col-sm-1"><div class="form-check form-check-inline"><input class="form-check-input" id="phdy" type="radio" name="phd_credit_awarded" value="Y"><label class="form-check-label" for="phdy">Submitted</label></div><div class="form-check form-check-inline"><input class="form-check-input" id="phdn" type="radio" name="phd_credit_awarded" value="N"><label class="form-check-label" for="phdn">Awarded  </label></div></div><div class="col-sm-3"><input class="form-control" id="phd_credit_yoa" type="text" name="phd_credit_yoa"></div><div class="col-sm-1">                         <input class="form-control" id="phd_creditclaimed" type="number" name="phd_creditclaimed" placeholder=""></div></div>';
+    var sci_row = '<div class="form-group row"><div class="col-sm-3"><input class="form-control" id="sci_paper_title" type="text" name="sci_paper_title" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="sci_paper_journal" type="text" name="sci_paper_journal" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="sci_paper_volume" type="text" name="sci_paper_volume"></div><div class="col-sm-2">               <div class="row">           <div class="col-sm-6"><input class="form-control" id="sci_author_from" type="number" name="sci_author_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="sci_author_total" type="number" name="sci_author_total" placeholder=""></div></div></div><div class="col-sm-1"><div class="form-check form-check-inline"><input class="form-check-input" id="sci_main_supervisor_t" type="radio" name="sci_main_supervisor" value="T"><label class="form-check-label" for="sci_main_supervisor_t">Yes</label></div><div class="form-check form-check-inline"><input class="form-check-input" id="sci_main_supervisor_f" type="radio" name="sci_main_supervisor" value="F"><label class="form-check-label" for="sci_main_supervisor_f">No                       </label></div></div><div class="col-sm-1">                           <input class="form-control" id="sci_main_creditclaimed" type="number" name="sci_main_creditclaimed" placeholder=""></div></div>';
+    var scopus_row = '<div class="form-group row"><div class="col-sm-3"><input class="form-control" id="scopus_paper_title" type="text" name="scopus_paper_title" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="scopus_paper_journal" type="text" name="scopus_paper_journal" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="scopus_paper_volume" type="text" name="scopus_paper_volume"></div><div class="col-sm-2">        <div class="row"> <div class="col-sm-6">                  <input class="form-control" id="scopus_author_from" type="number" name="scopus_author_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="scopus_author_total" type="number" name="scopus_author_total" placeholder=""></div></div></div><div class="col-sm-1"><div class="form-check form-check-inline"><input class="form-check-input" id="scopus_main_supervisor_t" type="radio" name="scopus_main_supervisor" value="T"><label class="form-check-label" for="scopus_main_supervisor_t">Yes</label></div><div class="form-check form-check-inline"><input class="form-check-input" id="scopus_main_supervisor_f" type="radio" name="scopus_main_supervisor" value="F"><label class="form-check-label" for="scopus_main_supervisor_f">No                       </label></div></div><div class="col-sm-1">                           <input class="form-control" id="scopus_main_creditclaimed" type="number" name="scopus_main_creditclaimed" placeholder=""></div></div>';
+    var conference_row = '<div class="form-group row"><div class="col-sm-3"><input class="form-control" id="conference_paper_title" type="text" name="conference_paper_title" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="conference_detail" type="text" name="conference_detail" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="conference_paper_volume" type="text" name="conference_paper_volume"></div><div class="col-sm-2">                     <div class="row"><div class="col-sm-6">     <input class="form-control" id="conference_author_from" type="number" name="conference_author_from" placeholder="Position"></div><div class="col-sm-6"><input class="form-control" id="conference_author_total" type="number" name="conference_author_total" placeholder="Total"></div></div></div><div class="col-sm-1"><div class="form-check form-check-inline"><input class="form-check-input" id="conference_main_supervisor1_t" type="radio" name="conference_main_supervisor" value="T"><label class="form-check-label" for="sci_main_supervisor_t">Yes</label></div><div class="form-check form-check-inline"><input class="form-check-input" id="conference_main_supervisor1_f" type="radio" name="conference_main_supervisor" value="F"><label class="form-check-label" for="sci_main_supervisor_f">No                       </label></div></div><div class="col-sm-1">                           <input class="form-control" id="conference_main_creditclaimed" type="number" name="conference_main_creditclaimed" placeholder=""></div></div>';
+    var ilar_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="institute_post" type="text" name="institute_post" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="institute_duration_from" type="date" name="institute_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="institute_duration_to" type="date" name="institute_duration_to" placeholder=""></div></div></div><div class="col-sm-2"><input class="form-control" id="institute_nos" type="number" name="institute_nos"></div><div class="col-sm-2">                           <input class="form-control" id="institute_creditclaimed" type="number" name="institute_creditclaimed" placeholder=""></div></div>';
+    var oilar_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="other_institute_post" type="text" name="other_institute_post" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="other_institute_duration_from" type="date" name="other_institute_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="other_institute_duration_to" type="date" name="other_institute_duration_to" placeholder=""></div></div></div><div class="col-sm-2"><input class="form-control" id="other_institute_nos" type="number" name="other_institute_nos"></div><div class="col-sm-2">                           <input class="form-control" id="other_institute_creditclaimed" type="number" name="other_institute_creditclaimed" placeholder=""></div></div>';
+    var ccscsp_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="chairman_institute_post" type="text" name="chairman_institute_post" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="chairman_institute_duration_from" type="date" name="chairman_institute_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="chairman_institute_duration_to" type="date" name="chairman_institute_duration_to" placeholder=""></div></div></div><div class="col-sm-2"><input class="form-control" id="chairman_institute_nos" type="number" name="chairman_institute_nos"></div><div class="col-sm-2">                           <input class="form-control" id="chairman_institute_creditclaimed" type="number" name="chairman_institute_creditclaimed" placeholder=""></div></div>';
+    var daihod_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="department_post" type="text" name="department_post" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="department_duration_from" type="date" name="department_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="department_duration_to" type="date" name="department_duration_to" placeholder=""></div></div></div><div class="col-sm-2"><input class="form-control" id="department_nos" type="text" name="department_nos"></div><div class="col-sm-2">                           <input class="form-control" id="department_creditclaimed" type="number" name="department_creditclaimed" placeholder=""></div></div>';
+    var wfdp_row = '<div class="form-group row"><div class="col-sm-3"><input class="form-control" id="fdp_post" type="text" name="fdp_post" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="fdp_detail" type="text" name="fdp_detail" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="fdp_duration_from" type="date" name="fdp_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="fdp_duration_to" type="date" name="fdp_duration_to" placeholder=""></div></div></div><div class="col-sm-1"><input class="form-control" id="fdp_nos" type="number" name="fdp_nos"></div><div class="col-sm-1">                           <input class="form-control" id="fdp_creditclaimed" type="number" name="fdp_creditclaimed" placeholder=""></div></div>';
+    var cplgian_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="national_program_detail" type="text" name="national_program_detail" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="national_program_duration_from" type="date" name="national_program_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="national_program_duration_to" type="date" name="national_program_duration_to" placeholder=""></div></div></div><div class="col-sm-2"><input class="form-control" id="natinal_program_nos" type="text" name="natinal_program_nos"></div><div class="col-sm-2">                           <input class="form-control" id="national_program_creditclaimed" type="number" name="national_program_creditclaimed" placeholder=""></div></div>';
+    var nicocs_row =  '<div class="form-group row"><div class="col-sm-3">                         <select class="form-control" id="national_conference_post1" name="national_conference_post"><option value="">Select Chairman or Secretary</option><option value="PI">Chairman </option><option value="Co-PI">Secretary        </option></select></div><div class="col-sm-3">           <input class="form-control" id="national_conference_detail" type="text" name="national_conference_detail" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="national_conference_duration_from" type="date" name="national_conference_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="national_conference_duration_to" type="date" name="national_conference_duration_to" placeholder=""></div></div></div><div class="col-sm-1"><input class="form-control" id="national_conference_nos" type="text" name="national_conference_nos"></div><div class="col-sm-1">                           <input class="form-control" id="national_conference_creditclaimed" type="number" name="national_conference_creditclaimed" placeholder=""></div></div>';
+    var lsoa_row = '<div class="form-group row"><div class="col-sm-3"><input class="form-control" id="over_service_designation" type="text" name="over_service_designation" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="over_service_org" type="text" name="over_service_org" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="over_service_duration_from" type="date" name="over_service_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="over_service_duration_to" type="date" name="over_service_duration_to" placeholder=""></div></div></div><div class="col-sm-1"><input class="form-control" id="over_service_nos" type="text" name="over_service_nos"></div><div class="col-sm-1">                           <input class="form-control" id="over_service_creditclaimed" type="number" name="over_service_creditclaimed" placeholder=""></div></div>';
+    var eonl_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="lab_estl_name" type="text" name="lab_estl_name" placeholder=""></div><div class="col-sm-4"><input class="form-control" id="lab_estl_org" type="date" name="lab_estl_org" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="lab_estl_years" type="number" name="lab_estl_years"></div><div class="col-sm-2">                           <input class="form-control" id="lab_estl_creditclaimed" type="number" name="lab_estl_creditclaimed" placeholder=""></div></div>';
+    var ttoa_row = '<div class="form-group row"><div class="col-sm-3"><input class="form-control" id="over_teach_course" type="text" name="over_teach_course" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="over_teach_cpoints" type="number" name="over_teach_cpoints" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="over_teach_department" type="text" name="over_teach_department" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="over_teach_credit" type="number" name="over_teach_credit"></div><div class="col-sm-1">                           <input class="form-control" id="over_teach_creditclaimed" type="number" name="over_teach_creditclaimed" placeholder=""></div></div>';
+    var pgdg_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="post_grade_candidate" type="text" name="post_grade_candidate" placeholder=""></div><div class="col-sm-4"><input class="form-control" id="post_grade_title" type="text" name="post_grade_title" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="post_grade_yoa" type="number" name="post_grade_yoa"></div><div class="col-sm-2">                           <input class="form-control" id="post_grade_creditclaimed" type="number" name="post_grade_creditclaimed" placeholder=""></div></div>';
+    var ugpg_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="under_grade_candidate" type="text" name="under_grade_candidate" placeholder=""></div><div class="col-sm-4"><input class="form-control" id="under_grade_title" type="text" name="under_grade_title" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="under_grade_yoa" type="number" name="under_grade_yoa"></div><div class="col-sm-2">                           <input class="form-control" id="under_grade_creditclaimed" type="number" name="under_grade_creditclaimed" placeholder=""></div></div>';
+    var trbp_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="text_book_title" type="text" name="text_book_title" placeholder=""></div><div class="col-sm-4"><input class="form-control" id="text_book_publisher" type="text" name="text_book_publisher" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="text_book_yop" type="number" name="text_book_yop"></div><div class="col-sm-2">                           <input class="form-control" id="text_book_creditclaimed" type="number" name="text_book_creditclaimed" placeholder=""></div></div>';
+    var trbpn_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="book_national_title" type="text" name="book_national_title" placeholder=""></div><div class="col-sm-4"><input class="form-control" id="book_national_publisher" type="text" name="book_national_publisher" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="book_national_yop" type="number" name="book_national_yop"></div><div class="col-sm-2">                           <input class="form-control" id="book_national_creditclaimed" type="number" name="book_national_creditclaimed" placeholder=""></div></div>';
+    var soa_row = '<div class="form-group row"><div class="col-sm-5"><input class="form-control" id="outreach_name" type="text" name="outreach_name" placeholder=""></div><div class="col-sm-5"><div class="row"><div class="col-sm-6"><input class="form-control" id="outreach_duration_from" type="date" name="outreach_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="outreach_duration_to" type="date" name="outreach_duration_to" placeholder=""></div></div></div><div class="col-sm-2">                           <input class="form-control" id="out_reach_creditclaimed" type="number" name="out_reach_creditclaimed" placeholder=""></div></div>';
+    var fiff_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="fellow_name" type="text" name="fellow_name" placeholder=""></div><div class="col-sm-4"><input class="form-control" id="fellow_doa" type="date" name="fellow_doa" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="fellow_tdoa" type="number" name="fellow_tdoa"></div><div class="col-sm-2">                           <input class="form-control" id="fellow_creditclaimed" type="number" name="fellow_creditclaimed" placeholder=""></div></div>';
+    var pper_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="tpo_name" type="text" name="tpo_name" placeholder=""></div><div class="col-sm-4"><input class="form-control" id="tpo_more" type="number" name="tpo_more" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="tpo_less" type="number" name="tpo_less"></div><div class="col-sm-2">                           <input class="form-control" id="tpo_creditclaimed" type="number" name="tpo_creditclaimed" placeholder=""></div></div>';
+    function add_row(id,row){
+        $(id).append(row);
+    }

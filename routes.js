@@ -153,16 +153,33 @@ module.exports = function (app) {
     console.log(req.body);
     if (!no) res.redirect('/my');
     var query = {'username': user.username, 'no':no};  
-
     Credit.findOneAndUpdate(query, req.body, {upsert:true}, function(err, credit){
       if (err) {
         console.log(err);
         res.render('credit', {no: no,user: user,action: action,message:'Opps something wrong. ask help'});
       }
-      else res.render('my',{no: no,user: user,action: action});   
+      else res.render('credit',{no: no,user: user,action: action,credit: credit});   
     });
     
   });
+
+  app.post('/submit',isLoggedIn, function(req,res){
+    var action = req.body.action;
+    var no = req.body.no;
+    var user = req.user;    
+    console.log(req.body);
+    if (!no) res.redirect('/my');
+    var query = {'username': user.username, 'no':no};  
+    Credit.findOneAndUpdate(query, req.body, {upsert:true}, function(err, credit){
+      if (err) {
+        console.log(err);
+        res.render('credit', {no: no,user: user,action: action,message:'Opps something wrong. ask help'});
+      }
+      else res.redirect('/my');  
+    });
+    
+  });
+
 
   
 
@@ -187,7 +204,7 @@ module.exports = function (app) {
 
   app.get('/test', function (req, res) {
     console.log(req.body);
-    res.render('test', { message: req.flash('loginMessage')[0], user: req.user });
+    res.render('test', { message: req.flash('loginMessage')[0],test:'PI', user: req.user });
   });
 
   app.post('/test', function (req, res) {
