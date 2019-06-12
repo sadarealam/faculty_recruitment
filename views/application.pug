@@ -28,19 +28,19 @@ html
                     .form-group.row
                         label.col-sm-4.col-form-label(for='applicant_name') Name of Applicant*
                         .col-sm-6
-                            input#applicant_name.form-control(type='text',name='applicant_name',placeholder="Name of Applicant",required)
+                            input#applicant_name.form-control(type='text',name='applicant_name',placeholder="Name of Applicant",onkeydown="return alphaOnly(event);",required)
                     .form-group.row
                         label.col-sm-4.col-form-label(for='father_name') Father’s name*
                         .col-sm-6
-                            input#father_name.form-control(type='text',name='father_name' ,placeholder=" Father’s name",required)
+                            input#father_name.form-control(type='text',name='father_name' ,placeholder=" Father’s name",onkeydown="return alphaOnly(event);",required)
                     .form-group.row
                         label.col-sm-4.col-form-label(for='mother_name') Mother’s Name*
                         .col-sm-6
-                            input#mother_name.form-control(type='text',name='mother_name' ,placeholder="Mother’s Name",required)
+                            input#mother_name.form-control(type='text',name='mother_name' ,placeholder="Mother’s Name",onkeydown="return alphaOnly(event);",required)
                     .form-group.row
                         label.col-sm-4.col-form-label(for='spouse_name') Spouse Name
                         .col-sm-6
-                            input#spouse_name.form-control(type='text',name='spouse_name',placeholder="Spouse Name", )
+                            input#spouse_name.form-control(type='text',name='spouse_name',placeholder="Spouse Name",onkeydown="return alphaOnly(event);" )
                     .form-group.row
                         label.col-sm-4.col-form-label(for='dob') Date of Birth*
                         .col-sm-6
@@ -56,11 +56,11 @@ html
                     .form-group.row
                         label.col-sm-4.col-form-label(for='nationality') Nationality*
                         .col-sm-6
-                            input#nationality.form-control(type='text',name='nationality' ,placeholder="Nationality",required)
+                            input#nationality.form-control(type='text',name='nationality' ,placeholder="Nationality",onkeydown="return alphaOnly(event);",required)
                     .form-group.row
                         label.col-sm-4.col-form-label(for='religion') Religion*
                         .col-sm-6
-                            input#religion.form-control(type='text',name='religion' ,placeholder="Religion",required)
+                            input#religion.form-control(type='text',name='religion' ,placeholder="Religion",onkeydown="return alphaOnly(event);",required)
                     .form-group.row
                         label.col-sm-4.col-form-label(for='cast') Caste Category*
                         .col-sm-8
@@ -134,11 +134,28 @@ html
                     .form-group.row
                         label.col-sm-4.col-form-label(for='email') Email*
                         .col-sm-6
-                            input#email.form-control(type='text',name='email' ,placeholder="Email")                    
+                            input#email.form-control(type='email',name='email' ,placeholder="Email")                    
                     .form-group.row
                         .col-sm-10
                         .col-sm-2
                             button.btn.btn-primary(type='submit') Save & Continue
-
-
+script.
+    function alphaOnly(event) {
+        var key = event.keyCode;
+        return ((key >= 65 && key <= 90) || key == 8 || key == 32 || key == 9);
+    };
+    $(document).ready(function(){
+        $("#dob").change(function(){
+            var d1 = new Date($("#dob").val());
+            var d2 = new Date();
+            var b = moment(d2);
+            var a = moment(d1);
+            var c = b.diff(a,'years');
+            var d = b.diff(a,'months');
+            $("#ageyear").val(c);
+            var e = d-c*12 ;
+            $("#agemonth").val(e);
+            $("#ageday").val(d2.getDate()-d1.getDate())            
+        })
+    })
 

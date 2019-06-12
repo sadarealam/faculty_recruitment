@@ -17,7 +17,8 @@ html
                     button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part-A  
                     button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part-B
         .containr(style="margin-top:45px")
-                h3 2 Educationl Qualification
+                h3 2.
+                h3 Educationl Qualification
                 form(role='form', action=`/application2?action=${action}&no=${no}`,method="post")
                     if (no)
                         input(type="hidden",name="no",value=`${no}`)
@@ -35,57 +36,22 @@ html
                         label.col-sm-2.col-form-label Year of passing
                     .form-group.row
                         .col-sm-1
-                            input#degree1.form-control(type='text',name='degree1',placeholder="Degree",required)
+                            input#degree.form-control(type='text',name='degree',placeholder="Degree",required)
                         .col-sm-3
-                            input#subject1.form-control(type='text',name='subject1',placeholder="Subject",required)
+                            input#subject.form-control(type='text',name='subject',placeholder="Subject",required)
                         .col-sm-3
-                            input#university1.form-control(type='text',name='university1',placeholder="University",required)
+                            input#university.form-control(type='text',name='university',placeholder="University",required)
                         .col-sm-1
-                            input#grade1.form-control(type='text',name='grade1',placeholder="%",required)
+                            input#grade.form-control(type='text',name='grade',placeholder="%",required)
                         .col-sm-2
-                            input#divison1.form-control(type='text',name='divison1',placeholder="Divison",required)
+                            input#divison.form-control(type='text',name='divison',placeholder="Divison",required)
                         .col-sm-2
-                            input#yop1.form-control(type='text',name='yop1',placeholder="Year",required)
-                    .form-group.row
-                        .col-sm-1
-                            input#degree2.form-control(type='text',name='degree2',placeholder="Degree")
-                        .col-sm-3
-                            input#subject2.form-control(type='text',name='subject2',placeholder="Subject")
-                        .col-sm-3
-                            input#university2.form-control(type='text',name='university2',placeholder="University")
-                        .col-sm-1
-                            input#grade2.form-control(type='text',name='grade2',placeholder="%")
-                        .col-sm-2
-                            input#divison2.form-control(type='text',name='divison2',placeholder="Divison")
-                        .col-sm-2
-                            input#yop2.form-control(type='text',name='yop2',placeholder="Year")
-                    .form-group.row
-                        .col-sm-1
-                            input#degree3.form-control(type='text',name='degree3',placeholder="Degree")
-                        .col-sm-3
-                            input#subject3.form-control(type='text',name='subject3',placeholder="Subject")
-                        .col-sm-3
-                            input#university3.form-control(type='text',name='university3',placeholder="University")
-                        .col-sm-1
-                            input#grade3.form-control(type='text',name='grade3',placeholder="%")
-                        .col-sm-2
-                            input#divison3.form-control(type='text',name='divison3',placeholder="Divison")
-                        .col-sm-2
-                            input#yop3.form-control(type='text',name='yop3',placeholder="Year")
-                    .form-group.row
-                        .col-sm-1
-                            input#degree4.form-control(type='text',name='degree4',placeholder="Degree")
-                        .col-sm-3
-                            input#subject4.form-control(type='text',name='subject4',placeholder="Subject")
-                        .col-sm-3
-                            input#university4.form-control(type='text',name='university4',placeholder="University")
-                        .col-sm-1
-                            input#grade4.form-control(type='text',name='grade4',placeholder="%")
-                        .col-sm-2
-                            input#divison4.form-control(type='text',name='divison4',placeholder="Divison")
-                        .col-sm-2
-                            input#yop4.form-control(type='text',name='yop4',placeholder="Year")
-                    h4 3 Details of PhD.
+                            input#yop.form-control(type='text',name='yop',placeholder="Year",required)
+                    div#education               
+                    button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#education",education_row)') +
+                   
+                    h4 3.
+                    h4 Details of PhD.
 
                     .form-group.row
                         label.col-sm-4.col-form-label(for='dor_phd') Date of Registration 
@@ -122,86 +88,97 @@ html
                             input#phd_title.form-control(type='text',name='phd_title' ,placeholder="Title of Thesis")
                     
                     
-                    h4 4 Details of PDF(Post Doctoral Fellowship).
-                    .form-group.row                       
-                        label.col-sm-5.col-form-label University/ Institution
-                        label.col-sm-3.col-form-label Duration (From)     
-                        label.col-sm-2.col-form-label Duration (sTo)                      
-
-                    .form-group.row                        
-                        .col-sm-5
-                            input#pdf_university1.form-control(type='text',name='pdf_university1',placeholder="University") 
-                        .col-sm-5
-                            .row
-                                .col-sm-6
-                                    input#pdf_duration_from1.form-control(type="date",name='pdf_duration_from1')  
-                                .col-sm-6 
-                                    input#pdf_duration_to1.form-control(type="date",name='pdf_duration_to1')     
-                    .form-group.row                        
-                        .col-sm-5
-                            input#pdf_university2.form-control(type='text',name='pdf_university2',placeholder="University") 
-                        .col-sm-5
-                            .row
-                                .col-sm-6
-                                    input#pdf_duration_from2.form-control(type="date",name='pdf_duration_from2')  
-                                .col-sm-6 
-                                    input#pdf_duration_to2.form-control(type="date",name='pdf_duration_to2')     
+                    
+                    h4 4.
+                    h4 Details of PDF(Post Doctoral Fellowship).
                     .form-group.row
                         label.col-sm-4.col-form-label(for='pdf_area') Area of Research
                         .col-sm-6
                             input#pdf_area.form-control(type='text',name='pdf_area' ,placeholder="Area of Research")
+                    .form-group.row                       
+                        label.col-sm-5.col-form-label University/ Institution
+                        label.col-sm-3.col-form-label Duration (From)     
+                        label.col-sm-2.col-form-label Duration (sTo)                      
                     
-                    h4 5 UGC-NET/SLET
+                    .form-group.row                        
+                        .col-sm-5
+                            input#pdf_university.form-control(type='text',name='pdf_university',placeholder="University") 
+                        .col-sm-5
+                            .row
+                                .col-sm-6
+                                    input#pdf_duration_from.form-control(type="date",name='pdf_duration_from')  
+                                .col-sm-6 
+                                    input#pdf_duration_to.form-control(type="date",name='pdf_duration_to')     
+                    div#pdf               
+                    button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#pdf",pdf_row)') +
+                       
+                    
+                    
+                    h4 5.
+                    h4 UGC-NET/SLET
                     .form-group.row
                         label.col-sm-4.col-form-label(for='ugc_qualified') Whether  qualified  UGC- NET/ SLET   ( All India Level)*
                         .col-sm-6
                             .form-check.form-check-inline
-                                input#ugc_yes.form-check-input(type="radio", name="ugc_yes", value="T")
-                                label.form-check-label(for="ugc_yes") Yes
+                                input#ugc_T.form-check-input(type="radio", name="ugc", value="T")
+                                label.form-check-label(for="ugc_T") Yes
                             .form-check.form-check-inline
-                                input#ugc_no.form-check-input(type="radio", name="ugc_no", value="F")
-                                label.form-check-label(for="ugc_no") No
-                    .form-group.row
-                        label.col-sm-5.col-form-label   
-                            b   UGC-SLET
-                        label.col-sm-5.col-form-label   
-                            b   UGC-NET
-                    .form-group.row
-                        label.col-sm-2.col-form-label(for='subject_slet') Subject
-                        .col-sm-3
-                            input#subject_slet.form-control(type='text',name='subject_slet' ,placeholder="Subject")
-                        label.col-sm-2.col-form-label(for='subject_net') Subject
-                        .col-sm-3
-                            input#subject_net.form-control(type='text',name='subject_net' ,placeholder="Subject")
-                    .form-group.row
-                        label.col-sm-2.col-form-label(for='registration_slet') Registration No.
-                        .col-sm-3
-                            input#registration_slet.form-control(type='text',name='registration_slet' ,placeholder="")
-                        label.col-sm-2.col-form-label(for='registration_net') Registration No.
-                        .col-sm-3
-                            input#registration_net.form-control(type='text',name='registration_net' ,placeholder="")
-                    .form-group.row
-                        label.col-sm-2.col-form-label(for='roll_slet') Roll Number
-                        .col-sm-3
-                            input#roll_slet.form-control(type='text',name='roll_slet' ,placeholder="")
-                        label.col-sm-2.col-form-label(for='roll_net') Roll Number
-                        .col-sm-3
-                            input#roll_net.form-control(type='text',name='roll_net' ,placeholder="")
-                    .form-group.row
-                        label.col-sm-2.col-form-label(for='yop_slet') Year of Passing
-                        .col-sm-3
-                            input#yop_slet.form-control(type='text',name='yop_slet' ,placeholder="")
-                        label.col-sm-2.col-form-label(for='yop_net') Year of Passing
-                        .col-sm-3
-                            input#yop_net.form-control(type='text',name='yop_net' ,placeholder="")
+                                input#ugc_F.form-check-input(type="radio", name="ugc", value="F")
+                                label.form-check-label(for="ugc_F") No
+                    div#net(style="display: none")
+                        .form-group.row
+                            label.col-sm-5.col-form-label   
+                                b   UGC-SLET
+                            label.col-sm-5.col-form-label   
+                                b   UGC-NET
+                        .form-group.row
+                            label.col-sm-2.col-form-label(for='subject_slet') Subject
+                            .col-sm-3
+                                input#subject_slet.form-control(type='text',name='subject_slet' ,placeholder="Subject")
+                            label.col-sm-2.col-form-label(for='subject_net') Subject
+                            .col-sm-3
+                                input#subject_net.form-control(type='text',name='subject_net' ,placeholder="Subject")
+                        .form-group.row
+                            label.col-sm-2.col-form-label(for='registration_slet') Registration No.
+                            .col-sm-3
+                                input#registration_slet.form-control(type='text',name='registration_slet' ,placeholder="")
+                            label.col-sm-2.col-form-label(for='registration_net') Registration No.
+                            .col-sm-3
+                                input#registration_net.form-control(type='text',name='registration_net' ,placeholder="")
+                        .form-group.row
+                            label.col-sm-2.col-form-label(for='roll_slet') Roll Number
+                            .col-sm-3
+                                input#roll_slet.form-control(type='text',name='roll_slet' ,placeholder="")
+                            label.col-sm-2.col-form-label(for='roll_net') Roll Number
+                            .col-sm-3
+                                input#roll_net.form-control(type='text',name='roll_net' ,placeholder="")
+                        .form-group.row
+                            label.col-sm-2.col-form-label(for='yop_slet') Year of Passing
+                            .col-sm-3
+                                input#yop_slet.form-control(type='text',name='yop_slet' ,placeholder="")
+                            label.col-sm-2.col-form-label(for='yop_net') Year of Passing
+                            .col-sm-3
+                                input#yop_net.form-control(type='text',name='yop_net' ,placeholder="")
                     .form-group.row
                         .col-sm-10
                         .col-sm-2
                             button.btn.btn-primary(type='submit') Next
                     
-                    
-                    
-                    
+script.
+    var education_row = '<div class="form-group row"><div class="col-sm-1"><input class="form-control" id="degree" type="text" name="degree" placeholder="Degree" required=""></div><div class="col-sm-3"><input class="form-control" id="subject" type="text" name="subject" placeholder="Subject" required=""></div><div class="col-sm-3"><input class="form-control" id="university" type="text" name="university" placeholder="University" required=""></div><div class="col-sm-1"><input class="form-control" id="grade" type="text" name="grade" placeholder="%" required=""></div><div class="col-sm-2"><input class="form-control" id="divison" type="text" name="divison" placeholder="Divison" required=""></div><div class="col-sm-2"><input class="form-control" id="yop" type="text" name="yop" placeholder="Year" required=""></div></div>';
+    var pdf_row = '<div class="form-group row">                       <div class="col-sm-5"><input class="form-control" id="pdf_university" type="text" name="pdf_university" placeholder="University"></div><div class="col-sm-5"><div class="row"><div class="col-sm-6"><input class="form-control" id="pdf_duration_from" type="date" name="pdf_duration_from"></div><div class="col-sm-6"> <input class="form-control" id="pdf_duration_to" type="date" name="pdf_duration_to"></div></div></div></div>';
+    function add_row(id,row){
+        $(id).append(row);
+    }
+    $(document).ready(function() {
+        $("input[name$='ugc']").click(function() {
+            var test = $(this).val();
+            if (test == 'T') $("#net").show();
+            if (test == 'F') $("#net").hide();       
+        
+        });
+    });
+
                     
                     
                     

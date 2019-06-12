@@ -2,233 +2,209 @@ doctype html
 html
   include includes/head.pug  
   body
-  .container
-    include includes/manit_header.pug    
-    include includes/navbar.pug
-    .container(style="width:100%;margin-top:45px")
-        .row
-            .col-6
-                div(align='center',style='color:#fdfbfb;bgcolor:#00a2d1 !important')
-                    h3    Application id : #{no}
-            .col-6                  
-                form.form-inline(role='form', action=`/credit`,method="POST", style="margin-left:5px")
-                    if (no)
-                        input(type="hidden",name="no",value=`${no}`) 
-                    button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part-A
-                    button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part-B
-        .containr(style="margin-top:45px")
-                h3 Experience
-                form(role='form', action=`/application3?action=${action}&no=${no}`,method="post")
-                    if (no)
-                        input(type="hidden",name="no",value=`${no}`)
-                    if (user)
-                        input(type="hidden",naem="username",value=`${user.username}`)
-                    if (message)
-                        .alert.alert-danger(role='alert') #{message}
-                    h4 6 Teaching Experience (Starting with the most recent)
-                    h6 Note: Experience in relevant regular position will only be considered for total experience. Experience of Visiting/Guest/part Time/Paid on hourly basis/consolidated pay shall not be counted. Research/ teaching experience obtained during M.Phil/Ph.D. will also not be counted. However, employment /engagement on fellowship will be counted.
-                    .form-group.row
-                        label.col-sm-2.col-form-label Institute/ University
-                        label.col-sm-2.col-form-label Post
-                        label.col-sm-2.col-form-label Duration (From and To)
-                        label.col-sm-2.col-form-label Experience
-                        label.col-sm-1.col-form-label PB & G-Pay
-                        label.col-sm-1.col-form-label Regular/ Temporary
-                        label.col-sm-1.col-form-label Gross Salary
-                        label.col-sm-1.col-form-label NIRF ranking with year
-                    .form-group.row
-                        .col-sm-2
-                            input#teaching_university1.form-control(type='text',name='teaching_university1',placeholder="University",required)
-                        .col-sm-2
-                            input#teching_post1.form-control(type='text',name='teching_post1',placeholder="Post",required)
-                        .col-sm-2
-                            input#teching_duration_from1.form-control(type='date',name='teching_duration_from',required)
-                            input#teching_duration_to1.form-control(type='date',name='teching_duration_to',required)
-                        .col-sm-2                            
-                                input#teaching_experience_year1.form-control(type='text',name='teaching_experience_year1',placeholder="Year",required)                            
-                                input#teaching_experience_month1.form-control(type='text',name='teaching_experience_month1',placeholder="Month",required)
-                        .col-sm-1
-                            input#teaching_pb1.form-control(type='text',name='teaching_pb1',placeholder="",required)
-                        .col-sm-1
-                            .form-check.form-check-inline
-                                input#teaching_regular1.form-check-input(type="radio", name="teaching_rp1", value="R")
-                                label.form-check-label(for="teaching_regular") Regular
-                            .form-check.form-check-inline
-                                input#teaching_permanent1.form-check-input(type="radio", name="teaching_rp1", value="P")
-                                label.form-check-label(for="teaching_permanent") Temporary
-                        .col-sm-1
-                            input#teaching_gross1.form-control(type='text',name='teaching_gross1',placeholder="",required)
-                        .col-sm-1
-                            input#teaching_nirf1.form-control(type='text',name='teaching_nirf1',placeholder="",required)
-                    .form-group.row
-                        .col-sm-2
-                            input#teaching_university2.form-control(type='text',name='teaching_university2',placeholder="University")
-                        .col-sm-2
-                            input#teching_post2.form-control(type='text',name='teching_post2',placeholder="Post")
-                        .col-sm-2
-                            input#teching_duration_from2.form-control(type='date',name='teching_duration_from2')
-                            input#teching_duration_to2.form-control(type='date',name='teching_duration_to2')
-                        .col-sm-2                            
-                                input#teaching_experience_year2.form-control(type='text',name='teaching_experience_year2',placeholder="Year")                            
-                                input#teaching_experience_month2.form-control(type='text',name='teaching_experience_month2',placeholder="Month")
-                        .col-sm-1
-                            input#teaching_pb2.form-control(type='text',name='teaching_pb2',placeholder="")
-                        .col-sm-1
-                            .form-check.form-check-inline
-                                input#teaching_regular2.form-check-input(type="radio", name="teaching_rp2", value="R")
-                                label.form-check-label(for="teaching_regular") Regular
-                            .form-check.form-check-inline
-                                input#teaching_permanent2.form-check-input(type="radio", name="teaching_rp2", value="P")
-                                label.form-check-label(for="teaching_permanent") Part Time
-                        .col-sm-1
-                            input#teaching_gross2.form-control(type='text',name='teaching_gross2',placeholder="")
-                        .col-sm-1
-                            input#teaching_nirf2.form-control(type='text',name='teaching_nirf2',placeholder="")
-                    .form-group.row
-                        .col-sm-2
-                            input#teaching_university3.form-control(type='text',name='teaching_university3',placeholder="University")
-                        .col-sm-2
-                            input#teching_post3.form-control(type='text',name='teching_post3',placeholder="Post")
-                        .col-sm-2
-                            input#teching_duration_from3.form-control(type='date',name='teching_duration_from3')
-                            input#teching_duration_to3.form-control(type='date',name='teching_duration_to3')
-                        .col-sm-2                            
-                                input#teaching_experience_year3.form-control(type='text',name='teaching_experience_year3',placeholder="Year")                            
-                                input#teaching_experience_month3.form-control(type='text',name='teaching_experience_month3',placeholder="Month")
-                        .col-sm-1
-                            input#teaching_pb3.form-control(type='text',name='teaching_pb3',placeholder="")
-                        .col-sm-1
-                            .form-check.form-check-inline
-                                input#teaching_regular3.form-check-input(type="radio", name="teaching_rp3", value="R")
-                                label.form-check-label(for="teaching_regular") Regular
-                            .form-check.form-check-inline
-                                input#teaching_permanent3.form-check-input(type="radio", name="teaching_rp3", value="P")
-                                label.form-check-label(for="teaching_permanent") Part Time
-                        .col-sm-1
-                            input#teaching_gross3.form-control(type='text',name='teaching_gross3',placeholder="")
-                        .col-sm-1
-                            input#teaching_nirf3.form-control(type='text',name='teaching_nirf3',placeholder="")
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                   
-                   
-                    h4 7 Research / Industry Experience (Regular/Permanent only).
-                    h6 Note: Experience in relevant regular position will only be considered for total experience. Experience of Visiting/Guest/part Time/Paid on hourly basis/consolidated pay shall not be counted. Research/ teaching experience obtained during M.Phil/Ph.D. will also not be counted. However, employment /engagement on fellowship will be counted.
-                    .form-group.row
-                        label.col-sm-3.col-form-label Organization
-                        label.col-sm-3.col-form-label Post
-                        label.col-sm-3.col-form-label Duration (From and To)
-                        label.col-sm-3.col-form-label Experience
-                    .form-group.row
-                        .col-sm-3
-                                input#industry_org1.form-control(type='text',name='industry_org1',placeholder="")
-                        .col-sm-3
-                                input#industry_post1.form-control(type='text',name='industry_post1',placeholder="")
-                        .col-sm-3
-                                input#industry_duration_from1.form-control(type='date',name='industry_duration_from1',placeholder="")
-                                input#industry_duration_to1.form-control(type='date',name='industry_duration_to1',placeholder="")
-                        .col-sm-3
-                                input#industry_exp_year1.form-control(type='text',name='industry_exp_year1',placeholder="Year")
-                                input#industry_exp_month1.form-control(type='text',name='industry_exp_month1',placeholder="Month")
-                    .form-group.row
-                        .col-sm-3
-                                input#industry_org2.form-control(type='text',name='industry_org2',placeholder="")
-                        .col-sm-3
-                                input#industry_post2.form-control(type='text',name='industry_post2',placeholder="")
-                        .col-sm-3
-                                input#industry_duration_from2.form-control(type='date',name='industry_duration_from2',placeholder="")
-                                input#industry_duration_to2.form-control(type='date',name='industry_duration_to2',placeholder="")
-                        .col-sm-3
-                                input#industry_exp_year2.form-control(type='text',name='industry_exp_year2',placeholder="Year")
-                                input#industry_exp_month2.form-control(type='text',name='industry_exp_month2',placeholder="Month")
-                    .form-group.row
-                        .col-sm-3
-                                input#industry_org3.form-control(type='text',name='industry_org3',placeholder="")
-                        .col-sm-3
-                                input#industry_post3.form-control(type='text',name='industry_post3',placeholder="")
-                        .col-sm-3
-                                input#industry_duration_from3.form-control(type='date',name='industry_duration_from3',placeholder="")
-                                input#industry_duration_to3.form-control(type='date',name='industry_duration_to3',placeholder="")
-                        .col-sm-3
-                                input#industry_exp_year3.form-control(type='text',name='industry_exp_year3',placeholder="Year")
-                                input#industry_exp_month3.form-control(type='text',name='industry_exp_month3',placeholder="Month")
+    .container
+        include includes/manit_header.pug    
+        include includes/navbar.pug
+        .container(style="width:100%;margin-top:45px")
+            .row
+                .col-6
+                    div(align='center',style='color:#fdfbfb;bgcolor:#00a2d1 !important')
+                        h3    Application id : #{no}
+                .col-6                  
+                    form.form-inline(role='form', action=`/credit`,method="POST", style="margin-left:5px")
+                        if (no)
+                            input(type="hidden",name="no",value=`${no}`) 
+                        button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part-A
+                        button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part-B
+    div(style="margin-top:45px;margin-left:150px;margin-right:150px")
+        h3 Experience
+        form(role='form', action=`/application3?action=${action}&no=${no}`,method="post")
+            if (no)
+                input(type="hidden",name="no",value=`${no}`)
+            if (user)
+                input(type="hidden",naem="username",value=`${user.username}`)
+            if (message)
+                .alert.alert-danger(role='alert') #{message}
+            h4 6.
+            h4 Teaching Experience (Starting with the most recent)
+            h6 Note: Experience in relevant regular position will only be considered for total experience. Experience of Visiting/Guest/part Time/Paid on hourly basis/consolidated pay shall not be counted. Research/ teaching experience obtained during M.Phil/Ph.D. will also not be counted. However, employment /engagement on fellowship will be counted.
+            .form-group.row
+                label.col-sm-2.col-form-label Institute/ University
+                label.col-sm-1.col-form-label Post
+                label.col-sm-3.col-form-label Duration (From and To)
+                label.col-sm-2.col-form-label Experience
+                label.col-sm-1.col-form-label PB & G-Pay
+                label.col-sm-1.col-form-label Regular/ Temporary
+                label.col-sm-1.col-form-label Gross Salary
+                label.col-sm-1.col-form-label NIRF ranking with year
+            .form-group.row
+                .col-sm-2
+                    input#teaching_university.form-control(type='text',name='teaching_university',placeholder="University",required)
+                .col-sm-1
+                    input#teching_post.form-control(type='text',name='teching_post',placeholder="Post",required)
+                .col-sm-3
+                    .row
+                        .col-sm-6
+                            input#teching_duration_from.form-control(type='date',name='teching_duration_from',onchange='setTeachingExp(this)',required)
+                        .col-sm-6                    
+                            input#teching_duration_to.form-control(type='date',name='teching_duration_to',onchange='setTeachingExp(this)',required)
+                .col-sm-2     
+                    .row
+                        .col-sm-5
+                            input#teaching_experience_year.form-control(type='text',name='teaching_experience_year',placeholder="Year",required)                            
+                        .col-sm-5
+                            input#teaching_experience_month.form-control(type='text',name='teaching_experience_month',placeholder="Month",required)
+                .col-sm-1
+                    input#teaching_pb.form-control(type='text',name='teaching_pb',placeholder="",required)
+                .col-sm-1
+                    .form-check.form-check-inline
+                        input#teaching_regular_R.form-check-input(type="radio", name="teaching_rp", value="R")
+                        label.form-check-label(for="teaching_regular_R") Regular
+                    .form-check.form-check-inline
+                        input#teaching_regular_P.form-check-input(type="radio", name="teaching_rp", value="P")
+                        label.form-check-label(for="teaching_regular_P") Temporary
+                .col-sm-1
+                    input#teaching_gross.form-control(type='text',name='teaching_gross',placeholder="",required)
+                .col-sm-1
+                    input#teaching_nirf.form-control(type='text',name='teaching_nirf',placeholder="",required)
+            div#teaching                
+            button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#teaching",teaching_row)') +
+            
+            
+            
+            h4 7.
+            h4 Research / Industry Experience (Regular/Permanent only).
+            h6 Note: Experience in relevant regular position will only be considered for total experience. Experience of Visiting/Guest/part Time/Paid on hourly basis/consolidated pay shall not be counted. Research/ teaching experience obtained during M.Phil/Ph.D. will also not be counted. However, employment /engagement on fellowship will be counted.
+            .form-group.row
+                label.col-sm-3.col-form-label Organization
+                label.col-sm-3.col-form-label Post
+                label.col-sm-3.col-form-label Duration (From and To)
+                label.col-sm-3.col-form-label Experience
+            .form-group.row
+                .col-sm-3
+                        input#industry_org.form-control(type='text',name='industry_org',placeholder="Organization")
+                .col-sm-3
+                        input#industry_post.form-control(type='text',name='industry_post',placeholder="Post")
+                .col-sm-3
+                    .row
+                        .col-sm-6
+                            input#industry_duration_from.form-control(type='date',name='industry_duration_from',onchange="setIndustryExp(this)",placeholder="")
+                        .col-sm-6                        
+                            input#industry_duration_to.form-control(type='date',name='industry_duration_to',onchange="setIndustryExp(this)",placeholder="")
+                .col-sm-3
+                    .row
+                        .col-sm-6
+                            input#industry_exp_year.form-control(type='text',name='industry_exp_year',placeholder="Year")
+                        .col-sm-6                        
+                            input#industry_exp_month.form-control(type='text',name='industry_exp_month',placeholder="Month")
+            div#industry                
+            button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#industry",industry_row)') +
 
-                    h4 8 Name and Address of Minimum Two Referees.
-                    h6 Referees should be familiar with your academic/professional work and should not be your relatives
+            h4 8.
+            h4 Name and Address of Minimum Two Referees.
+            h6 Referees should be familiar with your academic/professional work and should not be your relatives
 
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='name_referee1') Name of Referee 1*
-                        .col-sm-6
-                            input#name_referee1.form-control(type='text',name='name_referee1',placeholder="Name of Referee",required)
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='address_referee1') Adress of Referee 1*
-                        .col-sm-6
-                            input#address_referee1.form-control(type='text',name='address_referee1',placeholder=" Adress of Referee 1",required)
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='phone_referee1') Phone 
-                        .col-sm-6
-                            input#phone_referee1.form-control(type='number',name='phone_referee1',placeholder="Phone",required)
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='mobile_referee1') Mobile*
-                        .col-sm-6
-                            input#mobile_referee1.form-control(type='number',name='mobile_referee1',placeholder="Phone",required)
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='email_referee1') Email* 
-                        .col-sm-6
-                            input#email_referee1.form-control(type='text',name='email_referee1',placeholder="Email",required)
-                    
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='name_referee2') Name of Referee 2*
-                        .col-sm-6
-                            input#name_referee2.form-control(type='text',name='name_referee2',placeholder="Name of Referee 1",required)
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='address_referee2') Adress of Referee 2*
-                        .col-sm-6
-                            input#address_referee2.form-control(type='text',name='address_referee2',placeholder=" Adress of Referee 2",required)
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='phone_referee2') Phone 
-                        .col-sm-6
-                            input#phone_referee2.form-control(type='number',name='phone_referee2',placeholder="Phone",required)
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='mobile_referee2') Mobile*
-                        .col-sm-6
-                            input#mobile_referee2.form-control(type='number',name='mobile_referee2',placeholder="Phone",required)
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='email_referee2') Email*
-                        .col-sm-6
-                            input#email_referee2.form-control(type='text',name='email_referee2',placeholder="Email",required)
-                    h4 9 Additional  relevant information in support of candidature
-                        .col-sm-10
-                            textarea#adi_info.form-control(type='text',name='adi_info',placeholder="Information")
-                   
-                    .form-group.row
-                        .col-sm-10
-                        .col-sm-2
-                            button.btn.btn-primary(type='submit') Save & Continue
+            .form-group.row
+                label.col-sm-4.col-form-label(for='name_referee1') Name of Referee 1*
+                .col-sm-6
+                    input#name_referee1.form-control(type='text',name='name_referee1',placeholder="Name of Referee 1",onkeydown="return alphaOnly(event);",required)
+            .form-group.row
+                label.col-sm-4.col-form-label(for='address_referee1') Adress of Referee 1*
+                .col-sm-6
+                    input#address_referee1.form-control(type='text',name='address_referee1',placeholder=" Adress of Referee 1",required)
+            .form-group.row
+                label.col-sm-4.col-form-label(for='phone_referee1') Phone 
+                .col-sm-6
+                    input#phone_referee1.form-control(type='number',name='phone_referee1',placeholder="Phone",required)
+            .form-group.row
+                label.col-sm-4.col-form-label(for='mobile_referee1') Mobile*
+                .col-sm-6
+                    input#mobile_referee1.form-control(type='number',name='mobile_referee1',placeholder="Phone",required)
+            .form-group.row
+                label.col-sm-4.col-form-label(for='email_referee1') Email* 
+                .col-sm-6
+                    input#email_referee1.form-control(type='email',name='email_referee1',placeholder="Email",required)
+            
+            .form-group.row
+                label.col-sm-4.col-form-label(for='name_referee2') Name of Referee 2*
+                .col-sm-6
+                    input#name_referee2.form-control(type='text',name='name_referee2',placeholder="Name of Referee 2",onkeydown="return alphaOnly(event);",required)
+            .form-group.row
+                label.col-sm-4.col-form-label(for='address_referee2') Adress of Referee 2*
+                .col-sm-6
+                    input#address_referee2.form-control(type='text',name='address_referee2',placeholder=" Adress of Referee 2",required)
+            .form-group.row
+                label.col-sm-4.col-form-label(for='phone_referee2') Phone 
+                .col-sm-6
+                    input#phone_referee2.form-control(type='number',name='phone_referee2',placeholder="Phone",required)
+            .form-group.row
+                label.col-sm-4.col-form-label(for='mobile_referee2') Mobile*
+                .col-sm-6
+                    input#mobile_referee2.form-control(type='number',name='mobile_referee2',placeholder="Phone",required)
+            .form-group.row
+                label.col-sm-4.col-form-label(for='email_referee2') Email*
+                .col-sm-6
+                    input#email_referee2.form-control(type='email',name='email_referee2',placeholder="Email",required)
+            h4 9.
+            h4 Additional  relevant information in support of candidature
+            .form-group.row
+                .col-sm-12
+                    textarea#adi_info.form-control(type='text',name='adi_info',placeholder="Information")
+            
+            .form-group.row
+                .col-sm-10
+                .col-sm-2
+                    button.btn.btn-primary(type='submit') Save & Continue
+script.
+    var teaching_row = '<div class="form-group row"><div class="col-sm-2"><input class="form-control" id="teaching_university" type="text" name="teaching_university" placeholder="University" required=""></div><div class="col-sm-1"><input class="form-control" id="teching_post" type="text" name="teching_post" placeholder="Post" required=""></div><div class="col-sm-3"><div class="row"><div class="col-sm-6"><input class="form-control" id="teching_duration_from" type="date" name="teching_duration_from" onchange="setTeachingExp(this)" required=""></div><div class="col-sm-6">                   <input class="form-control" id="teching_duration_to" type="date" name="teching_duration_to" onchange="setTeachingExp(this)" required=""></div></div></div><div class="col-sm-2">    <div class="row"><div class="col-sm-5"><input class="form-control" id="teaching_experience_year" type="text" name="teaching_experience_year" placeholder="Year" required=""></div><div class="col-sm-5"><input class="form-control" id="teaching_experience_month" type="text" name="teaching_experience_month" placeholder="Month" required=""></div></div></div><div class="col-sm-1"><input class="form-control" id="teaching_pb" type="text" name="teaching_pb" placeholder="" required=""></div><div class="col-sm-1"><div class="form-check form-check-inline"><input class="form-check-input" id="teaching_regular_R" type="radio" name="teaching_rp" value="R"><label class="form-check-label" for="teaching_regular_R">Regular</label></div><div class="form-check form-check-inline"><input class="form-check-input" id="teaching_regular_P" type="radio" name="teaching_rp" value="P"><label class="form-check-label" for="teaching_regular_P">Temporary</label></div></div><div class="col-sm-1"><input class="form-control" id="teaching_gross" type="text" name="teaching_gross" placeholder="" required=""></div><div class="col-sm-1"><input class="form-control" id="teaching_nirf" type="text" name="teaching_nirf" placeholder="" required=""></div></div>';
+    var industry_row = '<div class="form-group row"><div class="col-sm-3"><input class="form-control" id="industry_org" type="text" name="industry_org" placeholder="Organization"></div><div class="col-sm-3"><input class="form-control" id="industry_post" type="text" name="industry_post" placeholder="Post"></div><div class="col-sm-3"><div class="row"><div class="col-sm-6"><input class="form-control" id="industry_duration_from" type="date" name="industry_duration_from" onchange="setIndustryExp(this)" placeholder=""></div><div class="col-sm-6">                       <input class="form-control" id="industry_duration_to" type="date" name="industry_duration_to" onchange="setIndustryExp(this)" placeholder=""></div></div></div><div class="col-sm-3"><div class="row"><div class="col-sm-6"><input class="form-control" id="industry_exp_year" type="text" name="industry_exp_year" placeholder="Year"></div><div class="col-sm-6">                       <input class="form-control" id="industry_exp_month" type="text" name="industry_exp_month" placeholder="Month"></div></div></div></div>';
+    function add_row(id,row){
+        $(id).append(row);
+    }
+    
+    function setTeachingExp(elem){
+        var id = elem.id ;
+        if(id == 'teching_duration_to'){
+            var d2 = $(elem).val();
+            var d1 = $(elem).parent().parent().find('input[name="teching_duration_from"').val();
+        }else if (id == 'teching_duration_from'){
+            var d1 = $(elem).val();
+            var d2 = $(elem).parent().parent().find('input[name="teching_duration_to"').val();
+        }      
+        if (d1 == "" || d2 == "") return ;
+        var ld = new Date(d2);
+        var pd = new Date(d1);
+        var b = moment(d2);
+        var a = moment(d1);
+        var c = b.diff(a,'years');
+        var d = b.diff(a,'months');
+        var e = d-c*12 ;
+        $(elem).parent().parent().parent().next().find('input[name="teaching_experience_year"]').val(c);
+        $(elem).parent().parent().parent().next().find('input[name="teaching_experience_month"]').val(e);
+    }
+
+    function setIndustryExp(elem){
+        var id = elem.id ;
+        if(id == 'industry_duration_to'){
+            var d2 = $(elem).val();
+            var d1 = $(elem).parent().parent().find('input[name="industry_duration_from"').val();
+        }else if (id == 'industry_duration_from'){
+            var d1 = $(elem).val();
+            var d2 = $(elem).parent().parent().find('input[name="industry_duration_to"').val();
+        }     
+        if (d1 == "" || d2 == "") return ;
+        var ld = new Date(d2);
+        var pd = new Date(d1);
+        var b = moment(d2);
+        var a = moment(d1);
+        var c = b.diff(a,'years');
+        var d = b.diff(a,'months');
+        var e = d-c*12 ;
+        $(elem).parent().parent().parent().next().find('input[name="industry_exp_year"]').val(c);
+        $(elem).parent().parent().parent().next().find('input[name="industry_exp_month"]').val(e);
+    }
+    
+    //- $(document).ready(function(){
+    //-     $('#teching_duration_to,#teching_duration_from').change();
+
+    //- });
