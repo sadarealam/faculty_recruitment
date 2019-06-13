@@ -48,20 +48,20 @@ html
                                 input#divison.form-control(type='text',name='divison',placeholder="Divison",required)
                             .col-sm-2
                                 input#yop.form-control(type='text',name='yop',placeholder="Year",required)
-                    mixin teaching(application2)
+                    mixin teaching(application2,i)
                         .form-group.row
                             .col-sm-1
-                                input#degree.form-control(type='text',name='degree',value=`${application2.degree}`,placeholder="Degree",required)
+                                input#degree.form-control(type='text',name='degree',value=`${application2.degree[i]}`,placeholder="Degree",required)
                             .col-sm-3
-                                input#subject.form-control(type='text',name='subject',value=`${application2.subject}`,placeholder="Subject",required)
+                                input#subject.form-control(type='text',name='subject',value=`${application2.subject[i]}`,placeholder="Subject",required)
                             .col-sm-3
-                                input#university.form-control(type='text',name='university',value=`${application2.university}`,placeholder="University",required)
+                                input#university.form-control(type='text',name='university',value=`${application2.university[i]}`,placeholder="University",required)
                             .col-sm-1
-                                input#grade.form-control(type='text',name='grade',value=`${application2.grade}`,placeholder="%",required)
+                                input#grade.form-control(type='text',name='grade',value=`${application2.grade[i]}`,placeholder="%",required)
                             .col-sm-2
-                                input#divison.form-control(type='text',name='divison',value=`${application2.divison}`,placeholder="Divison",required)
+                                input#divison.form-control(type='text',name='divison',value=`${application2.divison[i]}`,placeholder="Divison",required)
                             .col-sm-2
-                                input#yop.form-control(type='text',name='yop',value=`${application2.yop}`,placeholder="Year",required)
+                                input#yop.form-control(type='text',name='yop',value=`${application2.yop[i]}`,placeholder="Year",required)
                         
                     if (!application2)
                         +teaching_default
@@ -177,16 +177,16 @@ html
                                         input#pdf_duration_from.form-control(type="date",name='pdf_duration_from')  
                                     .col-sm-6 
                                         input#pdf_duration_to.form-control(type="date",name='pdf_duration_to')    
-                    mixin pdf(application2)
+                    mixin pdf(application2,i)
                         .form-group.row                        
                             .col-sm-5
-                                input#pdf_university.form-control(type='text',name='pdf_university',value=`${application2.pdf_university}`,placeholder="University") 
+                                input#pdf_university.form-control(type='text',name='pdf_university',value=`${application2.pdf_university[i]}`,placeholder="University") 
                             .col-sm-5
                                 .row
                                     .col-sm-6
-                                        input#pdf_duration_from.form-control(type="date",name='pdf_duration_from',value=`${application2.pdf_duration_from}`)  
+                                        input#pdf_duration_from.form-control(type="date",name='pdf_duration_from',value=`${application2.pdf_duration_from[i]}`)  
                                     .col-sm-6 
-                                        input#pdf_duration_to.form-control(type="date",name='pdf_duration_to',value=`${application2.pdf_duration_to}`)  
+                                        input#pdf_duration_to.form-control(type="date",name='pdf_duration_to',value=`${application2.pdf_duration_to[i]}`)  
                     if (!application2)
                         +pdf_default
                     else if(application2.pdf_university.length==0)
