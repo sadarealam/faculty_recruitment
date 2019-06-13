@@ -37,42 +37,90 @@ html
                 label.col-sm-1.col-form-label Regular/ Temporary
                 label.col-sm-1.col-form-label Gross Salary
                 label.col-sm-1.col-form-label NIRF ranking with year
-            .form-group.row
-                .col-sm-2
-                    input#teaching_university.form-control(type='text',name='teaching_university',placeholder="University",required)
-                .col-sm-1
-                    input#teching_post.form-control(type='text',name='teching_post',placeholder="Post",required)
-                .col-sm-3
-                    .row
-                        .col-sm-6
-                            input#teching_duration_from.form-control(type='date',name='teching_duration_from',onchange='setTeachingExp(this)',required)
-                        .col-sm-6                    
-                            input#teching_duration_to.form-control(type='date',name='teching_duration_to',onchange='setTeachingExp(this)',required)
-                .col-sm-2     
-                    .row
-                        .col-sm-5
-                            input#teaching_experience_year.form-control(type='text',name='teaching_experience_year',placeholder="Year",required)                            
-                        .col-sm-5
-                            input#teaching_experience_month.form-control(type='text',name='teaching_experience_month',placeholder="Month",required)
-                .col-sm-1
-                    input#teaching_pb.form-control(type='text',name='teaching_pb',placeholder="",required)
-                //- .col-sm-1
-                //-     .form-check.form-check-inline
-                //-         input#teaching_regular_R.form-check-input(type="radio", name="teaching_rp", value="R")
-                //-         label.form-check-label(for="teaching_regular_R") Regular
-                //-     .form-check.form-check-inline
-                //-         input#teaching_regular_P.form-check-input(type="radio", name="teaching_rp", value="P")
-                //-         label.form-check-label(for="teaching_regular_P") Temporary
-                .col-sm-1                   
-                    select#teaching_rp.form-control(name='teaching_rp')
-                        option(value='') Select
-                        option(value='R') Regular
-                        option(value='T') Temporary
+            mixin teachingEx_default
+                .form-group.row
+                    .col-sm-2
+                        input#teaching_university.form-control(type='text',name='teaching_university',placeholder="University",required)
+                    .col-sm-1
+                        input#teching_post.form-control(type='text',name='teching_post',placeholder="Post",required)
+                    .col-sm-3
+                        .row
+                            .col-sm-6
+                                input#teching_duration_from.form-control(type='date',name='teching_duration_from',onchange='setTeachingExp(this)',required)
+                            .col-sm-6                    
+                                input#teching_duration_to.form-control(type='date',name='teching_duration_to',onchange='setTeachingExp(this)',required)
+                    .col-sm-2     
+                        .row
+                            .col-sm-5
+                                input#teaching_experience_year.form-control(type='text',name='teaching_experience_year',placeholder="Year",required)                            
+                            .col-sm-5
+                                input#teaching_experience_month.form-control(type='text',name='teaching_experience_month',placeholder="Month",required)
+                    .col-sm-1
+                        input#teaching_pb.form-control(type='text',name='teaching_pb',placeholder="",required)
+                    //- .col-sm-1
+                    //-     .form-check.form-check-inline
+                    //-         input#teaching_regular_R.form-check-input(type="radio", name="teaching_rp", value="R")
+                    //-         label.form-check-label(for="teaching_regular_R") Regular
+                    //-     .form-check.form-check-inline
+                    //-         input#teaching_regular_P.form-check-input(type="radio", name="teaching_rp", value="P")
+                    //-         label.form-check-label(for="teaching_regular_P") Temporary
+                    .col-sm-1                   
+                        select#teaching_rp.form-control(name='teaching_rp')
+                            option(value='') Select
+                            option(value='R') Regular
+                            option(value='T') Temporary
 
-                .col-sm-1
-                    input#teaching_gross.form-control(type='text',name='teaching_gross',placeholder="",required)
-                .col-sm-1
-                    input#teaching_nirf.form-control(type='text',name='teaching_nirf',placeholder="",required)
+                    .col-sm-1
+                        input#teaching_gross.form-control(type='text',name='teaching_gross',placeholder="",required)
+                    .col-sm-1
+                        input#teaching_nirf.form-control(type='text',name='teaching_nirf',placeholder="",required)
+            mixin teachingEx(application3,i)
+                .form-group.row
+                    .col-sm-2
+                        input#teaching_university.form-control(type='text',name='teaching_university' ,value=`${application3.teaching_university[i]}`,placeholder="University",required)
+                    .col-sm-1
+                        input#teching_post.form-control(type='text',name='teching_post' ,value=`${application3.teching_post[i]}`,placeholder="Post",required)
+                    .col-sm-3
+                        .row
+                            .col-sm-6
+                                input#teching_duration_from.form-control(type='date',name='teching_duration_from' ,value=`${application3.teching_duration_from[i]}`,onchange='setTeachingExp(this)',required)
+                            .col-sm-6                    
+                                input#teching_duration_to.form-control(type='date',name='teching_duration_to' ,value=`${application3.teching_duration_to[i]}`,onchange='setTeachingExp(this)',required)
+                    .col-sm-2     
+                        .row
+                            .col-sm-5
+                                input#teaching_experience_year.form-control(type='text',name='teaching_experience_year' ,value=`${application3.teaching_experience_year[i]}`,placeholder="Year",required)                            
+                            .col-sm-5
+                                input#teaching_experience_month.form-control(type='text',name='teaching_experience_month' ,value=`${application3.teaching_experience_month[i]}`,placeholder="Month",required)
+                    .col-sm-1
+                        input#teaching_pb.form-control(type='text',name='teaching_pb' ,value=`${application3.teaching_pb[i]}`,placeholder="",required)
+                    //- .col-sm-1
+                    //-     .form-check.form-check-inline
+                    //-         input#teaching_regular_R.form-check-input(type="radio", name="teaching_rp", value="R")
+                    //-         label.form-check-label(for="teaching_regular_R") Regular
+                    //-     .form-check.form-check-inline
+                    //-         input#teaching_regular_P.form-check-input(type="radio", name="teaching_rp", value="P")
+                    //-         label.form-check-label(for="teaching_regular_P") Temporary
+                    .col-sm-1                   
+                        select.form-control(id=`teaching_rp${i}`,name='teaching_rp')
+                            option(value='') Select
+                            option(value='R') Regular
+                            option(value='T') Temporary
+
+                    .col-sm-1
+                        input#teaching_gross.form-control(type='text',name='teaching_gross' ,value=`${application3.teaching_gross[i]}`,placeholder="",required)
+                    .col-sm-1
+                        input#teaching_nirf.form-control(type='text',name='teaching_nirf' ,value=`${application3.teaching_nirf[i]}`,placeholder="",required)
+                script.
+                    document.getElementById('teaching_rp#{i}').value='#{application3.teaching_rp[i]}'
+            if (!application3)
+                +teachingEx_default
+            else if(application3.teaching_university.length==0)
+                +teachingEx_default              
+            
+            if (application3 && application3.teaching_university.length>0)
+                - for(var i=0;i<application3.teaching_university.length;i++)
+                    +teachingEx(application3,i)
             div#teaching                
             button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#teaching",teaching_row)') +
             
@@ -86,76 +134,154 @@ html
                 label.col-sm-3.col-form-label Post
                 label.col-sm-3.col-form-label Duration (From and To)
                 label.col-sm-3.col-form-label Experience
-            .form-group.row
-                .col-sm-3
-                        input#industry_org.form-control(type='text',name='industry_org',placeholder="Organization")
-                .col-sm-3
-                        input#industry_post.form-control(type='text',name='industry_post',placeholder="Post")
-                .col-sm-3
-                    .row
-                        .col-sm-6
-                            input#industry_duration_from.form-control(type='date',name='industry_duration_from',onchange="setIndustryExp(this)",placeholder="")
-                        .col-sm-6                        
-                            input#industry_duration_to.form-control(type='date',name='industry_duration_to',onchange="setIndustryExp(this)",placeholder="")
-                .col-sm-3
-                    .row
-                        .col-sm-6
-                            input#industry_exp_year.form-control(type='text',name='industry_exp_year',placeholder="Year")
-                        .col-sm-6                        
-                            input#industry_exp_month.form-control(type='text',name='industry_exp_month',placeholder="Month")
+            mixin industry_default
+                .form-group.row
+                    .col-sm-3
+                            input#industry_org.form-control(type='text',name='industry_org',placeholder="Organization")
+                    .col-sm-3
+                            input#industry_post.form-control(type='text',name='industry_post',placeholder="Post")
+                    .col-sm-3
+                        .row
+                            .col-sm-6
+                                input#industry_duration_from.form-control(type='date',name='industry_duration_from',onchange="setIndustryExp(this)",placeholder="")
+                            .col-sm-6                        
+                                input#industry_duration_to.form-control(type='date',name='industry_duration_to',onchange="setIndustryExp(this)",placeholder="")
+                    .col-sm-3
+                        .row
+                            .col-sm-6
+                                input#industry_exp_year.form-control(type='text',name='industry_exp_year',placeholder="Year")
+                            .col-sm-6                        
+                                input#industry_exp_month.form-control(type='text',name='industry_exp_month',placeholder="Month")
+            mixin industry(application3,i)
+                .form-group.row
+                    .col-sm-3
+                            input#industry_org.form-control(type='text',name='industry_org',value=`${application3.industry_org[i]}`,placeholder="Organization")
+                    .col-sm-3
+                            input#industry_post.form-control(type='text',name='industry_post',value=`${application3.industry_post[i]}`,placeholder="Post")
+                    .col-sm-3
+                        .row
+                            .col-sm-6
+                                input#industry_duration_from.form-control(type='date',name='industry_duration_from',value=`${application3.industry_duration_from[i]}`,onchange="setIndustryExp(this)",placeholder="")
+                            .col-sm-6                        
+                                input#industry_duration_to.form-control(type='date',name='industry_duration_to',value=`${application3.industry_duration_to[i]}`,onchange="setIndustryExp(this)",placeholder="")
+                    .col-sm-3
+                        .row
+                            .col-sm-6
+                                input#industry_exp_year.form-control(type='text',name='industry_exp_year',value=`${application3.industry_exp_year[i]}`,placeholder="Year")
+                            .col-sm-6                        
+                                input#industry_exp_month.form-control(type='text',name='industry_exp_month',value=`${application3.industry_exp_month[i]}`,placeholder="Month")
+            if (!application3)
+                +industry_default
+            else if(application3.industry_org.length==0)
+                +industry_default              
+            
+            if (application3 && application3.industry_org.length>0)
+                - for(var i=0;i<application3.industry_org.length;i++)
+                    +industry(application3,i)
             div#industry                
             button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#industry",industry_row)') +
 
             h4 8.
             h4 Name and Address of Minimum Two Referees.
             h6 Referees should be familiar with your academic/professional work and should not be your relatives
-
-            .form-group.row
-                label.col-sm-4.col-form-label(for='name_referee1') Name of Referee 1*
-                .col-sm-6
-                    input#name_referee1.form-control(type='text',name='name_referee1',placeholder="Name of Referee 1",onkeydown="return alphaOnly(event);",required)
-            .form-group.row
-                label.col-sm-4.col-form-label(for='address_referee1') Adress of Referee 1*
-                .col-sm-6
-                    input#address_referee1.form-control(type='text',name='address_referee1',placeholder=" Adress of Referee 1",required)
-            .form-group.row
-                label.col-sm-4.col-form-label(for='phone_referee1') Phone 
-                .col-sm-6
-                    input#phone_referee1.form-control(type='number',name='phone_referee1',placeholder="Phone",required)
-            .form-group.row
-                label.col-sm-4.col-form-label(for='mobile_referee1') Mobile*
-                .col-sm-6
-                    input#mobile_referee1.form-control(type='number',name='mobile_referee1',placeholder="Phone",required)
-            .form-group.row
-                label.col-sm-4.col-form-label(for='email_referee1') Email* 
-                .col-sm-6
-                    input#email_referee1.form-control(type='email',name='email_referee1',placeholder="Email",required)
-            
-            .form-group.row
-                label.col-sm-4.col-form-label(for='name_referee2') Name of Referee 2*
-                .col-sm-6
-                    input#name_referee2.form-control(type='text',name='name_referee2',placeholder="Name of Referee 2",onkeydown="return alphaOnly(event);",required)
-            .form-group.row
-                label.col-sm-4.col-form-label(for='address_referee2') Adress of Referee 2*
-                .col-sm-6
-                    input#address_referee2.form-control(type='text',name='address_referee2',placeholder=" Adress of Referee 2",required)
-            .form-group.row
-                label.col-sm-4.col-form-label(for='phone_referee2') Phone 
-                .col-sm-6
-                    input#phone_referee2.form-control(type='number',name='phone_referee2',placeholder="Phone",required)
-            .form-group.row
-                label.col-sm-4.col-form-label(for='mobile_referee2') Mobile*
-                .col-sm-6
-                    input#mobile_referee2.form-control(type='number',name='mobile_referee2',placeholder="Phone",required)
-            .form-group.row
-                label.col-sm-4.col-form-label(for='email_referee2') Email*
-                .col-sm-6
-                    input#email_referee2.form-control(type='email',name='email_referee2',placeholder="Email",required)
+            mixin referee_default
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='name_referee1') Name of Referee 1*
+                    .col-sm-6
+                        input#name_referee1.form-control(type='text',name='name_referee1',placeholder="Name of Referee 1",onkeydown="return alphaOnly(event);",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='address_referee1') Adress of Referee 1*
+                    .col-sm-6
+                        input#address_referee1.form-control(type='text',name='address_referee1',placeholder=" Adress of Referee 1",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='phone_referee1') Phone 
+                    .col-sm-6
+                        input#phone_referee1.form-control(type='number',name='phone_referee1',placeholder="Phone",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='mobile_referee1') Mobile*
+                    .col-sm-6
+                        input#mobile_referee1.form-control(type='number',name='mobile_referee1',placeholder="Phone",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='email_referee1') Email* 
+                    .col-sm-6
+                        input#email_referee1.form-control(type='email',name='email_referee1',placeholder="Email",required)
+                
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='name_referee2') Name of Referee 2*
+                    .col-sm-6
+                        input#name_referee2.form-control(type='text',name='name_referee2',placeholder="Name of Referee 2",onkeydown="return alphaOnly(event);",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='address_referee2') Adress of Referee 2*
+                    .col-sm-6
+                        input#address_referee2.form-control(type='text',name='address_referee2',placeholder=" Adress of Referee 2",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='phone_referee2') Phone 
+                    .col-sm-6
+                        input#phone_referee2.form-control(type='number',name='phone_referee2',placeholder="Phone",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='mobile_referee2') Mobile*
+                    .col-sm-6
+                        input#mobile_referee2.form-control(type='number',name='mobile_referee2',placeholder="Phone",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='email_referee2') Email*
+                    .col-sm-6
+                        input#email_referee2.form-control(type='email',name='email_referee2',placeholder="Email",required)
+            mixin referee(application3,i)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='name_referee1') Name of Referee 1*
+                    .col-sm-6
+                        input#name_referee1.form-control(type='text',name='name_referee1',value=`${application3.name_referee1}`,placeholder="Name of Referee 1",onkeydown="return alphaOnly(event);",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='address_referee1') Adress of Referee 1*
+                    .col-sm-6
+                        input#address_referee1.form-control(type='text',name='address_referee1',value=`${application3.address_referee1}`,placeholder=" Adress of Referee 1",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='phone_referee1') Phone 
+                    .col-sm-6
+                        input#phone_referee1.form-control(type='number',name='phone_referee1',value=`${application3.phone_referee1}`,placeholder="Phone",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='mobile_referee1') Mobile*
+                    .col-sm-6
+                        input#mobile_referee1.form-control(type='number',name='mobile_referee1',value=`${application3.mobile_referee1}`,placeholder="Phone",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='email_referee1') Email* 
+                    .col-sm-6
+                        input#email_referee1.form-control(type='email',name='email_referee1',value=`${application3.email_referee1}`,placeholder="Email",required)
+                
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='name_referee2') Name of Referee 2*
+                    .col-sm-6
+                        input#name_referee2.form-control(type='text',name='name_referee2',value=`${application3.name_referee2}`,placeholder="Name of Referee 2",onkeydown="return alphaOnly(event);",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='address_referee2') Adress of Referee 2*
+                    .col-sm-6
+                        input#address_referee2.form-control(type='text',name='address_referee2',value=`${application3.address_referee2}`,placeholder=" Adress of Referee 2",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='phone_referee2') Phone 
+                    .col-sm-6
+                        input#phone_referee2.form-control(type='number',name='phone_referee2',value=`${application3.phone_referee2}`,placeholder="Phone",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='mobile_referee2') Mobile*
+                    .col-sm-6
+                        input#mobile_referee2.form-control(type='number',name='mobile_referee2',value=`${application3.mobile_referee2}`,placeholder="Phone",required)
+                .form-group.row
+                    label.col-sm-4.col-form-label(for='email_referee2') Email*
+                    .col-sm-6
+                        input#email_referee2.form-control(type='email',name='email_referee2',value=`${application3.email_referee2}`,placeholder="Email",required)
+            if (!application3)
+                +referee_default
+            else 
+                +referee(application3)
             h4 9.
             h4 Additional  relevant information in support of candidature
             .form-group.row
                 .col-sm-12
-                    textarea#adi_info.form-control(type='text',name='adi_info',placeholder="Information")
+                    if (!application3)
+                        textarea#adi_info.form-control(type='text',name='adi_info',placeholder="Information")
+                    else 
+                        textarea#adi_info.form-control(type='text',name='adi_info',placeholder="Information")
+                            = application3.adi_info
+                    
             
             .form-group.row
                 .col-sm-10

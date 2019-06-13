@@ -33,19 +33,37 @@ html
                     .form-group.row
                         label.col-sm-6.col-form-label(for='car1') Have you ever been subject to any disciplinary action, as a student and/or as an employee, If so give full details. *
                         .col-sm-6
-                            input#car1.form-control(type='text',name='car1',placeholder="Comment",required)
+                            if (!application4)
+                                input#car1.form-control(type='text',name='car1',placeholder="Comment",required)
+                            else
+                                input#car1.form-control(type='text',name='car1',value=`${application4.car1}`,placeholder="Comment",required)
                     .form-group.row
                         label.col-sm-6.col-form-label(for='car2') Have you ever been dismissed/suspended from service/employment, if so please give full details *
                         .col-sm-6
-                            input#car2.form-control(type='text',name='car2',placeholder="Comment",required)
+                            if (!application4)
+                                input#car2.form-control(type='text',name='car2',placeholder="Comment",required)
+                            else
+                                input#car2.form-control(type='text',name='car2',value=`${application4.car2}`,placeholder="Comment",required)
+                            
                     .form-group.row
                         label.col-sm-6.col-form-label(for='car3') Were you involved in any criminal case, If yes, give full details (like Crime No, Police Station, Section under which crime was registered, acquittal or conviction/ date of order and Case No) *
                         .col-sm-6
-                            input#car3.form-control(type='text',name='car3',placeholder="Comment",required)
+                            if (!application4)
+                                input#car3.form-control(type='text',name='car3',placeholder="Comment",required)
+                            else
+                                input#car3.form-control(type='text',name='car3',value=`${application4.car3}`,placeholder="Comment",required)
+                            
+                            
                     .form-group.row
                         label.col-sm-6.col-form-label(for='car4') Is any criminal case pending against you in the court, If yes, give full details *
                         .col-sm-6
-                            input#car4.form-control(type='text',name='car4',placeholder="Comment",required)
+                            if (!application4)
+                                input#car4.form-control(type='text',name='car4',placeholder="Comment",required)
+                            else
+                                input#car4.form-control(type='text',name='car4',value=`${application4.car4}`,placeholder="Comment",required)
+                            
+                            
+                            
                     
                     h4 11 Details of Present Employment and  Employer’s endorsement
                     p Candidate may produce No Objection Certificate of their employer at the time of interview
@@ -53,24 +71,38 @@ html
                     .form-group.row
                         label.col-sm-5.col-form-label(for='presenet_emp_org') Name of Organization
                         .col-sm-5
-                            input#presenet_emp_org.form-control(type='text',name='presenet_emp_org',placeholder="Name of Organization")
+                            if (!application4)
+                                input#presenet_emp_org.form-control(type='text',name='presenet_emp_org',placeholder="Name of Organization")
+                            else
+                                input#presenet_emp_org.form-control(type='text',name='presenet_emp_org',value=`${application4.presenet_emp_org}`,placeholder="Name of Organization")
                     .form-group.row
                         label.col-sm-5.col-form-label(for='presenet_emp_designation') Designation
                         .col-sm-5
-                            input#presenet_emp_designation.form-control(type='text',name='presenet_emp_designation',placeholder="Designation")
+                            if (!application4)
+                                input#presenet_emp_designation.form-control(type='text',name='presenet_emp_designation',placeholder="Designation")
+                            else
+                                input#presenet_emp_designation.form-control(type='text',name='presenet_emp_designation',value=`${application4.presenet_emp_designation}`,placeholder="Designation")
                     .form-group.row
                         label.col-sm-5.col-form-label(for='presenet_emp_doa') Date of Appointment
                         .col-sm-5
-                            input#presenet_emp_doa.form-control(type='date',name='presenet_emp_doa',placeholder="")
+                            .col-sm-5
+                            if (!application4)
+                                input#presenet_emp_doa.form-control(type='date',name='presenet_emp_doa',placeholder="")
+                            else
+                                input#presenet_emp_doa.form-control(type='date',name='presenet_emp_doa',value=`${application4.presenet_emp_doa}`,placeholder="")
+                            
                     .form-group.row
                         label.col-sm-5.col-form-label(for='presenet_emp_regular') Whether   Regular Permanent/ Temporary
                         .col-sm-5
                             .form-check.form-check-inline
-                                input#presenet_emp_regular_r.form-check-input(type="radio", name="presenet_emp_regular", value="R")
+                                input#presenet_emp_regular_R.form-check-input(type="radio", name="presenet_emp_regular", value="R")
                                 label.form-check-label(for="presenet_emp_regular_r") Regular
                             .form-check.form-check-inline
-                                input#presenet_emp_regular_t.form-check-input(type="radio", name="presenet_emp_regular", value="T")
+                                input#presenet_emp_regular_T.form-check-input(type="radio", name="presenet_emp_regular", value="T")
                                 label.form-check-label(for="presenet_emp_regular_t") Temporary
+                    if(application4)
+                        script.
+                            document.getElementById('presenet_emp_regular_#{application4.presenet_emp_regular}').checked = true;
                     //- .form-group.row
                     //-     label.col-sm-5.col-form-label(for='presenet_emp_payband') Pay-band
                     //-     .col-sm-5
@@ -82,11 +114,21 @@ html
                     .form-group.row
                         label.col-sm-5.col-form-label(for='presenet_emp_agp') AGP
                         .col-sm-5
-                            input#presenet_emp_agp.form-control(type='text',name='presenet_emp_agp',placeholder="AGP")
+                            if (!application4)
+                                input#presenet_emp_agp.form-control(type='text',name='presenet_emp_agp',placeholder="AGP")
+                            else
+                                input#presenet_emp_agp.form-control(type='text',name='presenet_emp_agp',value=`${application4.presenet_emp_agp}`,placeholder="AGP")
+                            
+                            
                     .form-group.row
                         label.col-sm-5.col-form-label(for='presenet_emp_basic') Basic
                         .col-sm-5
-                            input#presenet_emp_basic.form-control(type='text',name='presenet_emp_basic',placeholder="Basic")
+                            if (!application4)
+                                input#presenet_emp_basic.form-control(type='text',name='presenet_emp_basic',placeholder="Basic")
+                            else
+                                input#presenet_emp_basic.form-control(type='text',name='presenet_emp_basic',value=`${application4.presenet_emp_basic}`,placeholder="Basic")
+                            
+                            
                     
                     
                     
@@ -105,11 +147,21 @@ html
                     .form-group.row
                         label.col-sm-5.col-form-label(for='expectated_basic') Basic (Expectation)
                         .col-sm-5
-                            input#expectated_basic.form-control(type='number',name='expectated_basic',placeholder="Basic (Expectation)")
+                            if (!application4)
+                                input#expectated_basic.form-control(type='number',name='expectated_basic',placeholder="Basic (Expectation)")
+                            else
+                                input#expectated_basic.form-control(type='number',name='expectated_basic',value=`${application4.expectated_basic}`,placeholder="Basic (Expectation)")
+                            
+                            
                     .form-group.row
                         label.col-sm-5.col-form-label(for='justification') Justification
                         .col-sm-5
-                            input#justification.form-control(type='text',name='justification',placeholder="Justification")
+                            if (!application4)
+                                input#justification.form-control(type='text',name='justification',placeholder="Justification")
+                            else
+                                input#justification.form-control(type='text',name='justification',value=`${application4.justification}`,placeholder="Justification")
+                            
+                            
                     
                     h5 Declaration
                     p I hereby declare that I have read carefully and understood the instructions and particulars supplied to me, and that all entries in this form, as well as, in attached sheets are true to the best of my knowledge and belief. At any stage if any of the information furnished by me is found to be false or incorrect, my candidature will be treated as cancelled. If selected, I promise to abide by the rules and regulations of the Institute.

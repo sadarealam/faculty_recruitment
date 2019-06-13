@@ -115,9 +115,9 @@ module.exports = function (app) {
     Application2.findOne(query, req.body,function(err, application2){
       if (err) {
         console.log(err);
-        res.render('application2', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application:application2});
+        res.render('application2', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application2:application2});
       }
-      else  res.render('application2',{user: user,no:no,action:action,application:application2})
+      else  res.render('application2',{user: user,no:no,action:action,application2:application2})
     });
     
   });
@@ -132,7 +132,7 @@ module.exports = function (app) {
     Application2.findOneAndUpdate(query, req.body, {upsert:true}, function(err, application2){
       if (err) {
         console.log(err);
-        res.render('application2', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application:application2});
+        res.render('application2', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application2:application2});
       }
       else res.redirect('/application3?no='+no+'&action='+action);  
     });
@@ -148,9 +148,9 @@ module.exports = function (app) {
     Application3.findOne(query, req.body,function(err, application3){
       if (err) {
         console.log(err);
-        res.render('application3', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application:application3});
+        res.render('application3', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application3:application3});
       }
-      else  res.render('application3',{user: user,no:no,action:action,application:application3})
+      else  res.render('application3',{user: user,no:no,action:action,application3:application3})
     });
   });
 
@@ -164,7 +164,7 @@ module.exports = function (app) {
     Application3.findOneAndUpdate(query, req.body, {upsert:true}, function(err, application3){
       if (err) {
         console.log(err);
-        res.render('application3', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application:application3});
+        res.render('application3', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application3:application3});
       }
       else res.redirect('/application4?no='+no+'&action='+action);
     });
@@ -180,9 +180,9 @@ module.exports = function (app) {
     Application4.findOne(query, req.body,function(err, application4){
       if (err) {
         console.log(err);
-        res.render('application4', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application:application4});
+        res.render('application4', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application4:application4});
       }
-      else  res.render('application4',{user: user,no:no,action:action,application:application4})
+      else  res.render('application4',{user: user,no:no,action:action,application4:application4})
     });
   });
 
@@ -196,7 +196,7 @@ module.exports = function (app) {
     Application4.findOneAndUpdate(query, req.body, {upsert:true}, function(err, application4){
       if (err) {
         console.log(err);
-        res.render('application4', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application:application4});
+        res.render('application4', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application4:application4});
       }
       else res.redirect('/credit?no='+no+'&action='+action);  
     });

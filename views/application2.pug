@@ -34,81 +34,167 @@ html
                         label.col-sm-1.col-form-label %  of Marks /Grade
                         label.col-sm-2.col-form-label Division
                         label.col-sm-2.col-form-label Year of passing
-                    .form-group.row
-                        .col-sm-1
-                            input#degree.form-control(type='text',name='degree',placeholder="Degree",required)
-                        .col-sm-3
-                            input#subject.form-control(type='text',name='subject',placeholder="Subject",required)
-                        .col-sm-3
-                            input#university.form-control(type='text',name='university',placeholder="University",required)
-                        .col-sm-1
-                            input#grade.form-control(type='text',name='grade',placeholder="%",required)
-                        .col-sm-2
-                            input#divison.form-control(type='text',name='divison',placeholder="Divison",required)
-                        .col-sm-2
-                            input#yop.form-control(type='text',name='yop',placeholder="Year",required)
+                    mixin teaching_default
+                        .form-group.row
+                            .col-sm-1
+                                input#degree.form-control(type='text',name='degree',placeholder="Degree",required)
+                            .col-sm-3
+                                input#subject.form-control(type='text',name='subject',placeholder="Subject",required)
+                            .col-sm-3
+                                input#university.form-control(type='text',name='university',placeholder="University",required)
+                            .col-sm-1
+                                input#grade.form-control(type='text',name='grade',placeholder="%",required)
+                            .col-sm-2
+                                input#divison.form-control(type='text',name='divison',placeholder="Divison",required)
+                            .col-sm-2
+                                input#yop.form-control(type='text',name='yop',placeholder="Year",required)
+                    mixin teaching(application2)
+                        .form-group.row
+                            .col-sm-1
+                                input#degree.form-control(type='text',name='degree',value=`${application2.degree}`,placeholder="Degree",required)
+                            .col-sm-3
+                                input#subject.form-control(type='text',name='subject',value=`${application2.subject}`,placeholder="Subject",required)
+                            .col-sm-3
+                                input#university.form-control(type='text',name='university',value=`${application2.university}`,placeholder="University",required)
+                            .col-sm-1
+                                input#grade.form-control(type='text',name='grade',value=`${application2.grade}`,placeholder="%",required)
+                            .col-sm-2
+                                input#divison.form-control(type='text',name='divison',value=`${application2.divison}`,placeholder="Divison",required)
+                            .col-sm-2
+                                input#yop.form-control(type='text',name='yop',value=`${application2.yop}`,placeholder="Year",required)
+                        
+                    if (!application2)
+                        +teaching_default
+                    else if(application2.degree.length==0)
+                        +teaching_default
+
+                    if (application2 && application2.degree.length>0)
+                        - for(var i=0;i<application2.degree.length;i++)
+                            +teaching(application2,i)
                     div#education               
                     button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#education",education_row)') +
                    
                     h4 3.
                     h4 Details of PhD.
-
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='dor_phd') Date of Registration 
-                        .col-sm-6
-                            input#dor_phd.form-control(type='date',name='dor_phd',placeholder="Date of Registration PhD")
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='wftpt') Whether Full time or Part time
-                        .col-sm-6
-                            .form-check.form-check-inline
-                                input#wftpt_ft.form-check-input(type="radio", name="wftpt", value="F")
-                                label.form-check-label(for="wftpt_ft") Full Time
-                            .form-check.form-check-inline
-                                input#wftpt_pt.form-check-input(type="radio", name="wftpt", value="P")
-                                label.form-check-label(for="wftpt_pt") Part Time
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='phd_department') Discipline/ Department
-                        .col-sm-6
-                            input#phd_department.form-control(type='text',name='phd_department' ,placeholder="Department")
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='phd_university') University/ Institution 
-                        .col-sm-6
-                            input#phd_university.form-control(type='text',name='phd_university',placeholder="University")
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='phd_thesis_date') Date of  thesis submission
-                        .col-sm-6
-                            input#phd_thesis_date.form-control(type='date',name='phd_thesis_date')
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='phd_award_date') Date of Award
-                        .col-sm-6
-                            input#phd_award_date.form-control(type='date',name='phd_award_date')
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='phd_title') Title of Thesis
-                        .col-sm-6
-                            input#phd_title.form-control(type='text',name='phd_title' ,placeholder="Title of Thesis")
-                    
+                    mixin phd_default
+                        .form-group.row
+                            label.col-sm-4.col-form-label(for='dor_phd') Date of Registration 
+                            .col-sm-6
+                                input#dor_phd.form-control(type='date',name='dor_phd',placeholder="Date of Registration PhD")
+                        .form-group.row
+                            label.col-sm-4.col-form-label(for='wftpt') Whether Full time or Part time
+                            .col-sm-6
+                                .form-check.form-check-inline
+                                    input#wftpt_ft.form-check-input(type="radio", name="wftpt", value="F")
+                                    label.form-check-label(for="wftpt_ft") Full Time
+                                .form-check.form-check-inline
+                                    input#wftpt_pt.form-check-input(type="radio", name="wftpt", value="P")
+                                    label.form-check-label(for="wftpt_pt") Part Time
+                        .form-group.row
+                            label.col-sm-4.col-form-label(for='phd_department') Discipline/ Department
+                            .col-sm-6
+                                input#phd_department.form-control(type='text',name='phd_department' ,placeholder="Department")
+                        .form-group.row
+                            label.col-sm-4.col-form-label(for='phd_university') University/ Institution 
+                            .col-sm-6
+                                input#phd_university.form-control(type='text',name='phd_university',placeholder="University")
+                        .form-group.row
+                            label.col-sm-4.col-form-label(for='phd_thesis_date') Date of  thesis submission
+                            .col-sm-6
+                                input#phd_thesis_date.form-control(type='date',name='phd_thesis_date')
+                        .form-group.row
+                            label.col-sm-4.col-form-label(for='phd_award_date') Date of Award
+                            .col-sm-6
+                                input#phd_award_date.form-control(type='date',name='phd_award_date')
+                        .form-group.row
+                            label.col-sm-4.col-form-label(for='phd_title') Title of Thesis
+                            .col-sm-6
+                                input#phd_title.form-control(type='text',name='phd_title' ,placeholder="Title of Thesis")
+                    mixin phd(application2)
+                        .form-group.row
+                            label.col-sm-4.col-form-label(for='dor_phd') Date of Registration 
+                            .col-sm-6
+                                input#dor_phd.form-control(type='date',name='dor_phd',value=`${application2.dor_phd}`,placeholder="Date of Registration PhD")
+                        .form-group.row
+                            label.col-sm-4.col-form-label(for='wftpt') Whether Full time or Part time
+                            .col-sm-6
+                                .form-check.form-check-inline
+                                    input#wftpt_F.form-check-input(type="radio", name="wftpt", value="F")
+                                    label.form-check-label(for="wftpt_ft") Full Time
+                                .form-check.form-check-inline
+                                    input#wftpt_P.form-check-input(type="radio", name="wftpt", value="P")
+                                    label.form-check-label(for="wftpt_pt") Part Time
+                        .form-group.row
+                            label.col-sm-4.col-form-label(for='phd_department') Discipline/ Department
+                            .col-sm-6
+                                input#phd_department.form-control(type='text',name='phd_department',value=`${application2.phd_department}` ,placeholder="Department")
+                        .form-group.row
+                            label.col-sm-4.col-form-label(for='phd_university') University/ Institution 
+                            .col-sm-6
+                                input#phd_university.form-control(type='text',name='phd_university',value=`${application2.phd_university}`,placeholder="University")
+                        .form-group.row
+                            label.col-sm-4.col-form-label(for='phd_thesis_date') Date of  thesis submission
+                            .col-sm-6
+                                input#phd_thesis_date.form-control(type='date',name='phd_thesis_date',value=`${application2.phd_thesis_date}`)
+                        .form-group.row
+                            label.col-sm-4.col-form-label(for='phd_award_date') Date of Award
+                            .col-sm-6
+                                input#phd_award_date.form-control(type='date',name='phd_award_date',value=`${application2.phd_award_date}`)
+                        .form-group.row
+                            label.col-sm-4.col-form-label(for='phd_title') Title of Thesis
+                            .col-sm-6
+                                input#phd_title.form-control(type='text',name='phd_title',value=`${application2.phd_title}` ,placeholder="Title of Thesis")
+                        script.
+                            document.getElementById('wftpt_#{application2.wftpt}').checked = true;
+                    if (!application2)
+                        +phd_default
+                    else
+                        +phd(application2)
                     
                     
                     h4 4.
                     h4 Details of PDF(Post Doctoral Fellowship).
+                    
                     .form-group.row
                         label.col-sm-4.col-form-label(for='pdf_area') Area of Research
                         .col-sm-6
-                            input#pdf_area.form-control(type='text',name='pdf_area' ,placeholder="Area of Research")
+                            if (!application2)
+                                input#pdf_area.form-control(type='text',name='pdf_area' ,placeholder="Area of Research")
+                            else
+                                input#pdf_area.form-control(type='text',name='pdf_area',value=`${application2.pdf_area}` ,placeholder="Area of Research")
+                            
                     .form-group.row                       
                         label.col-sm-5.col-form-label University/ Institution
                         label.col-sm-3.col-form-label Duration (From)     
                         label.col-sm-2.col-form-label Duration (sTo)                      
-                    
-                    .form-group.row                        
-                        .col-sm-5
-                            input#pdf_university.form-control(type='text',name='pdf_university',placeholder="University") 
-                        .col-sm-5
-                            .row
-                                .col-sm-6
-                                    input#pdf_duration_from.form-control(type="date",name='pdf_duration_from')  
-                                .col-sm-6 
-                                    input#pdf_duration_to.form-control(type="date",name='pdf_duration_to')     
+                    mixin pdf_default
+                        .form-group.row                        
+                            .col-sm-5
+                                input#pdf_university.form-control(type='text',name='pdf_university',placeholder="University") 
+                            .col-sm-5
+                                .row
+                                    .col-sm-6
+                                        input#pdf_duration_from.form-control(type="date",name='pdf_duration_from')  
+                                    .col-sm-6 
+                                        input#pdf_duration_to.form-control(type="date",name='pdf_duration_to')    
+                    mixin pdf(application2)
+                        .form-group.row                        
+                            .col-sm-5
+                                input#pdf_university.form-control(type='text',name='pdf_university',value=`${application2.pdf_university}`,placeholder="University") 
+                            .col-sm-5
+                                .row
+                                    .col-sm-6
+                                        input#pdf_duration_from.form-control(type="date",name='pdf_duration_from',value=`${application2.pdf_duration_from}`)  
+                                    .col-sm-6 
+                                        input#pdf_duration_to.form-control(type="date",name='pdf_duration_to',value=`${application2.pdf_duration_to}`)  
+                    if (!application2)
+                        +pdf_default
+                    else if(application2.pdf_university.length==0)
+                        +pdf_default
+
+                    if (application2 && application2.pdf_university.length>0)
+                        - for(var i=0;i<application2.pdf_university.length;i++)
+                            +pdf(application2,i)
                     div#pdf               
                     button.btn.btn-primary(type="button",style="margin-bottom:25px" onclick='add_row("#pdf",pdf_row)') +
                        
@@ -116,49 +202,100 @@ html
                     
                     h4 5.
                     h4 UGC-NET/SLET
-                    .form-group.row
-                        label.col-sm-4.col-form-label(for='ugc_qualified') Whether  qualified  UGC- NET/ SLET   ( All India Level)*
-                        .col-sm-6
-                            .form-check.form-check-inline
-                                input#ugc_T.form-check-input(type="radio", name="ugc", value="T")
-                                label.form-check-label(for="ugc_T") Yes
-                            .form-check.form-check-inline
-                                input#ugc_F.form-check-input(type="radio", name="ugc", value="F")
-                                label.form-check-label(for="ugc_F") No
-                    div#net(style="display: none")
+                    mixin ugc_default
                         .form-group.row
-                            label.col-sm-5.col-form-label   
-                                b   UGC-SLET
-                            label.col-sm-5.col-form-label   
-                                b   UGC-NET
+                            label.col-sm-4.col-form-label(for='ugc_qualified') Whether  qualified  UGC- NET/ SLET   ( All India Level)*
+                            .col-sm-6
+                                .form-check.form-check-inline
+                                    input#ugc_T.form-check-input(type="radio", name="ugc", value="T")
+                                    label.form-check-label(for="ugc_T") Yes
+                                .form-check.form-check-inline
+                                    input#ugc_F.form-check-input(type="radio", name="ugc", value="F")
+                                    label.form-check-label(for="ugc_F") No
+                        div#net(style="display: none")
+                            .form-group.row
+                                label.col-sm-5.col-form-label   
+                                    b   UGC-SLET
+                                label.col-sm-5.col-form-label   
+                                    b   UGC-NET
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='subject_slet') Subject
+                                .col-sm-3
+                                    input#subject_slet.form-control(type='text',name='subject_slet' ,placeholder="Subject")
+                                label.col-sm-2.col-form-label(for='subject_net') Subject
+                                .col-sm-3
+                                    input#subject_net.form-control(type='text',name='subject_net' ,placeholder="Subject")
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='registration_slet') Registration No.
+                                .col-sm-3
+                                    input#registration_slet.form-control(type='text',name='registration_slet' ,placeholder="")
+                                label.col-sm-2.col-form-label(for='registration_net') Registration No.
+                                .col-sm-3
+                                    input#registration_net.form-control(type='text',name='registration_net' ,placeholder="")
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='roll_slet') Roll Number
+                                .col-sm-3
+                                    input#roll_slet.form-control(type='number',name='roll_slet' ,placeholder="")
+                                label.col-sm-2.col-form-label(for='roll_net') Roll Number
+                                .col-sm-3
+                                    input#roll_net.form-control(type='number',name='roll_net' ,placeholder="")
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='yop_slet') Year of Passing
+                                .col-sm-3
+                                    input#yop_slet.form-control(type='number',name='yop_slet' ,placeholder="")
+                                label.col-sm-2.col-form-label(for='yop_net') Year of Passing
+                                .col-sm-3
+                                    input#yop_net.form-control(type='number',name='yop_net' ,placeholder="")
+                    mixin ugc(application2)
                         .form-group.row
-                            label.col-sm-2.col-form-label(for='subject_slet') Subject
-                            .col-sm-3
-                                input#subject_slet.form-control(type='text',name='subject_slet' ,placeholder="Subject")
-                            label.col-sm-2.col-form-label(for='subject_net') Subject
-                            .col-sm-3
-                                input#subject_net.form-control(type='text',name='subject_net' ,placeholder="Subject")
-                        .form-group.row
-                            label.col-sm-2.col-form-label(for='registration_slet') Registration No.
-                            .col-sm-3
-                                input#registration_slet.form-control(type='text',name='registration_slet' ,placeholder="")
-                            label.col-sm-2.col-form-label(for='registration_net') Registration No.
-                            .col-sm-3
-                                input#registration_net.form-control(type='text',name='registration_net' ,placeholder="")
-                        .form-group.row
-                            label.col-sm-2.col-form-label(for='roll_slet') Roll Number
-                            .col-sm-3
-                                input#roll_slet.form-control(type='number',name='roll_slet' ,placeholder="")
-                            label.col-sm-2.col-form-label(for='roll_net') Roll Number
-                            .col-sm-3
-                                input#roll_net.form-control(type='number',name='roll_net' ,placeholder="")
-                        .form-group.row
-                            label.col-sm-2.col-form-label(for='yop_slet') Year of Passing
-                            .col-sm-3
-                                input#yop_slet.form-control(type='number',name='yop_slet' ,placeholder="")
-                            label.col-sm-2.col-form-label(for='yop_net') Year of Passing
-                            .col-sm-3
-                                input#yop_net.form-control(type='number',name='yop_net' ,placeholder="")
+                            label.col-sm-4.col-form-label(for='ugc_qualified') Whether  qualified  UGC- NET/ SLET   ( All India Level)*
+                            .col-sm-6
+                                .form-check.form-check-inline
+                                    input#ugc_T.form-check-input(type="radio", name="ugc", value="T")
+                                    label.form-check-label(for="ugc_T") Yes
+                                .form-check.form-check-inline
+                                    input#ugc_F.form-check-input(type="radio", name="ugc", value="F")
+                                    label.form-check-label(for="ugc_F") No
+                        div#net(style="display: none")
+                            .form-group.row
+                                label.col-sm-5.col-form-label   
+                                    b   UGC-SLET
+                                label.col-sm-5.col-form-label   
+                                    b   UGC-NET
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='subject_slet') Subject
+                                .col-sm-3
+                                    input#subject_slet.form-control(type='text',name='subject_slet' ,value=`${application2.subject_slet}`,placeholder="Subject")
+                                label.col-sm-2.col-form-label(for='subject_net') Subject
+                                .col-sm-3
+                                    input#subject_net.form-control(type='text',name='subject_net',value=`${application2.subject_net}` ,placeholder="Subject")
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='registration_slet') Registration No.
+                                .col-sm-3
+                                    input#registration_slet.form-control(type='text',name='registration_slet',value=`${application2.registration_slet}` ,placeholder="")
+                                label.col-sm-2.col-form-label(for='registration_net') Registration No.
+                                .col-sm-3
+                                    input#registration_net.form-control(type='text',name='registration_net',value=`${application2.registration_net}` ,placeholder="")
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='roll_slet') Roll Number
+                                .col-sm-3
+                                    input#roll_slet.form-control(type='number',name='roll_slet',value=`${application2.roll_slet}` ,placeholder="")
+                                label.col-sm-2.col-form-label(for='roll_net') Roll Number
+                                .col-sm-3
+                                    input#roll_net.form-control(type='number',name='roll_net',value=`${application2.roll_net}` ,placeholder="")
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='yop_slet') Year of Passing
+                                .col-sm-3
+                                    input#yop_slet.form-control(type='number',name='yop_slet' ,value=`${application2.yop_slet}`,placeholder="")
+                                label.col-sm-2.col-form-label(for='yop_net') Year of Passing
+                                .col-sm-3
+                                    input#yop_net.form-control(type='number',name='yop_net',value=`${application2.yop_net}`,placeholder="")
+                        script.
+                            document.getElementById('ugc_#{application2.ugc}').checked = true;
+                    if (!application2)
+                        +ugc_default
+                    else 
+                        +ugc(application2)
                     .form-group.row
                         .col-sm-10
                         .col-sm-2
