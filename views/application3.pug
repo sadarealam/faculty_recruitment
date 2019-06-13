@@ -11,7 +11,7 @@ html
                     div(align='center',style='color:#fdfbfb;bgcolor:#00a2d1 !important')
                         h3    Application id : #{no}
                 .col-6                  
-                    form.form-inline(role='form', action=`/credit`,method="POST", style="margin-left:5px")
+                    form.form-inline(role='form', action=`/credit`,method="GET", style="margin-left:5px")
                         if (no)
                             input(type="hidden",name="no",value=`${no}`) 
                         button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part-A
@@ -56,13 +56,19 @@ html
                             input#teaching_experience_month.form-control(type='text',name='teaching_experience_month',placeholder="Month",required)
                 .col-sm-1
                     input#teaching_pb.form-control(type='text',name='teaching_pb',placeholder="",required)
-                .col-sm-1
-                    .form-check.form-check-inline
-                        input#teaching_regular_R.form-check-input(type="radio", name="teaching_rp", value="R")
-                        label.form-check-label(for="teaching_regular_R") Regular
-                    .form-check.form-check-inline
-                        input#teaching_regular_P.form-check-input(type="radio", name="teaching_rp", value="P")
-                        label.form-check-label(for="teaching_regular_P") Temporary
+                //- .col-sm-1
+                //-     .form-check.form-check-inline
+                //-         input#teaching_regular_R.form-check-input(type="radio", name="teaching_rp", value="R")
+                //-         label.form-check-label(for="teaching_regular_R") Regular
+                //-     .form-check.form-check-inline
+                //-         input#teaching_regular_P.form-check-input(type="radio", name="teaching_rp", value="P")
+                //-         label.form-check-label(for="teaching_regular_P") Temporary
+                .col-sm-1                   
+                    select#teaching_rp.form-control(name='teaching_rp')
+                        option(value='') Select
+                        option(value='R') Regular
+                        option(value='T') Temporary
+
                 .col-sm-1
                     input#teaching_gross.form-control(type='text',name='teaching_gross',placeholder="",required)
                 .col-sm-1
@@ -156,7 +162,7 @@ html
                 .col-sm-2
                     button.btn.btn-primary(type='submit') Save & Continue
 script.
-    var teaching_row = '<div class="form-group row"><div class="col-sm-2"><input class="form-control" id="teaching_university" type="text" name="teaching_university" placeholder="University" required=""></div><div class="col-sm-1"><input class="form-control" id="teching_post" type="text" name="teching_post" placeholder="Post" required=""></div><div class="col-sm-3"><div class="row"><div class="col-sm-6"><input class="form-control" id="teching_duration_from" type="date" name="teching_duration_from" onchange="setTeachingExp(this)" required=""></div><div class="col-sm-6">                   <input class="form-control" id="teching_duration_to" type="date" name="teching_duration_to" onchange="setTeachingExp(this)" required=""></div></div></div><div class="col-sm-2">    <div class="row"><div class="col-sm-5"><input class="form-control" id="teaching_experience_year" type="text" name="teaching_experience_year" placeholder="Year" required=""></div><div class="col-sm-5"><input class="form-control" id="teaching_experience_month" type="text" name="teaching_experience_month" placeholder="Month" required=""></div></div></div><div class="col-sm-1"><input class="form-control" id="teaching_pb" type="text" name="teaching_pb" placeholder="" required=""></div><div class="col-sm-1"><div class="form-check form-check-inline"><input class="form-check-input" id="teaching_regular_R" type="radio" name="teaching_rp" value="R"><label class="form-check-label" for="teaching_regular_R">Regular</label></div><div class="form-check form-check-inline"><input class="form-check-input" id="teaching_regular_P" type="radio" name="teaching_rp" value="P"><label class="form-check-label" for="teaching_regular_P">Temporary</label></div></div><div class="col-sm-1"><input class="form-control" id="teaching_gross" type="text" name="teaching_gross" placeholder="" required=""></div><div class="col-sm-1"><input class="form-control" id="teaching_nirf" type="text" name="teaching_nirf" placeholder="" required=""></div></div>';
+    var teaching_row = '<div class="form-group row"><div class="col-sm-2"><input class="form-control" id="teaching_university" type="text" name="teaching_university" placeholder="University" required=""></div><div class="col-sm-1"><input class="form-control" id="teching_post" type="text" name="teching_post" placeholder="Post" required=""></div><div class="col-sm-3"><div class="row"><div class="col-sm-6"><input class="form-control" id="teching_duration_from" type="date" name="teching_duration_from" onchange="setTeachingExp(this)" required=""></div><div class="col-sm-6">                   <input class="form-control" id="teching_duration_to" type="date" name="teching_duration_to" onchange="setTeachingExp(this)" required=""></div></div></div><div class="col-sm-2">    <div class="row"><div class="col-sm-5"><input class="form-control" id="teaching_experience_year" type="text" name="teaching_experience_year" placeholder="Year" required=""></div><div class="col-sm-5"><input class="form-control" id="teaching_experience_month" type="text" name="teaching_experience_month" placeholder="Month" required=""></div></div></div><div class="col-sm-1"><input class="form-control" id="teaching_pb" type="text" name="teaching_pb" placeholder="" required=""></div><div class="col-sm-1">                  <select class="form-control" id="teaching_rp" name="teaching_rp"><option value="">Select</option><option value="R">Regular</option><option value="T">Temporary</option></select></div><div class="col-sm-1"><input class="form-control" id="teaching_gross" type="text" name="teaching_gross" placeholder="" required=""></div><div class="col-sm-1"><input class="form-control" id="teaching_nirf" type="text" name="teaching_nirf" placeholder="" required=""></div></div>';
     var industry_row = '<div class="form-group row"><div class="col-sm-3"><input class="form-control" id="industry_org" type="text" name="industry_org" placeholder="Organization"></div><div class="col-sm-3"><input class="form-control" id="industry_post" type="text" name="industry_post" placeholder="Post"></div><div class="col-sm-3"><div class="row"><div class="col-sm-6"><input class="form-control" id="industry_duration_from" type="date" name="industry_duration_from" onchange="setIndustryExp(this)" placeholder=""></div><div class="col-sm-6">                       <input class="form-control" id="industry_duration_to" type="date" name="industry_duration_to" onchange="setIndustryExp(this)" placeholder=""></div></div></div><div class="col-sm-3"><div class="row"><div class="col-sm-6"><input class="form-control" id="industry_exp_year" type="text" name="industry_exp_year" placeholder="Year"></div><div class="col-sm-6">                       <input class="form-control" id="industry_exp_month" type="text" name="industry_exp_month" placeholder="Month"></div></div></div></div>';
     function add_row(id,row){
         $(id).append(row);

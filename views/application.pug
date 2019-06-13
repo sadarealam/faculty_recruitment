@@ -11,7 +11,7 @@ html
                 div(align='center',style='color:#fdfbfb;bgcolor:#00a2d1 !important')
                     h3    Application id : #{no}
             .col-6
-                form.form-inline(role='form', action=`/credit`,method="POST", style="margin-left:5px")
+                form.form-inline(role='form', action=`/credit`,method="GET", style="margin-left:5px")
                     if (no)
                         input(type="hidden",name="no",value=`${no}`)                    
                     button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part-A  
@@ -118,19 +118,19 @@ html
                     form-group.row
                         label.col-sm-4.col-form-label(for='phone_office') Phone No (Office)
                         .col-sm-6
-                            input#phone_office.form-control(type='text',name='phone_office' ,placeholder="Phone No (Office)")
+                            input#phone_office.form-control(type='number',name='phone_office' ,placeholder="Phone No (Office)")
                     .form-group.row
                         label.col-sm-4.col-form-label(for='phone_residence') Phone No (Residence)
                         .col-sm-6
-                            input#phone_residence.form-control(type='text',name='phone_residence' ,placeholder="Phone No (Residence)")  
+                            input#phone_residence.form-control(type='number',name='phone_residence' ,placeholder="Phone No (Residence)")  
                     form-group.row
                         label.col-sm-4.col-form-label(for='mobile1') Mobile 1*
                         .col-sm-6
-                            input#mobile1.form-control(type='text',name='mobile1' ,placeholder="Mobile 1")
+                            input#mobile1.form-control(type='number',name='mobile1' ,placeholder="Mobile 1")
                     .form-group.row
                         label.col-sm-4.col-form-label(for='mobile2') Mobile 2
                         .col-sm-6
-                            input#mobile2.form-control(type='text',name='mobile2' ,placeholder="Mobile 2")    
+                            input#mobile2.form-control(type='number',name='mobile2' ,placeholder="Mobile 2")    
                     .form-group.row
                         label.col-sm-4.col-form-label(for='email') Email*
                         .col-sm-6

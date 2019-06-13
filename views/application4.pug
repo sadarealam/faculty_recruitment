@@ -11,9 +11,9 @@ html
                 div(align='center',style='color:#fdfbfb;bgcolor:#00a2d1 !important')
                     h3    Application id : #{no}
             .col-6                    
-                form.form-inline(role='form', action=`/credit`,method="POST", style="margin-left:5px")
+                form.form-inline(role='form', action=`/credit`,method="GET", style="margin-left:5px")
                     if (no)
-                        input(type="hidden",name="no",value=`${no}`) 
+                        input(type="hidden",name="no",value=`${no}`)
                     button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part-A
                     button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part-B
         .containr(style="margin-top:45px")
@@ -105,7 +105,7 @@ html
                     .form-group.row
                         label.col-sm-5.col-form-label(for='expectated_basic') Basic (Expectation)
                         .col-sm-5
-                            input#expectated_basic.form-control(type='text',name='expectated_basic',placeholder="Basic (Expectation)")
+                            input#expectated_basic.form-control(type='number',name='expectated_basic',placeholder="Basic (Expectation)")
                     .form-group.row
                         label.col-sm-5.col-form-label(for='justification') Justification
                         .col-sm-5

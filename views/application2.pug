@@ -11,7 +11,7 @@ html
                 div(align='center',style='color:#fdfbfb;bgcolor:#00a2d1 !important')
                     h3    Application id : #{no}
             .col-6                   
-                form.form-inline(role='form', action=`/credit`,method="POST", style="margin-left:5px")
+                form.form-inline(role='form', action=`/credit`,method="GET", style="margin-left:5px")
                     if (no)
                         input(type="hidden",name="no",value=`${no}`) 
                     button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part-A  
@@ -148,17 +148,17 @@ html
                         .form-group.row
                             label.col-sm-2.col-form-label(for='roll_slet') Roll Number
                             .col-sm-3
-                                input#roll_slet.form-control(type='text',name='roll_slet' ,placeholder="")
+                                input#roll_slet.form-control(type='number',name='roll_slet' ,placeholder="")
                             label.col-sm-2.col-form-label(for='roll_net') Roll Number
                             .col-sm-3
-                                input#roll_net.form-control(type='text',name='roll_net' ,placeholder="")
+                                input#roll_net.form-control(type='number',name='roll_net' ,placeholder="")
                         .form-group.row
                             label.col-sm-2.col-form-label(for='yop_slet') Year of Passing
                             .col-sm-3
-                                input#yop_slet.form-control(type='text',name='yop_slet' ,placeholder="")
+                                input#yop_slet.form-control(type='number',name='yop_slet' ,placeholder="")
                             label.col-sm-2.col-form-label(for='yop_net') Year of Passing
                             .col-sm-3
-                                input#yop_net.form-control(type='text',name='yop_net' ,placeholder="")
+                                input#yop_net.form-control(type='number',name='yop_net' ,placeholder="")
                     .form-group.row
                         .col-sm-10
                         .col-sm-2
@@ -178,6 +178,7 @@ script.
         
         });
     });
+    
 
                     
                     

@@ -1,6 +1,10 @@
 var passport = require('passport');
 var Account = require('./models/account');
 var Application = require('./models/application');
+var Application1 = require('./models/application1');
+var Application2 = require('./models/application2');
+var Application3 = require('./models/application3');
+var Application4 = require('./models/application4');
 var Credit = require('./models/credit');
 var Const = require('./const');
 
@@ -59,11 +63,11 @@ module.exports = function (app) {
     })
   });
 
-  app.get('/application', isLoggedIn, function(req, res){
-    var action = req.query.action;
-    var no = req.query.no;
+  app.post('/application', isLoggedIn, function(req, res){
+    var action = req.body.action;
+    var no = req.body.no;
     var user = req.user;
-    res.render('application',{user: user,no:no,action:action})
+    res.redirect('/application1?no='+no)
   });
 
   //this is danegorous. remove it
@@ -71,17 +75,34 @@ module.exports = function (app) {
     var action = req.query.action;
     var no = req.query.no;
     var user = req.user;
-    if (!no) res.redirect('my');
-    if (no)  res.render('application2',{user: user,no:no,action:action})
+    console.log(req.body);
+    if (!no) res.redirect('/my');
+    var query = {'username': user.username, 'no':no};  
+    Application1.findOne(query, req.body,function(err, application1){
+      if (err) {
+        console.log(err);
+        res.render('application', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application:application1});
+      }
+      else  res.render('application',{user: user,no:no,action:action,application:application1})
+    });
+    
   });
 
   app.post('/application1', isLoggedIn, function(req, res){
     var action = req.body.action;
     var no = req.body.no;
-    var user = req.user;
-    //console.log(req.body);
-    if (!no) res.redirect('my');
-    if (no)  res.render('application2',{user: user,no:no,action:action})
+    var user = req.user;    
+    console.log(req.body);
+    if (!no) res.redirect('/my');
+    var query = {'username': user.username, 'no':no};  
+    Application1.findOneAndUpdate(query, req.body, {upsert:true}, function(err, application1){
+      if (err) {
+        console.log(err);
+        res.render('application', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application:application1});
+      }
+      else res.redirect('/application2?no='+no+'&action='+action);  
+    });
+    
   });
 
   //this is danegorous. remove it
@@ -90,16 +111,31 @@ module.exports = function (app) {
     var no = req.query.no;
     var user = req.user;
     if (!no) res.redirect('my');
-    if (no)  res.render('application3',{user: user,no:no,action:action})
+    var query = {'username': user.username, 'no':no};  
+    Application2.findOne(query, req.body,function(err, application2){
+      if (err) {
+        console.log(err);
+        res.render('application2', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application:application2});
+      }
+      else  res.render('application2',{user: user,no:no,action:action,application:application2})
+    });
+    
   });
 
   app.post('/application2', isLoggedIn, function(req, res){
     var action = req.body.action;
     var no = req.body.no;
     var user = req.user;
-    //console.log(req.body);
+    console.log(req.body);
     if (!no) res.redirect('my');
-    if (no) res.render('application3',{user: user,no:no,action:action})
+    var query = {'username': user.username, 'no':no};  
+    Application2.findOneAndUpdate(query, req.body, {upsert:true}, function(err, application2){
+      if (err) {
+        console.log(err);
+        res.render('application2', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application:application2});
+      }
+      else res.redirect('/application3?no='+no+'&action='+action);  
+    });
   });
 
   //this is danegorous. remove it
@@ -108,16 +144,30 @@ module.exports = function (app) {
     var no = req.query.no;
     var user = req.user;
     if (!no) res.redirect('my');
-    if (no) res.render('application4',{user: user,no:no,action:action})
+    var query = {'username': user.username, 'no':no};  
+    Application3.findOne(query, req.body,function(err, application3){
+      if (err) {
+        console.log(err);
+        res.render('application3', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application:application3});
+      }
+      else  res.render('application3',{user: user,no:no,action:action,application:application3})
+    });
   });
 
   app.post('/application3', isLoggedIn, function(req, res){
     var action = req.body.action;
     var no = req.body.no;
     var user = req.user;
-   // console.log(req.body);
+    console.log(req.body);
     if (!no) res.redirect('my');
-    if (no) res.render('application4',{user: user,no:no,action:action});
+    var query = {'username': user.username, 'no':no};  
+    Application3.findOneAndUpdate(query, req.body, {upsert:true}, function(err, application3){
+      if (err) {
+        console.log(err);
+        res.render('application3', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application:application3});
+      }
+      else res.redirect('/application4?no='+no+'&action='+action);
+    });
   });
 
    //this is danegorous. remove it
@@ -126,7 +176,14 @@ module.exports = function (app) {
     var no = req.query.no;
     var user = req.user;
     if (!no) res.redirect('/my');
-    if (no) res.redirect('credit?no='+no+'&action='+action)    
+    var query = {'username': user.username, 'no':no};  
+    Application4.findOne(query, req.body,function(err, application4){
+      if (err) {
+        console.log(err);
+        res.render('application4', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application:application4});
+      }
+      else  res.render('application4',{user: user,no:no,action:action,application:application4})
+    });
   });
 
   app.post('/application4', isLoggedIn, function(req, res){
@@ -135,25 +192,35 @@ module.exports = function (app) {
     var user = req.user;
     console.log(req.body);
     if (!no) res.redirect('/my');
-    if (no) res.redirect('credit?no='+no+'&action='+action)
+    var query = {'username': user.username, 'no':no};  
+    Application4.findOneAndUpdate(query, req.body, {upsert:true}, function(err, application4){
+      if (err) {
+        console.log(err);
+        res.render('application4', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application:application4});
+      }
+      else res.redirect('/credit?no='+no+'&action='+action);  
+    });
   });
 
-  app.get('/credit',isLoggedIn, function(req,res){
-    var action = req.query.action;
-    var no = req.query.no;
-    var user = req.user;
-    if (!no) res.redirect('/my');
-    if (no) res.render('credit',{no: no,user: user,action: action});   
-  });
-
+ 
   app.post('/credit',isLoggedIn, function(req,res){
     var action = req.body.action;
     var no = req.body.no;
     var user = req.user;    
-    console.log(req.body);
+    //console.log(req.body);
+    res.redirect('/credit?no='+no);
+    
+  });
+
+
+  app.get('/credit',isLoggedIn, function(req,res){
+    var action = req.query.action;
+    var no = req.query.no;
+    var user = req.user;    
+    //console.log(req.body);
     if (!no) res.redirect('/my');
     var query = {'username': user.username, 'no':no};  
-    Credit.findOneAndUpdate(query, req.body, {upsert:true}, function(err, credit){
+    Credit.findOne(query, req.body,  function(err, credit){
       if (err) {
         console.log(err);
         res.render('credit', {no: no,user: user,action: action,message:'Opps something wrong. ask help'});
