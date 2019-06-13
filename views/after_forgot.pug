@@ -1,0 +1,24 @@
+doctype html
+html
+  include includes/head.pug
+  body
+  .container
+    include includes/manit_header.pug
+    .container(id="form-container")
+        //- h1 Forgot Password?
+        //- p.lead Enter your email which you used during registration.
+        br
+        form(role='form', action="/home",method="GET", style='max-width: 300px;')
+            if (message)
+            .alert.alert-danger(role='alert') #{message}     
+            
+            
+            .form-group(align="left")
+            button.btn.btn-primary(type='submit') Home
+        br
+        a(href='login', bgcolor="white") Log in 
+        
+        br
+        a(href='register') Create New Account
+ 
+    
