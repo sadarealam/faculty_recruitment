@@ -247,7 +247,28 @@ module.exports = function (app) {
     
   });
 
-
+  app.post('/getOptionData',isLoggedIn,function(req,res){
+    var id = req.body.id ;
+    if(id=="adv"){
+     
+    }else if(id=="post"){
+      var adv_id = req.body.adv_id;
+      var resp = Const.postby_adv(adv_id);
+      console.log(resp);
+      res.json(resp);
+    }else if(id=="department"){
+      var adv_post_id = req.body.adv_post_id;
+      console.log(adv_post_id);
+      var resp = Const.depart(adv_post_id);
+      console.log(resp);
+      res.json(resp);
+    }else if(id=="specialization"){
+      var department_id = req.body.department_id;
+      var resp = Const.specialization(department_id);
+      console.log(resp);
+      res.json(resp);
+    }
+  });
   
 
 

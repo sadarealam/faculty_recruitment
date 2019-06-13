@@ -15,36 +15,122 @@ html
         .form-group.row
           label.col-sm-4.col-form-label(for='advertisement_no') Advertisement No.
           .col-sm-8
-            input#advertisement_no.form-control(type='text',name='advertisement_no' value='Advt./Faculty-NITK/Estt./2019/B1. Dt. 07/02/2019', readonly='',required)
+            //input#advertisement_no.form-control(type='text',name='advertisement_no' value='Advt./Faculty-NITK/Estt./2019/B1. Dt. 07/02/2019', readonly='',required)
+            select#advertisement_no.form-control(name='advertisement_no',required) 
+                option(value="") Select Adv
+                option(value="Adv/faculty-NITB/1") Adv/faculty-NITB/1
+                option(value="Adv/faculty-NITB/2") Adv/faculty-NITB/2
+                
         .form-group.row
           label.col-sm-4.col-form-label(for='post_applied_for') Post Applied For
           .col-sm-8
             select#post_applied_for.form-control(name='post_applied_for',required) 
-                option(value="") Select Applied Post
-                option(value="APG1") Assistant Professor Grade I
-                option(value="APG2") Assistant Professor Grade II
-                option(value="ASOP") Associate Professor
-                option(value="PROF") Profssor
+                option(value="") Select Advertisement First               
         .form-group.row
           label.col-sm-4.col-form-label(for='department') Department
           .col-sm-8
             select#department.form-control(name='department',required)
-                option(value='') Department
-                option(value='CVE') Civil Engineering
-                option(value='EEE') Electrical Engineering 
-                option(value='MLE') Mechanical Engineering
-                option(value='ECE') Electronics and Communication Engineering
-                option(value='MME') Metallurgical and Materials Engineering
-                option(value='CHE') Chemical Engineering
-                option(value='CSE') Computer Science & Engineering
-                option(value='MCS') Mathematics Computer Application & Bio-informatics
-                option(value='HUM') Humanities and Social Sciences
-                option(value='PHY') Physics
-                option(value='CHY') Chemistry
-                option(value='ARC') Architecture and Planning 
-                option(value='MAN') Management Studies     
+                option(value='') Select Post Applied First
+                
+        .form-group.row
+          label.col-sm-4.col-form-label(for='spcialization') Specialization
+          .col-sm-8
+            select#spcialization.form-control(name='spcialization',required)
+                option(value='') Select Department First
+        div#other_row
+        //- .form-group.row
+        //-   label.col-sm-4.col-form-label(for='spcialization') Other
+        //-   .col-sm-8
+        //-     input#Other.form-control(name='spcialization',required)
+                
+          
                                        
         .form-group.row
           .col-sm-10
           .col-sm-2
             button.btn.btn-primary(type='submit',style="align:end") Next
+script. 
+  $(document).ready(function(){
+    $("#advertisement_no").change(function(){
+      var adv = $(this).val();
+      $.ajax({
+            url: '/getOptionData',
+            type: 'post',
+            data: {id:'post',adv_id:adv},
+            dataType: 'json',
+            success:function(response){
+
+                var len = response.length;
+
+                $("#post_applied_for").empty();
+                 $("#post_applied_for").append("<option value=''>Select Post</option>");
+                for( var i = 0; i<len; i++){
+                    var id = response[i]['id'];
+                    var name = response[i]['name'];
+                    
+                    $("#post_applied_for").append("<option value='"+id+"'>"+name+"</option>");
+
+                }
+            }
+        });
+    });
+    $("#post_applied_for").change(function(){
+      var adv = $("#advertisement_no").val();
+      var post = $("#post_applied_for").val();
+      console.log(adv);
+      console.log(post);
+      $.ajax({
+            url: '/getOptionData',
+            type: 'post',
+            data: {id:'department',adv_post_id:adv+"-"+post},
+            dataType: 'json',
+            success:function(response){
+
+                var len = response.length;
+
+                $("#department").empty();
+                $("#department").append("<option value=''>Select department</option>");
+                for( var i = 0; i<len; i++){
+                    var id = response[i]['id'];
+                    var name = response[i]['name'];
+                    
+                    $("#department").append("<option value='"+id+"'>"+name+"</option>");
+
+                }
+            }
+        });
+    });
+    $("#department").change(function(){
+      var adv = $(this).val();
+      $.ajax({
+            url: '/getOptionData',
+            type: 'post',
+            data: {id:'specialization',department_id:adv},
+            dataType: 'json',
+            success:function(response){
+
+                var len = response.length;
+
+                $("#spcialization").empty();
+                 $("#spcialization").append("<option value=''>Select spcialization</option>");
+                for( var i = 0; i<len; i++){
+                    var id = response[i]['id'];
+                    var name = response[i]['name'];
+                    
+                    $("#spcialization").append("<option value='"+id+"'>"+name+"</option>");
+
+                }
+                $("#spcialization").append("<option value='"+808+"'>other</option>");
+            }
+        });
+    });
+     $("#spcialization").change(function(){
+      var adv = $(this).val();
+      console.log(adv);
+      if(adv == '808') {
+         console.log(adv);
+        $("#spcialization").attr("name","special");
+        $("#other_row").append('<div class="form-group row"><label class="col-sm-4 col-form-label" for="spcialization">Other</label><div class="col-sm-8"><input class="form-control" id="Other" name="spcialization" required=""></div></div>')
+      }
+    });
+  })
