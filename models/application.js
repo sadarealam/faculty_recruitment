@@ -11,6 +11,7 @@ var Application = new Schema({
     department_full: String,
     post_applied_for: String,
     post_applied: String,
+    specialization: String,
     status: String
 });
 

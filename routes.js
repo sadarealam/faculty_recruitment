@@ -33,6 +33,7 @@ module.exports = function (app) {
     var adv_no = req.body.advertisement_no;
     var department = req.body.department;
     var post_applied_for = req.body.post_applied_for;
+    var specialization = req.body.specialization;
     Application.findOne({
       email: user.username,
       adv_no: adv_no,
@@ -53,6 +54,7 @@ module.exports = function (app) {
           application.status = 'Pending';
           application.department_full = Const.departments()[department];
           application.post_applied = Const.posts()[post_applied_for];
+          application.specialization = specialization;
           console.log(application.department);
           application.save(function (err) {
             if (err) console.log('Error in creating application');
@@ -317,8 +319,20 @@ module.exports = function (app) {
   });
 
   app.get('/forgot',function(req,res){
-res.send('<H2> We are Sorry );, We are building it</h2><h6> Come back again </h6>');
+    res.render('forgot');
   });
+
+  app.post('/forgot',function(req,res){
+    var username = req.body.username ;
+    Account.findOne({username:username},function(err,account){
+      if(err) res.render('forgot',{message:'Opps! something wrong. Call help'});
+      if(account) {
+        res.render('after_forgot',{message:'A email has been send to your email '+username+' with further details.'});
+      }else{
+        res.render('forgot',{message:'Your email '+username+' is not registered.'});
+      }
+    });
+  })
 
   app.get('/ping', function (req, res) {
     res.send("pong!", 200);
