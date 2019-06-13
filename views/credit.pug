@@ -134,13 +134,19 @@ mixin phd_default
                 option(value='Co-supervisor') Co-supervisor
         .col-sm-3
             input#phd_credit_title.form-control(type='text',name='phd_credit_title',placeholder="")
-        .col-sm-1
-            .form-check.form-check-inline
-                input#phdy.form-check-input(type="radio", name="phd_credit_awarded", value="Y")
-                label.form-check-label(for="phdy") Submitted
-            .form-check.form-check-inline
-                input#phdn.form-check-input(type="radio", name="phd_credit_awarded", value="N")
-                label.form-check-label(for="phdn") Awarded  
+        //- .col-sm-1
+        //-     .form-check.form-check-inline
+        //-         input#phdy.form-check-input(type="radio", name="phd_credit_awarded", value="Y")
+        //-         label.form-check-label(for="phdy") Submitted
+        //-     .form-check.form-check-inline
+        //-         input#phdn.form-check-input(type="radio", name="phd_credit_awarded", value="N")
+        //-         label.form-check-label(for="phdn") Awarded
+        .col-sm-1                            
+            select.form-control(id=`phd_credit_awarded`,name='phd_credit_awarded')
+                option(value='') Select 
+                option(value='Y') Submitted
+                option(value='N') Awarded
+         
         .col-sm-3
             input#phd_credit_yoa.form-control(type='text',name='phd_credit_yoa')                           
         .col-sm-1                          
@@ -156,20 +162,25 @@ mixin phd(credit,i)
                 option(value='Co-supervisor') Co-supervisor
         .col-sm-3
             input#phd_credit_title.form-control(type='text',name='phd_credit_title',value=`${credit.phd_credit_title[i]}`)
-        .col-sm-1
-            .form-check.form-check-inline
-                input#phd_Y.form-check-input(type="radio", name="phd_credit_awarded", value="Y")
-                label.form-check-label(for="phd_Y") Submitted
-            .form-check.form-check-inline
-                input#phd_N.form-check-input(type="radio", name="phd_credit_awarded", value="N")
-                label.form-check-label(for="phd_N") Awarded  
+        //- .col-sm-1
+        //-     .form-check.form-check-inline
+        //-         input#phd_Y.form-check-input(type="radio", name="phd_credit_awarded", value="Y")
+        //-         label.form-check-label(for="phd_Y") Submitted
+        //-     .form-check.form-check-inline
+        //-         input#phd_N.form-check-input(type="radio", name="phd_credit_awarded", value="N")
+        //-         label.form-check-label(for="phd_N") Awarded
+        .col-sm-1                            
+            select.form-control(id=`phd_credit_awarded${i}`,name='phd_credit_awarded')
+                option(value='') Select 
+                option(value='Y') Submitted
+                option(value='N') Awarded
         .col-sm-3
             input#phd_credit_yoa.form-control(type='text',name='phd_credit_yoa',value=`${credit.phd_credit_yoa[i]}`)                           
         .col-sm-1                          
                 input#phd_creditclaimed.form-control(type='number',name='phd_creditclaimed',value=`${credit.phd_creditclaimed[i]}`)
     script.
-        document.getElementById('phd_credit_pi#{i}').value='#{credit.phd_credit_pi[i]}'
-        document.getElementById('phd_#{credit.phd_credit_awarded[i]}').checked = true;
+        document.getElementById('phd_credit_pi#{i}').value='#{credit.phd_credit_pi[i]}' ;
+        document.getElementById('phd_credit_awarded#{i}').value = '#{credit.phd_credit_awarded[i]}';
 
 mixin sci_default
     .form-group.row
@@ -185,13 +196,18 @@ mixin sci_default
                     input#sci_author_from.form-control(type='number',name='sci_author_from',placeholder="")
                 .col-sm-6
                     input#sci_author_total.form-control(type='number',name='sci_author_total',placeholder="")
-        .col-sm-1
-            .form-check.form-check-inline
-                input#sci_main_supervisor_t.form-check-input(type="radio", name="sci_main_supervisor", value="T")
-                label.form-check-label(for="sci_main_supervisor_t") Yes
-            .form-check.form-check-inline
-                input#sci_main_supervisor_f.form-check-input(type="radio", name="sci_main_supervisor", value="F")
-                label.form-check-label(for="sci_main_supervisor_f") No                       
+        //- .col-sm-1
+        //-     .form-check.form-check-inline
+        //-         input#sci_main_supervisor_t.form-check-input(type="radio", name="sci_main_supervisor", value="T")
+        //-         label.form-check-label(for="sci_main_supervisor_t") Yes
+        //-     .form-check.form-check-inline
+        //-         input#sci_main_supervisor_f.form-check-input(type="radio", name="sci_main_supervisor", value="F")
+        //-         label.form-check-label(for="sci_main_supervisor_f") No                       
+        .col-sm-1                            
+            select.form-control(id=`sci_main_supervisor`,name='sci_main_supervisor')
+                option(value='') Select 
+                option(value='Y') Yes
+                option(value='N') No
         .col-sm-1                            
                 input#sci_main_creditclaimed.form-control(type='number',name='sci_main_creditclaimed',placeholder="")
 mixin sci(credit,i)
@@ -208,18 +224,23 @@ mixin sci(credit,i)
                     input#sci_author_from.form-control(type='number',name='sci_author_from',value=`${credit.sci_author_from[i]}`)
                 .col-sm-6
                     input#sci_author_total.form-control(type='number',name='sci_author_total',value=`${credit.sci_author_total[i]}`)
-        .col-sm-1
-            .form-check.form-check-inline
-                input#sci_main_supervisor_T.form-check-input(type="radio", name="sci_main_supervisor", value="T")
-                label.form-check-label(for="sci_main_supervisor_t") Yes
-            .form-check.form-check-inline
-                input#sci_main_supervisor_F.form-check-input(type="radio", name="sci_main_supervisor", value="F")
-                label.form-check-label(for="sci_main_supervisor_f") No                       
+        //- .col-sm-1
+        //-     .form-check.form-check-inline
+        //-         input#sci_main_supervisor_t.form-check-input(type="radio", name="sci_main_supervisor", value="T")
+        //-         label.form-check-label(for="sci_main_supervisor_t") Yes
+        //-     .form-check.form-check-inline
+        //-         input#sci_main_supervisor_f.form-check-input(type="radio", name="sci_main_supervisor", value="F")
+        //-         label.form-check-label(for="sci_main_supervisor_f") No                       
+        .col-sm-1                            
+            select.form-control(id=`sci_main_supervisor${i}`,name='sci_main_supervisor')
+                option(value='') Select 
+                option(value='T') Yes
+                option(value='F') No
         .col-sm-1                            
                 input#sci_main_creditclaimed.form-control(type='number',name='sci_main_creditclaimed',value=`${credit.sci_main_creditclaimed[i]}`)
         script.
             //document.getElementById('phd_credit_pi#{i}').value='#{credit.phd_credit_pi[i]}'
-            document.getElementById('sci_main_supervisor_#{credit.sci_main_supervisor[i]}').checked = true;
+            document.getElementById('sci_main_supervisor#{i}').value = '#{credit.sci_main_supervisor[i]}';
 
 doctype html
 html
@@ -234,7 +255,7 @@ html
                     div(align='center',style='color:#fdfbfb;bgcolor:#00a2d1 !important')
                         h3    Application id : #{no}
                 .col-6                    
-                    form.form-inline(role='form', action=`/application`,method="ppst", style="margin-left:5px")
+                    form.form-inline(role='form', action=`/application`,method="POST", style="margin-left:5px")
                         if (no)
                             input(type="hidden",name="no",value=`${no}`)
                         button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part-A 
@@ -413,13 +434,18 @@ html
                                     input#scopus_author_from.form-control(type='number',name='scopus_author_from',placeholder="")
                                 .col-sm-6
                                     input#scopus_author_total.form-control(type='number',name='scopus_author_total',placeholder="")
-                        .col-sm-1
-                            .form-check.form-check-inline
-                                input#scopus_main_supervisor_t.form-check-input(type="radio", name="scopus_main_supervisor", value="T")
-                                label.form-check-label(for="scopus_main_supervisor_t") Yes
-                            .form-check.form-check-inline
-                                input#scopus_main_supervisor_f.form-check-input(type="radio", name="scopus_main_supervisor", value="F")
-                                label.form-check-label(for="scopus_main_supervisor_f") No                       
+                        //- .col-sm-1
+                        //-     .form-check.form-check-inline
+                        //-         input#scopus_main_supervisor_t.form-check-input(type="radio", name="scopus_main_supervisor", value="T")
+                        //-         label.form-check-label(for="scopus_main_supervisor_t") Yes
+                        //-     .form-check.form-check-inline
+                        //-         input#scopus_main_supervisor_f.form-check-input(type="radio", name="scopus_main_supervisor", value="F")
+                        //-         label.form-check-label(for="scopus_main_supervisor_f") No
+                        .col-sm-1                            
+                            select.form-control(id=`scopus_main_supervisor`,name='scopus_main_supervisor')
+                                option(value='') Select 
+                                option(value='T') Yes
+                                option(value='F') No               
                         .col-sm-1                            
                                 input#scopus_main_creditclaimed.form-control(type='number',name='scopus_main_creditclaimed',placeholder="")
                 mixin scopus(credit,i)
@@ -436,18 +462,23 @@ html
                                     input#scopus_author_from.form-control(type='number',name='scopus_author_from',value=`${credit.scopus_author_from[i]}`)
                                 .col-sm-6
                                     input#scopus_author_total.form-control(type='number',name='scopus_author_total',value=`${credit.scopus_author_total[i]}`)
-                        .col-sm-1
-                            .form-check.form-check-inline
-                                input#scopus_main_supervisor_T.form-check-input(type="radio", name="scopus_main_supervisor", value="T")
-                                label.form-check-label(for="scopus_main_supervisor_t") Yes
-                            .form-check.form-check-inline
-                                input#scopus_main_supervisor_F.form-check-input(type="radio", name="scopus_main_supervisor", value="F")
-                                label.form-check-label(for="scopus_main_supervisor_f") No                       
+                        //- .col-sm-1
+                        //-     .form-check.form-check-inline
+                        //-         input#scopus_main_supervisor_T.form-check-input(type="radio", name="scopus_main_supervisor", value="T")
+                        //-         label.form-check-label(for="scopus_main_supervisor_t") Yes
+                        //-     .form-check.form-check-inline
+                        //-         input#scopus_main_supervisor_F.form-check-input(type="radio", name="scopus_main_supervisor", value="F")
+                        //-         label.form-check-label(for="scopus_main_supervisor_f") No      
+                        .col-sm-1                            
+                            select.form-control(id=`scopus_main_supervisor${i}`,name='scopus_main_supervisor')
+                                option(value='') Select 
+                                option(value='T') Yes
+                                option(value='F') No                    
                         .col-sm-1                            
                                 input#scopus_main_creditclaimed.form-control(type='number',name='scopus_main_creditclaimed',value=`${credit.scopus_main_creditclaimed[i]}`)
                     script.
                         //document.getElementById('phd_credit_pi#{i}').value='#{credit.phd_credit_pi[i]}'
-                        document.getElementById('scopus_main_supervisor_#{credit.scopus_main_supervisor[i]}').checked = true;
+                        document.getElementById('scopus_main_supervisor#{i}').value = '#{credit.scopus_main_supervisor[i]}';
                 
                 if (!credit)
                     +scopus_default
@@ -493,13 +524,18 @@ html
                                     input#conference_author_from.form-control(type='number',name='conference_author_from',placeholder="Position")
                                 .col-sm-6
                                     input#conference_author_total.form-control(type='number',name='conference_author_total',placeholder="Total")
-                        .col-sm-1
-                            .form-check.form-check-inline
-                                input#conference_main_supervisor1_t.form-check-input(type="radio", name="conference_main_supervisor", value="T")
-                                label.form-check-label(for="sci_main_supervisor_t") Yes
-                            .form-check.form-check-inline
-                                input#conference_main_supervisor1_f.form-check-input(type="radio", name="conference_main_supervisor", value="F")
-                                label.form-check-label(for="sci_main_supervisor_f") No                       
+                        //- .col-sm-1
+                        //-     .form-check.form-check-inline
+                        //-         input#conference_main_supervisor1_t.form-check-input(type="radio", name="conference_main_supervisor", value="T")
+                        //-         label.form-check-label(for="sci_main_supervisor_t") Yes
+                        //-     .form-check.form-check-inline
+                        //-         input#conference_main_supervisor1_f.form-check-input(type="radio", name="conference_main_supervisor", value="F")
+                        //-         label.form-check-label(for="sci_main_supervisor_f") No
+                        .col-sm-1                            
+                            select.form-control(id=`conference_main_supervisor`,name='conference_main_supervisor')
+                                option(value='') Select 
+                                option(value='T') Yes
+                                option(value='F') No                                           
                         .col-sm-1                            
                                 input#conference_main_creditclaimed.form-control(type='number',name='conference_main_creditclaimed',placeholder="")
                 mixin conference(credit,i)
@@ -516,18 +552,23 @@ html
                                     input#conference_author_from.form-control(type='number',name='conference_author_from',value=`${credit.conference_author_from[i]}`)
                                 .col-sm-6
                                     input#conference_author_total.form-control(type='number',name='conference_author_total',value=`${credit.conference_author_total[i]}`)
-                        .col-sm-1
-                            .form-check.form-check-inline
-                                input#conference_main_supervisor_T.form-check-input(type="radio", name="conference_main_supervisor", value="T")
-                                label.form-check-label(for="conference_main_supervisor_T") Yes
-                            .form-check.form-check-inline
-                                input#conference_main_supervisor_F.form-check-input(type="radio", name="conference_main_supervisor", value="F")
-                                label.form-check-label(for="conference_main_supervisor_T") No                       
+                        //- .col-sm-1
+                        //-     .form-check.form-check-inline
+                        //-         input#conference_main_supervisor_T.form-check-input(type="radio", name="conference_main_supervisor", value="T")
+                        //-         label.form-check-label(for="conference_main_supervisor_T") Yes
+                        //-     .form-check.form-check-inline
+                        //-         input#conference_main_supervisor_F.form-check-input(type="radio", name="conference_main_supervisor", value="F")
+                        //-         label.form-check-label(for="conference_main_supervisor_T") No
+                        .col-sm-1                            
+                            select.form-control(id=`conference_main_supervisor${i}`,name='conference_main_supervisor')
+                                option(value='') Select 
+                                option(value='T') Yes
+                                option(value='F') No                                                        
                         .col-sm-1                            
                                 input#conference_main_creditclaimed.form-control(type='number',name='conference_main_creditclaimed',value=`${credit.conference_main_creditclaimed[i]}`)
                     script.
                         //document.getElementById('phd_credit_pi#{i}').value='#{credit.phd_credit_pi[i]}'
-                        document.getElementById('conference_main_supervisor_#{credit.conference_main_supervisor[i]}').checked = true;
+                        document.getElementById('conference_main_supervisor#{i}').value = '#{credit.conference_main_supervisor[i]}';
                 if (!credit)
                     +conference_default
                 else if(credit.conference_paper_title.length==0)
