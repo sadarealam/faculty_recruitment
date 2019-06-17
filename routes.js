@@ -334,6 +334,25 @@ module.exports = function (app) {
     });
   })
 
+  var printApp = require('./printApplication');
+
+  app.get('/print',isLoggedIn,function(req,res){
+    var no = req.query.no;
+    var user = req.user;
+    var username = user.username;
+    printApp.printApplicatoin(username,no,function(dd){
+      
+      printApp.createPdfBinary(dd,no,function(binary){
+        res.contentType('application/pdf');
+        res.send(binary);      
+      // }, function(error) {
+      //   res.send('ERROR:' + error);
+      // })
+    });
+    
+  })
+})
+
   app.get('/ping', function (req, res) {
     res.send("pong!", 200);
   });
