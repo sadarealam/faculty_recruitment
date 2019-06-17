@@ -40,14 +40,14 @@ module.exports = {
         post['APG1']  = 'Assistant Professor Grade I';
         post['APG2'] = 'Assistant Professor Grade II';
         post['ASOP'] = 'Associate Professor';
-        post['PROF'] = 'Profssor';
+        post['PROF'] = 'Professor';
         return post;
     },
 
     postby_adv: function (adv_id) {
         var post = [];
         post['Adv/faculty-NITB/1'] = [{id:'APG1',name:'Assistant Professor Grade I'},{id:'APG2',name:'Assistant Professor Grade II'}];
-        post['Adv/faculty-NITB/2'] = [{id:'ASOP',name:'Associate Professor'},{id:'PROF',name:'Profssor'}];
+        post['Adv/faculty-NITB/2'] = [{id:'ASOP',name:'Associate Professor'},{id:'PROF',name:'Professor'}];
         
         return post[adv_id];
     },
