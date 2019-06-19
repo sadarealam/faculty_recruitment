@@ -120,8 +120,8 @@ var dd = {
 				     [{text:'16'},{text:'PG Dissertations Guided '},{},{}],
 				     [{text:'17'},{text:'UG Projects Guided'},{},{}],
 				     [{text:'18'},{text:'Books Authored (International)'},{},{}],
-				     [{text:'19',rowSpan:2},{text:'Books Authored (National) '},{},{}],
-				     [{},{text:'Book  Chapters (International)'},{},{}],
+				     [{text:'19'},{text:'Books Authored (National) \nBook  Chapters (International)'},{},{}],
+				     
 				     [{text:'20'},{text:'Outreach Activities'},{},{}],
 				     [{text:'21'},{text:'Fellow '},{},{}],
 				      [{text:'22'},{text:'Training & Placement'},{},{}],
@@ -296,7 +296,7 @@ var dd = {
 					    {text:'Credit Points Claimed',bold:true,alignment:'center'}],
 			
 			    	[{  
-					    text:'Total Credit Points',colSpan:7,alignment:'right'},
+					    text:'Total Credit Points',colSpan:6,alignment:'right'},
 					    {},
 					    {},
 					    {},

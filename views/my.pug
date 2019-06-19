@@ -7,7 +7,7 @@ mixin application_row(application)
         .col-3
             p   #{application.post_applied}
         .col-2
-            a.btn(href=`/print?action=view&no=${application.no}`, role="button") View
+            a.btn(href=`/print2?action=view&no=${application.no}`, role="button") View
             a.btn.btn-primary(href=`/application1?action=edit&no=${application.no}`, role="button") Edit                
         .col-2
             p    #{application.status}

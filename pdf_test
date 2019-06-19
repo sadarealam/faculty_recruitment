@@ -113,7 +113,7 @@ var dd = {
 					    bold:true
 					},{}],
 					[{  margin:[2,2,2,5],
-					    text:'Bank Details'},{margin:[2,2,2,5],text:'place holder',color:'gray'}],
+					    text:'Bank Details'},{margin:[2,2,2,5],text:''}],
 					[{  margin:[2,2,2,5],
 					    text:'Transaction  ID of online payment & Date'},{margin:[2,2,2,5],text:''}],
 					[{   margin:[2,2,2,5],
@@ -143,7 +143,7 @@ var dd = {
 					    bold:true
 					},{}],
 					[{  margin:[2,2,2,5],
-					    text:'Name of Applicant'},{margin:[2,2,2,5],text:'place holder'}],
+					    text:'Name of Applicant'},{margin:[2,2,2,5],text:''}],
 					[{  margin:[2,2,2,5],
 					    text:'Father\'s Name'},{margin:[2,2,2,5],text:''}],
 					[{   margin:[2,2,2,5],
@@ -253,21 +253,7 @@ var dd = {
 					    text:'Annexure #',
 					    bold:true
 					},],
-					[{  margin:[2,2,2,5],
-					    text:'BE',
-					},{  margin:[2,2,2,5],
-					    text:'Computer Science & Engineering',
-					},{  margin:[2,2,2,5],
-					    text:'RGPV Bhopal',
-					},{  margin:[2,2,2,5],
-					    text:'8.02',
-					},{  margin:[2,2,2,5],
-					    text:'I',
-					},{  margin:[2,2,2,5],
-					    text:'2017',
-					},{  margin:[2,2,2,5],
-					    text:'1',
-					},],
+				
 					
 				]
 					
@@ -308,23 +294,23 @@ var dd = {
 					    bold:true
 					}],
 					[{  margin:[2,2,2,5],
-					    text:'27-02-2009',
+					    text:'',
 					},{  margin:[2,2,2,5],
-					    text:'Full TIme',
+					    text:'',
 					},{  margin:[2,2,2,5],
-					    text:'Computer Science & Engineering',
+					    text:'',
 					},{  margin:[2,2,2,5],
-					    text:'RGPV Bhopal',
+					    text:'',
 					},{  margin:[2,2,2,5],
-					    text:'27-02-2009',
+					    text:'',
 					},{  margin:[2,2,2,5],
-					    text:'27-02-2009',
+					    text:'',
 					}],
 					[{  margin:[2,10,2,5],
 					    text:'Title of Thesis',
 					    colSpan:2
 					},{  },{  margin:[2,10,2,5],
-					    text:'Computer Science & Engineering',
+					    text:'',
 					    colSpan:4
 					},{ 
 					},{  
@@ -371,19 +357,19 @@ var dd = {
 					    bold:true
 					}],
 					[{  margin:[2,2,2,5],
-					    text:'1 ',
+					    text:'',
 					},{  margin:[2,2,2,5],
-					    text:'RGPV Bhopal ',
+					    text:'',
 					    },{ margin:[2,2,2,5],
-					    text:'27-02-2009',
+					    text:'',
 					},{  margin:[2,2,2,5],
-					    text:'27-02-2009',
+					    text:'',
 					}],
 				
 				[{  margin:[2,10,2,5],
 					    text:'Area of Research',
 					},{  margin:[2,10,2,5],
-					    text:'Computer Aided Design',
+					    text:'',
 					    colSpan:3
 					},{ 
 					},{}],
@@ -426,21 +412,21 @@ var dd = {
 					    
 					}],
 					[{  margin:[2,2,2,5],
-					    text:'UGC',
+					    text:'',
 					   
 					},{  margin:[2,2,2,5],
-					    text:'Subject ',
+					    text:' ',
 					    
 					},{  margin:[2,2,2,5],
-					    text:'Registration No.',
-					   
-					    
-					},{  margin:[2,2,2,5],
-					    text:'Roll Number',
+					    text:'',
 					   
 					    
 					},{  margin:[2,2,2,5],
-					    text:'Year of Passing',
+					    text:'',
+					   
+					    
+					},{  margin:[2,2,2,5],
+					    text:'',
 					   
 					    
 					}]
@@ -502,15 +488,15 @@ var dd = {
 					},{  margin:[2,2,2,5],
 					    text:'M',
 					},{ colSpan:5,text:''},{},{},{},{}],
-				    [{ text:'RGPV Bhopal'},{text:'Assosiate Professor'},{ 
-					    text:'27-02-2002',
+				    [{ text:''},{text:''},{ 
+					    text:'',
 					},{ 
-					    text:'27-02-2002',
+					    text:'',
 					},{  
-					    text:'10',
+					    text:'',
 					},{  
-					    text:'12',
-					},{text:'20000'},{text:'120000'},{text:'R'},{text:'61-2019'},{text:'2'}],
+					    text:'',
+					},{text:''},{text:''},{text:''},{text:''},{text:''}],
 				]
 					
 				
@@ -557,15 +543,15 @@ var dd = {
 					},{  margin:[2,2,2,5],
 					    text:'M',
 					},{}],
-				    [{ text:'RGPV RAju Gahandi Bhopal'},{text:'Assosiate Professor'},{ 
-					    text:'27-02-2002',
+				    [{ text:''},{text:''},{ 
+					    text:'',
 					},{ 
-					    text:'27-02-2002',
+					    text:'',
 					},{  
-					    text:'10',
+					    text:'',
 					},{  
-					    text:'12',
-					},{text:'2'}],
+					    text:'',
+					},{text:''}],
 				]
 					
 				
@@ -610,29 +596,29 @@ var dd = {
 						[{  margin:[2,2,2,5],
 					    text:'Phone No',
 					},{  margin:[2,2,2,5],
-					    text:'RGPV Bhopal ',
+					    text:' ',
 					    },{ margin:[2,2,2,5],
 					    text:'Phone No',
 					},{  margin:[2,2,2,5],
-					    text:'27-02-2009',
+					    text:'',
 					}],
 					[{  margin:[2,2,2,5],
 					    text:'Mobile No',
 					},{  margin:[2,2,2,5],
-					    text:'RGPV Bhopal ',
+					    text:'',
 					    },{ margin:[2,2,2,5],
 					    text:'Mobile No',
 					},{  margin:[2,2,2,5],
-					    text:'27-02-2009',
+					    text:'',
 					}],
 					[{  margin:[2,2,2,5],
 					    text:'Email',
 					},{  margin:[2,2,2,5],
-					    text:'RGPV Bhopal ',
+					    text:' ',
 					    },{ margin:[2,2,2,5],
 					    text:'Email',
 					},{  margin:[2,2,2,5],
-					    text:'27-02-2009',
+					    text:'',
 					}],
 				
 			]
@@ -652,7 +638,7 @@ var dd = {
 					    fontSize:14
 					}],
 					[{  margin:[2,2,2,5],
-					    text:'Name & Address',
+					    text:'',
 					    
 					}],
 				
@@ -873,7 +859,7 @@ var dd = {
       {fontSize:12,
       bold:true,
           margin:[20,25,0,0],
-			text:'Application ID : '+no,
+			text:'Application ID : ',
 			alignment:'left'
 		}
     ]
