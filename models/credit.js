@@ -6,6 +6,7 @@ var Credit = new Schema({
   no:       String,
   username: String,
   last_promotion_date: String,
+  basic_pay_on: String,
 research_project_title: [String],
 reserch_project_pi: [String],
 research_project_agency: [String],

@@ -271,17 +271,30 @@ html
                     .alert.alert-danger(role='alert') #{message}
 
                 if (!credit)
-                    .form-group.row(style="margin-bottom:10px")
+                    .form-group.row(style="margin-top:25px")
                         .col-sm-4
                             h5 Date of Last Promotion
                         .col-sm-4
                             input#last_promotion_date.form-control(type='date',name='last_promotion_date')
                 else
-                    .form-group.row(style="margin-bottom:10px")
+                    .form-group.row(style="margin-top:25px")
                         .col-sm-4
                             h5 Date of Last Promotion
                         .col-sm-4
                             input#last_promotion_date.form-control(type='date',name='last_promotion_date',value=`${credit.last_promotion_date}`)
+
+                if (!credit)
+                    .form-group.row(style="margin-top:10px")
+                        .col-sm-4
+                            h5 Basic Pay On
+                        .col-sm-4
+                            input#basic_pay_on.form-control(type='number',name='basic_pay_on')
+                else
+                    .form-group.row(style="margin-top:10px")
+                        .col-sm-4
+                            h5 Basic Pay On
+                        .col-sm-4
+                            input#basic_pay_on.form-control(type='number',name='basic_pay_on',value=`${credit.basic_pay_on}`)
 
                 
                 h4 1A. 

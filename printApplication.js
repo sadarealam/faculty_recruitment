@@ -331,6 +331,7 @@ module.exports = {
 	fillCreditData: function (dd, credit, callback) {
 
 		dd.content[2].table.body[2][1].text = credit.last_promotion_date;
+		dd.content[2].table.body[2][3].text = credit.basic_pay_on;
 		var total_credit = 0;
 		//1A research project
 		var research_credit = 0;
@@ -948,6 +949,7 @@ module.exports = {
 		dd.content[2].table.body[0][3].text = application.department_full;
 		dd.content[2].table.body[1][1].text = application.post_applied;
 		dd.content[2].table.body[1][3].text = application.specialization;
+
 		callback(dd);
 	},
 
