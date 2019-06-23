@@ -103,11 +103,29 @@ html
                         .form-group.row
                             label.col-sm-4.col-form-label(for='id1') Identification No 1(Passport/ Aadhar / Voter ID / Driving License )*
                             .col-sm-6
-                                input#id1.form-control(type='text',name='id1' ,placeholder="Identification No",required)
+                                .row
+                                    .col-sm-6
+                                        select#id_type1.form-control(name='id_type1',required)
+                                            option(value='') Select ID
+                                            option(value='Passport') Passport
+                                            option(value='Aadhar') Aadhar
+                                            option(value='Voter ID')  Voter ID 
+                                            option(value='Driving License') Driving License 
+                                    .col-sm-6
+                                        input#id1.form-control(type='text',name='id1' ,placeholder="Identification No",required)
                         .form-group.row
                             label.col-sm-4.col-form-label(for='id2') Identification No 2(Passport/ Aadhar / Voter ID / Driving License )*
                             .col-sm-6
-                                input#id2.form-control(type='text',name='id2' ,placeholder="Identification No",required)   
+                                .row
+                                    .col-sm-6
+                                        select#id_type2.form-control(name='id_type2',required)
+                                            option(value='') Select ID
+                                            option(value='Passport') Passport
+                                            option(value='Aadhar') Aadhar
+                                            option(value='Voter ID')  Voter ID 
+                                            option(value='Driving License') Driving License
+                                    .col-sm-6                                    
+                                        input#id2.form-control(type='text',name='id2',placeholder="Identification No",required)     
                         .form-group.row
                             label.col-sm-4.col-form-label(for='correspondence_address') Address For Correspondence (With Pin Code)*
                             .col-sm-6
@@ -218,11 +236,29 @@ html
                         .form-group.row
                             label.col-sm-4.col-form-label(for='id1') Identification No 1(Passport/ Aadhar / Voter ID / Driving License )*
                             .col-sm-6
-                                input#id1.form-control(type='text',name='id1' ,value=`${application.id1}`,placeholder="Identification No",required)
+                                .row
+                                    .col-sm-6
+                                        select#id_type1.form-control(name='id_type1',required)
+                                            option(value='') Select ID
+                                            option(value='Passport') Passport
+                                            option(value='Aadhar') Aadhar
+                                            option(value='Voter ID')  Voter ID 
+                                            option(value='Driving License') Driving License 
+                                    .col-sm-6
+                                        input#id1.form-control(type='text',name='id1' ,value=`${application.id1}`,placeholder="Identification No",required)
                         .form-group.row
                             label.col-sm-4.col-form-label(for='id2') Identification No 2(Passport/ Aadhar / Voter ID / Driving License )*
                             .col-sm-6
-                                input#id2.form-control(type='text',name='id2' ,value=`${application.id2}`,placeholder="Identification No",required)   
+                                .row
+                                    .col-sm-6
+                                        select#id_type2.form-control(name='id_type2',required)
+                                            option(value='') Select ID
+                                            option(value='Passport') Passport
+                                            option(value='Aadhar') Aadhar
+                                            option(value='Voter ID')  Voter ID 
+                                            option(value='Driving License') Driving License
+                                    .col-sm-6                                    
+                                        input#id2.form-control(type='text',name='id2' ,value=`${application.id2}`,placeholder="Identification No",required)   
                         .form-group.row
                             label.col-sm-4.col-form-label(for='correspondence_address') Address For Correspondence (With Pin Code)*
                             .col-sm-6
@@ -259,6 +295,8 @@ html
                             document.getElementById('cast_#{application.cast}').checked = true;
                             document.getElementById('pwd_#{application.pwd}').checked = true;
                             document.getElementById('gender').value='#{application.gender}'
+                            document.getElementById('id_type1').value='#{application.id_type1}'
+                            document.getElementById('id_type2').value='#{application.id_type2}'
                     if (!application)
                         +personal_default
                     else 
