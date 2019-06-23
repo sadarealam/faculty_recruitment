@@ -825,7 +825,7 @@ html
                     .form-group.row
                         .col-sm-3
                             //input#fdp_post.form-control(type='text',name='fdp_post',placeholder="")
-                            select#national_conference_post1.form-control(name='fdp_post')
+                            select#fdp_post.form-control(name='fdp_post')
                                 option(value='') Select Coordinator or Convener
                                 option(value='Coordinator') Coordinator 
                                 option(value='Convener') Convener
@@ -845,7 +845,7 @@ html
                     .form-group.row
                         .col-sm-3
                             //input#fdp_post.form-control(type='text',name='fdp_post',value=`${credit.fdp_post[i]}`)
-                            select#national_conference_post1.form-control(name=`fdp_post${i}`)
+                            select.form-control(id=`fdp_post${i}`,name=`fdp_post`)
                                 option(value='') Select Coordinator or Convener
                                 option(value='Coordinator') Coordinator 
                                 option(value='Convener') Convener
