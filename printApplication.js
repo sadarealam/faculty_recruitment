@@ -329,10 +329,10 @@ module.exports = {
 	},
 
 	fillCreditData: function (dd, credit, callback) {
+
+		dd.content[2].table.body[2][1].text = credit.last_promotion_date;
 		var total_credit = 0;
 		//1A research project
-
-		var rl = credit.research_project_title.length;
 		var research_credit = 0;
 		for (var i = 0; i < credit.research_project_title.length; i++) {
 			//if(credit.research_project_title[i] == '') continue

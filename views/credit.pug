@@ -269,6 +269,21 @@ html
                     input(type="hidden",naem="username",value=`${user.username}`)
                 if (message)
                     .alert.alert-danger(role='alert') #{message}
+
+                if (!credit)
+                    .form-group.row(style="margin-bottom:10px")
+                        .col-sm-4
+                            h5 Date of Last Promotion
+                        .col-sm-4
+                            input#last_promotion_date.form-control(type='date',name='last_promotion_date')
+                else
+                    .form-group.row(style="margin-bottom:10px")
+                        .col-sm-4
+                            h5 Date of Last Promotion
+                        .col-sm-4
+                            input#last_promotion_date.form-control(type='date',name='last_promotion_date',value=`${credit.last_promotion_date}`)
+
+                
                 h4 1A. 
                 h4 External sponsored Research Projects Undertaken 
                 h6 Please provide proof (award letter) for each project
