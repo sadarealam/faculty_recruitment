@@ -200,7 +200,16 @@ module.exports = function (app) {
         console.log(err);
         res.render('application4', {no: no,user: user,action: action,message:'Opps something wrong. ask help',application4:application4});
       }
-      else res.redirect('/credit?no='+no+'&action='+action);  
+      else {
+        Application.findOneAndUpdate({'email': user.username, 'no':no}, {statusA:'T'}, {upsert:false}, function(err, application){
+          if(err){
+
+          }else{
+            res.redirect('/credit?no='+no+'&action='+action); 
+          }
+        })
+        
+         }
     });
   });
 
@@ -244,10 +253,35 @@ module.exports = function (app) {
         console.log(err);
         res.render('credit', {no: no,user: user,action: action,message:'Opps something wrong. ask help'});
       }
-      else res.redirect('/my');  
+      else {
+        Application.findOneAndUpdate({'email': user.username, 'no':no}, {statusB:'T'}, {upsert:false}, function(err, application){
+          if(err){
+
+          }else{
+            res.redirect('/my'); 
+          }
+        })
+         }
     });
     
   });
+
+  app.post('/final_submit',isLoggedIn, function(req,res){
+    var action = req.body.action;
+    var no = req.body.no;
+    var user = req.user;    
+    console.log(req.body);
+    if (!no) res.redirect('/my');
+    var query = {'email': user.username, 'no':no}; 
+    Application.findOneAndUpdate(query, {'status':'Submitted'}, {upsert:false}, function(err, application){
+      if (err) {
+        console.log(err);
+        res.render('my', {no: no,user: user,action: action,message:'Opps something wrong. ask help'});
+      }
+      else res.render('my', {no: no,user: user,action: action,message:'Successfully Submitted Application no: '+no}); 
+    });
+  });
+
 
   app.post('/getOptionData',isLoggedIn,function(req,res){
     var id = req.body.id ;
