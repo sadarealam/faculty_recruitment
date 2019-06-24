@@ -61,8 +61,8 @@ module.exports = {
 					d[4].text = application3.teaching_experience_year[i];
 					d[5].text = application3.teaching_experience_month[i];
 					d[6].text = application3.teaching_pb[i];
-					d[7].text = application3.teaching_rp[i];
-					d[8].text = application3.teaching_gross[i];
+					d[7].text = application3.teaching_gross[i];
+					d[8].text = application3.teaching_rp[i];
 					d[9].text = application3.teaching_nirf[i];
 					d[10].text = annexure;
 					annexure += 1;
@@ -92,14 +92,15 @@ module.exports = {
 					dd.content[10].table.body.push(d);
 				}
 				dd.content[11].table.body[2][0].text = application3.name_referee1;
-				dd.content[11].table.body[2][2].text = application3.address_referee1;
-				dd.content[11].table.body[3][0].text = application3.name_referee1;
-				dd.content[11].table.body[3][2].text = application3.address_referee2;
+				dd.content[11].table.body[3][0].text = application3.address_referee1;
 				dd.content[11].table.body[4][1].text = application3.phone_referee1;
-				dd.content[11].table.body[4][3].text = application3.phone_referee2;
 				dd.content[11].table.body[5][1].text = application3.mobile_referee1;
-				dd.content[11].table.body[5][3].text = application3.mobile_referee2;
 				dd.content[11].table.body[6][1].text = application3.email_referee1;
+
+				dd.content[11].table.body[2][2].text = application3.name_referee2;
+				dd.content[11].table.body[3][2].text = application3.address_referee2;				
+				dd.content[11].table.body[4][3].text = application3.phone_referee2;				
+				dd.content[11].table.body[5][3].text = application3.mobile_referee2;				
 				dd.content[11].table.body[6][3].text = application3.email_referee2;
 
 				dd.content[12].table.body[1][0].text = application3.adi_info;
@@ -199,46 +200,73 @@ module.exports = {
 				//for ugc
 				if (application2.ugc == 'T') {
 					dd.content[8].table.body[0][4].text = 'Yes';
-					var ugc = [{
-						margin: [2, 2, 2, 5],
-						text: 'UGC',
-
-					}, {
-						margin: [2, 2, 2, 5],
-						text: 'Subject ',
-
-					}, {
-						margin: [2, 2, 2, 5],
-						text: 'Registration No.',
-
-
-					}, {
-						margin: [2, 2, 2, 5],
-						text: 'Roll Number',
-
-
-					}, {
-						margin: [2, 2, 2, 5],
-						text: 'Year of Passing',
-
-
-					}];
+					
 					dd.content[8].table.body.length = 2;
 					if (application2.subject_net != '') {
+						var ugc = [{
+							margin: [2, 2, 2, 5],
+							text: 'UGC',
+	
+						}, {
+							margin: [2, 2, 2, 5],
+							text: 'Subject ',
+	
+						}, {
+							margin: [2, 2, 2, 5],
+							text: 'Registration No.',
+	
+	
+						}, {
+							margin: [2, 2, 2, 5],
+							text: 'Roll Number',
+	
+	
+						}, {
+							margin: [2, 2, 2, 5],
+							text: 'Year of Passing',
+	
+	
+						}];
 						ugc[0].text = 'NET';
 						ugc[1].text = application2.subject_net;
 						ugc[2].text = application2.registration_net;
 						ugc[3].text = application2.roll_net;
 						ugc[4].text = application2.yop_net;
 						dd.content[8].table.body.push(ugc);
+						//console.log(ugc);
 					}
-					if (application2.subject_net != '') {
+					if (application2.subject_slet != '') {
+						var ugc = [{
+							margin: [2, 2, 2, 5],
+							text: 'UGC',
+	
+						}, {
+							margin: [2, 2, 2, 5],
+							text: 'Subject ',
+	
+						}, {
+							margin: [2, 2, 2, 5],
+							text: 'Registration No.',
+	
+	
+						}, {
+							margin: [2, 2, 2, 5],
+							text: 'Roll Number',
+	
+	
+						}, {
+							margin: [2, 2, 2, 5],
+							text: 'Year of Passing',
+	
+	
+						}];
 						ugc[0].text = 'SLET';
-						ugc[1].text = application2.subject_net;
-						ugc[2].text = application2.registration_net;
-						ugc[3].text = application2.roll_net;
-						ugc[4].text = application2.yop_net;
+						ugc[1].text = application2.subject_slet;
+						ugc[2].text = application2.registration_slet;
+						ugc[3].text = application2.roll_slet;
+						ugc[4].text = application2.yop_slet;
 						dd.content[8].table.body.push(ugc);
+						//console.log(ugc);
 					}
 
 				} else {
@@ -273,9 +301,11 @@ module.exports = {
 				dd.content[4].table.body[12][1].text = application1.marital_status;
 				//dd.content[4].table.body[13][1].text = application1.applicant_name;
 				//dd.content[4].table.body[14][1].text = application1.applicant_name;
+				dd.content[4].table.body[14][1].text = application1.id_type1;
 				dd.content[4].table.body[15][1].text = application1.id1;
 				//dd.content[4].table.body[16][1].text = application1.applicant_name;
 				//dd.content[4].table.body[17][1].text = application1.applicant_name;
+				dd.content[4].table.body[17][1].text = application1.id_type2;
 				dd.content[4].table.body[18][1].text = application1.id2;
 				dd.content[4].table.body[20][1].text = application1.correspondence_address;
 				dd.content[4].table.body[21][1].text = application1.permanent_address;
