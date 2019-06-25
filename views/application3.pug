@@ -16,7 +16,7 @@ html
                             input(type="hidden",name="no",value=`${no}`) 
                         button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part-A
                         button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part-B
-    div(style="margin-top:45px;margin-left:150px;margin-right:150px")
+    div(style="margin-top:45px;margin-left:50px;margin-right:50px")
         h3 Experience
         form(role='form', action=`/application3?action=${action}&no=${no}`,method="post")
             if (no)
@@ -196,7 +196,7 @@ html
                 .form-group.row
                     label.col-sm-4.col-form-label(for='phone_referee1') Phone 
                     .col-sm-6
-                        input#phone_referee1.form-control(type='number',name='phone_referee1',placeholder="Phone",required)
+                        input#phone_referee1.form-control(type='number',name='phone_referee1',placeholder="Phone")
                 .form-group.row
                     label.col-sm-4.col-form-label(for='mobile_referee1') Mobile*
                     .col-sm-6
@@ -217,7 +217,7 @@ html
                 .form-group.row
                     label.col-sm-4.col-form-label(for='phone_referee2') Phone 
                     .col-sm-6
-                        input#phone_referee2.form-control(type='number',name='phone_referee2',placeholder="Phone",required)
+                        input#phone_referee2.form-control(type='number',name='phone_referee2',placeholder="Phone")
                 .form-group.row
                     label.col-sm-4.col-form-label(for='mobile_referee2') Mobile*
                     .col-sm-6
