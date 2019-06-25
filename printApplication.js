@@ -374,8 +374,8 @@ module.exports = {
 			research[2].text = credit.reserch_project_pi[i];
 			research[3].text = credit.research_project_agency[i];
 			research[4].text = credit.research_project_amount[i];
-			research[5].text = credit.research_project_periodfrom[i];
-			research[6].text = credit.research_project_periodto[i];
+			research[5].text = new Date(credit.research_project_periodfrom[i]).toLocaleDateString('en-GB');
+			research[6].text = new Date(credit.research_project_periodto[i]).toLocaleDateString('en-GB');
 			research[7].text = credit.research_project_creditclaimed[i];
 			var credit_point = parseFloat(credit.research_project_creditclaimed[i]);
 			if (!isNaN(credit_point)) {
@@ -421,8 +421,8 @@ module.exports = {
 			consultancy[2].text = credit.consultancy_pi[i];
 			consultancy[3].text = credit.consultancy_project_agency[i];
 			consultancy[4].text = credit.consultancy_project_amount[i];
-			consultancy[5].text = credit.consultancy_project_periodfrom[i];
-			consultancy[6].text = credit.consultancy_project_periodto[i];
+			consultancy[5].text = new Date(credit.consultancy_project_periodfrom[i]).toLocaleDateString('en-GB');
+			consultancy[6].text = new Date(credit.consultancy_project_periodto[i]).toLocaleDateString('en-GB');
 			consultancy[7].text = credit.consultancy_project_creditclaimed[i];
 
 			var credit_point = parseFloat(credit.consultancy_project_creditclaimed[i]);
@@ -543,8 +543,8 @@ module.exports = {
 			var ilar = [{}, {}, {}, {}, {}, {}];
 			ilar[0].text = i + 1;
 			ilar[1].text = credit.institute_post[i];
-			ilar[2].text = credit.institute_duration_from[i];
-			ilar[3].text = credit.institute_duration_to[i];
+			ilar[2].text = new Date(credit.institute_duration_from[i]).toLocaleDateString('en-GB');
+			ilar[3].text = new Date(credit.institute_duration_to[i]).toLocaleDateString('en-GB');
 			ilar[4].text = credit.institute_nos[i];
 			ilar[5].text = credit.institute_creditclaimed[i];
 
@@ -566,8 +566,8 @@ module.exports = {
 			var oilar = [{}, {}, {}, {}, {}, {}];
 			oilar[0].text = i + 1;
 			oilar[1].text = credit.other_institute_post[i];
-			oilar[2].text = credit.other_institute_duration_from[i];
-			oilar[3].text = credit.other_institute_duration_to[i];
+			oilar[2].text = new Date(credit.other_institute_duration_from[i]).toLocaleDateString('en-GB');
+			oilar[3].text = new Date(credit.other_institute_duration_to[i]).toLocaleDateString('en-GB');
 			oilar[4].text = credit.other_institute_nos[i];
 			oilar[5].text = credit.other_institute_creditclaimed[i];
 
@@ -589,8 +589,8 @@ module.exports = {
 			var chairman = [{}, {}, {}, {}, {}, {}];
 			chairman[0].text = i + 1;
 			chairman[1].text = credit.chairman_institute_post[i];
-			chairman[2].text = credit.chairman_institute_duration_from[i];
-			chairman[3].text = credit.chairman_institute_duration_to[i];
+			chairman[2].text = new Date(credit.chairman_institute_duration_from[i]).toLocaleDateString('en-GB');
+			chairman[3].text = new Date(credit.chairman_institute_duration_to[i]).toLocaleDateString('en-GB');
 			chairman[4].text = credit.chairman_institute_nos[i];
 			chairman[5].text = credit.chairman_institute_creditclaimed[i];
 
@@ -613,8 +613,8 @@ module.exports = {
 			var department = [{}, {}, {}, {}, {}, {}];
 			department[0].text = i + 1;
 			department[1].text = credit.department_post[i];
-			department[2].text = credit.department_duration_from[i];
-			department[3].text = credit.department_duration_to[i];
+			department[2].text = new Date(credit.department_duration_from[i]).toLocaleDateString('en-GB');
+			department[3].text = new Date(credit.department_duration_to[i]).toLocaleDateString('en-GB');
 			department[4].text = credit.department_nos[i];
 			department[5].text = credit.department_creditclaimed[i];
 
@@ -637,8 +637,8 @@ module.exports = {
 			fdp[0].text = i + 1;
 			fdp[1].text = credit.fdp_post[i];
 			fdp[2].text = credit.fdp_detail[i];
-			fdp[3].text = credit.fdp_duration_from[i];
-			fdp[4].text = credit.fdp_duration_to[i];
+			fdp[3].text = new Date(credit.fdp_duration_from[i]).toLocaleDateString('en-GB');
+			fdp[4].text = new Date(credit.fdp_duration_to[i]).toLocaleDateString('en-GB');
 			fdp[5].text = credit.fdp_nos[i];
 			fdp[6].text = credit.fdp_creditclaimed[i];
 
@@ -659,8 +659,8 @@ module.exports = {
 			var national_program = [{}, {}, {}, {}, {}, {}];
 			national_program[0].text = i + 1;
 			national_program[1].text = credit.national_program_detail[i];
-			national_program[2].text = credit.national_program_duration_from[i];
-			national_program[3].text = credit.national_program_duration_to[i];
+			national_program[2].text = new Date(credit.national_program_duration_from[i]).toLocaleDateString('en-GB');
+			national_program[3].text = new Date(credit.national_program_duration_to[i]).toLocaleDateString('en-GB');
 			national_program[4].text = credit.natinal_program_nos[i];
 			national_program[5].text = credit.national_program_creditclaimed[i];
 
@@ -683,8 +683,8 @@ module.exports = {
 			national_conference[0].text = i + 1;
 			national_conference[1].text = credit.national_conference_post[i];
 			national_conference[2].text = credit.national_conference_detail[i];
-			national_conference[3].text = credit.national_conference_duration_from[i];
-			national_conference[4].text = credit.national_conference_duration_to[i];
+			national_conference[3].text = new Date(credit.national_conference_duration_from[i]).toLocaleDateString('en-GB');
+			national_conference[4].text = new Date(credit.national_conference_duration_to[i]).toLocaleDateString('en-GB');
 			national_conference[5].text = credit.national_conference_nos[i];
 			national_conference[6].text = credit.national_conference_creditclaimed[i];
 
@@ -707,8 +707,8 @@ module.exports = {
 			over_service[0].text = i + 1;
 			over_service[1].text = credit.over_service_designation[i];
 			over_service[2].text = credit.over_service_org[i];
-			over_service[3].text = credit.over_service_duration_from[i];
-			over_service[4].text = credit.over_service_duration_to[i];
+			over_service[3].text = new Date(credit.over_service_duration_from[i]).toLocaleDateString('en-GB');
+			over_service[4].text = new Date(credit.over_service_duration_to[i]).toLocaleDateString('en-GB');
 			over_service[5].text = credit.over_service_nos[i];
 			over_service[6].text = credit.over_service_creditclaimed[i];
 
@@ -869,8 +869,8 @@ module.exports = {
 			var outreach = [{}, {}, {}, {}, {}];
 			outreach[0].text = i + 1;
 			outreach[1].text = credit.outreach_name[i];
-			outreach[2].text = credit.outreach_duration_from[i];
-			outreach[3].text = credit.outreach_duration_to[i];
+			outreach[2].text = new Date(credit.outreach_duration_from[i]).toLocaleDateString('en-GB');
+			outreach[3].text = new Date(credit.outreach_duration_to[i]).toLocaleDateString('en-GB');
 			outreach[4].text = credit.out_reach_creditclaimed[i];
 
 
@@ -892,7 +892,7 @@ module.exports = {
 			var fellow = [{}, {}, {}, {}, {}];
 			fellow[0].text = i + 1;
 			fellow[1].text = credit.fellow_name[i];
-			fellow[2].text = credit.fellow_doa[i];
+			fellow[2].text = new Date(credit.fellow_doa[i]).toLocaleDateString('en-GB');
 			fellow[3].text = credit.fellow_tdoa[i];
 			fellow[4].text = credit.fellow_creditclaimed[i];
 
