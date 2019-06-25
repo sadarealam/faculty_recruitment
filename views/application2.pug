@@ -45,7 +45,7 @@ html
                             .col-sm-1
                                 input#grade.form-control(type='text',name='grade',placeholder="%",required)
                             .col-sm-2
-                                select#divison.form-control(name='divison')
+                                select#divison.form-control(name='divison',onchange="divisonChange(this);")
                                     option(value='') Select Divison
                                     option(value='I') I 
                                     option(value='II') II
@@ -63,7 +63,7 @@ html
                             .col-sm-1
                                 input#grade.form-control(type='text',name='grade',value=`${application2.grade[i]}`,placeholder="%",required)
                             .col-sm-2
-                                select.form-control(id=`divison${i}`,name='divison')
+                                select.form-control(id=`divison${i}`,name='divison',onchange="divisonChange(this);")
                                     option(value='') Select Divison
                                     option(value='I') I 
                                     option(value='II') II
@@ -309,14 +309,37 @@ html
                     .form-group.row
                         .col-sm-10
                         .col-sm-2
-                            button.btn.btn-primary(type='submit') Next
+                            button.btn.btn-primary(type='submit') Save & Continue
+        
+        #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+                .modal-content
+                    .modal-header
+                        h5#exampleModalLabel.modal-title First (I) division is required for all educational qualification.
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    .modal-body
+                        p Make sure you have read the advertisement thoroughly. 
+                        br 
+                        p Only MANIT faculty can go further.
+                    .modal-footer
+                        button.btn.btn-secondary(type='button', data-dismiss='modal') I am MANIT faculty.
+                        form(action='/my',method='GET')  
+                            button.btn.btn-primary(type='submit') Back
                     
 script.
-    var education_row = '<div class="form-group row"><div class="col-sm-1"><input class="form-control" id="degree" type="text" name="degree" placeholder="Degree" required=""></div><div class="col-sm-3"><input class="form-control" id="subject" type="text" name="subject" placeholder="Subject" required=""></div><div class="col-sm-3"><input class="form-control" id="university" type="text" name="university" placeholder="University" required=""></div><div class="col-sm-1"><input class="form-control" id="grade" type="text" name="grade" placeholder="%" required=""></div><div class="col-sm-2"><input class="form-control" id="divison" type="text" name="divison" placeholder="Divison" required=""></div><div class="col-sm-2"><input class="form-control" id="yop" type="text" name="yop" placeholder="Year" required=""></div></div>';
+    var education_row = '<div class="form-group row"><div class="col-sm-1"><input class="form-control" id="degree" type="text" name="degree" placeholder="Degree" required=""></div><div class="col-sm-3"><input class="form-control" id="subject" type="text" name="subject" placeholder="Subject" required=""></div><div class="col-sm-3"><input class="form-control" id="university" type="text" name="university" placeholder="University" required=""></div><div class="col-sm-1"><input class="form-control" id="grade" type="text" name="grade" placeholder="%" required=""></div><div class="col-sm-2"><select class="form-control" id="divison" name="divison" onchange="divisonChange(this);"><option value="">Select Divison</option><option value="I">I </option><option value="II">II</option><option value="III">III</option></select></div><div class="col-sm-2"><input class="form-control" id="yop" type="text" name="yop" placeholder="Year" required=""></div></div>';
     var pdf_row = '<div class="form-group row">                       <div class="col-sm-5"><input class="form-control" id="pdf_university" type="text" name="pdf_university" placeholder="University"></div><div class="col-sm-5"><div class="row"><div class="col-sm-6"><input class="form-control" id="pdf_duration_from" type="date" name="pdf_duration_from"></div><div class="col-sm-6"> <input class="form-control" id="pdf_duration_to" type="date" name="pdf_duration_to"></div></div></div></div>';
     function add_row(id,row){
         $(id).append(row);
     }
+    function divisonChange(sel){
+        var divison = sel.value ;
+        if(divison != 'I'){
+            $('#exampleModal').modal('show');
+        }
+    }
+
     $(document).ready(function() {
         $("input[name$='ugc']").click(function() {
             var test = $(this).val();
@@ -324,7 +347,9 @@ script.
             if (test == 'F') $("#net").hide();       
         
         });
+         
     });
+
     
 
                     
