@@ -8,6 +8,7 @@ var Credit = require('./models/credit');
 var pdfMakePrinter = require('pdfmake');
 var path = require('path');
 var fs = require('fs');
+require('full-icu')
 
 const util = require('util')
 
@@ -24,7 +25,7 @@ module.exports = {
 
 				dd.content[14].table.body[1][1].text = application4.presenet_emp_org;
 				dd.content[14].table.body[2][1].text = application4.presenet_emp_designation;
-				dd.content[14].table.body[3][1].text = application4.presenet_emp_doa;
+				dd.content[14].table.body[3][1].text = new Date(application4.presenet_emp_doa).toLocaleDateString('en-GB');
 				dd.content[14].table.body[4][1].text = application4.presenet_emp_regular;
 				dd.content[14].table.body[5][1].text = application4.presenet_emp_basic + ' , ' + application4.presenet_emp_agp;
 
@@ -56,8 +57,8 @@ module.exports = {
 					}, { text: '20000' }, { text: '120000' }, { text: 'R' }, { text: '61-2019' }, { text: '2' }];
 					d[0].text = application3.teaching_university[i];
 					d[1].text = application3.teching_post[i];
-					d[2].text = application3.teching_duration_from[i];
-					d[3].text = application3.teching_duration_to[i];
+					d[2].text = new Date(application3.teching_duration_from[i]).toLocaleDateString('en-GB');
+					d[3].text = new Date(application3.teching_duration_to[i]).toLocaleDateString('en-GB');
 					d[4].text = application3.teaching_experience_year[i];
 					d[5].text = application3.teaching_experience_month[i];
 					d[6].text = application3.teaching_pb[i];
@@ -83,8 +84,8 @@ module.exports = {
 					}, { text: '2' }];
 					d[0].text = application3.industry_org[i];
 					d[1].text = application3.industry_post[i];
-					d[2].text = application3.industry_duration_from[i];
-					d[3].text = application3.industry_duration_to[i];
+					d[2].text = new Date(application3.industry_duration_from[i]).toLocaleDateString('en-GB');
+					d[3].text = new Date(application3.industry_duration_to[i]).toLocaleDateString('en-GB');
 					d[4].text = application3.industry_exp_year[i];
 					d[5].text = application3.industry_exp_month[i];
 					d[6].text = annexure;
@@ -154,12 +155,12 @@ module.exports = {
 					dd.content[5].table.body.push(d);
 				}
 				//for phd
-				dd.content[6].table.body[2][0].text = application2.dor_phd;
+				dd.content[6].table.body[2][0].text = new Date(application2.dor_phd).toLocaleDateString('en-GB');
 				dd.content[6].table.body[2][1].text = application2.wftpt;
 				dd.content[6].table.body[2][2].text = application2.phd_department;
 				dd.content[6].table.body[2][3].text = application2.phd_university;
-				dd.content[6].table.body[2][4].text = application2.phd_thesis_date;
-				dd.content[6].table.body[2][5].text = application2.phd_award_date;
+				dd.content[6].table.body[2][4].text = new Date(application2.phd_thesis_date).toLocaleDateString('en-GB');
+				dd.content[6].table.body[2][5].text = new Date(application2.phd_award_date).toLocaleDateString('en-GB');
 				dd.content[6].table.body[3][2].text = application2.phd_title;
 				//for pdf
 				if (application2.pdf_area != '') {
@@ -182,8 +183,8 @@ module.exports = {
 						}];
 						pdf[0].text = i + 1;
 						pdf[1].text = application2.pdf_university[i];
-						pdf[2].text = application2.pdf_duration_from[i];
-						pdf[3].text = application2.pdf_duration_to[i];
+						pdf[2].text = new Date(application2.pdf_duration_from[i]).toLocaleDateString('en-GB');
+						pdf[3].text = new Date(application2.pdf_duration_to[i]).toLocaleDateString('en-GB');
 						dd.content[7].table.body.splice(3 + i, 0, pdf);
 					}
 					var pdf_area = [{
@@ -291,8 +292,8 @@ module.exports = {
 				dd.content[4].table.body[2][1].text = application1.father_name;
 				dd.content[4].table.body[3][1].text = application1.mother_name;
 				dd.content[4].table.body[4][1].text = application1.spouse_name;
-				dd.content[4].table.body[5][1].text = application1.dob;
-				dd.content[4].table.body[6][1].text = application1.ageyear + ' Y ' + application1.agemonth + ' M ' + application1.ageday + ' D ';
+				dd.content[4].table.body[5][1].text = new Date(application1.dob).toLocaleDateString('en-GB');
+				dd.content[4].table.body[6][1].text = application1.ageyear + ' Years    ' + application1.agemonth + ' Months    ' + application1.ageday + ' Days ';
 				dd.content[4].table.body[7][1].text = application1.nationality;
 				dd.content[4].table.body[8][1].text = application1.religion;
 				dd.content[4].table.body[9][1].text = application1.cast;
@@ -325,8 +326,8 @@ module.exports = {
 	fillApplication: function (application, dd, callback) {
 		//console.log(dd);
 		dd.content[2].table.body[0][1].text = application.adv_no;
-		dd.content[2].table.body[1][1].text = new Date().toLocaleDateString();
-		dd.content[2].table.body[2][1].text = '07-07-2019';
+		dd.content[2].table.body[1][1].text = new Date().toLocaleDateString('en-GB');
+		dd.content[2].table.body[2][1].text = new Date(application.last_date).toLocaleDateString('en-GB');
 		dd.content[2].table.body[3][1].text = application.post_applied;
 		dd.content[2].table.body[4][1].text = application.department_full;
 		dd.content[2].table.body[5][1].text = application.specialization;
