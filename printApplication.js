@@ -271,7 +271,7 @@ module.exports = {
 
 				} else {
 					dd.content[8].table.body[0][4].text = 'No';
-					dd.content[8].table.body.length = 1;
+					dd.content[8].table.body.length = 2;
 
 				}
 				callback(dd, annexure);
