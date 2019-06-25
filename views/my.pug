@@ -9,7 +9,8 @@ mixin application_row(application)
         .col-4
             .row
                 //.col-sm-3
-                a.btn.btn-primary(href=`/application1?action=edit&no=${application.no}`, role="button") Edit
+                if (  application.status != 'Submitted')
+                    a.btn.btn-primary(href=`/application1?action=edit&no=${application.no}`, role="button") Edit
                 if (application.statusA == 'T')                
                     a.btn.btn-secondary(style='margin-left:5px',href=`/print?action=view&no=${application.no}`, role="button") Print A
                 if (application.statusB == 'T')
@@ -99,7 +100,7 @@ html
                         button.btn.btn-secondary(type='button', data-dismiss='modal') Close
                         form(action='/final_submit',method='POST')
                             input(type="hidden",name="no")     
-                            button.btn.btn-primary(type='button') Submit
+                            button.btn.btn-primary(type='submit') Submit
 
 script.
     $('#exampleModal').on('show.bs.modal', function (event) {
