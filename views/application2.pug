@@ -45,7 +45,11 @@ html
                             .col-sm-1
                                 input#grade.form-control(type='text',name='grade',placeholder="%",required)
                             .col-sm-2
-                                input#divison.form-control(type='text',name='divison',placeholder="Divison",required)
+                                select#divison.form-control(name='divison')
+                                    option(value='') Select Divison
+                                    option(value='I') I 
+                                    option(value='II') II
+                                    option(value='III') III
                             .col-sm-2
                                 input#yop.form-control(type='text',name='yop',placeholder="Year",required)
                     mixin teaching(application2,i)
@@ -59,9 +63,15 @@ html
                             .col-sm-1
                                 input#grade.form-control(type='text',name='grade',value=`${application2.grade[i]}`,placeholder="%",required)
                             .col-sm-2
-                                input#divison.form-control(type='text',name='divison',value=`${application2.divison[i]}`,placeholder="Divison",required)
+                                select.form-control(id=`divison${i}`,name='divison')
+                                    option(value='') Select Divison
+                                    option(value='I') I 
+                                    option(value='II') II
+                                    option(value='III') III
                             .col-sm-2
                                 input#yop.form-control(type='text',name='yop',value=`${application2.yop[i]}`,placeholder="Year",required)
+                        script.
+                            document.getElementById('divison#{i}').value='#{application2.divison[i]}'
                         
                     if (!application2)
                         +teaching_default
