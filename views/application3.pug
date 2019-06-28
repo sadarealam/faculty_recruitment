@@ -17,6 +17,7 @@ html
                         button.btn.btn-primary-light.my-2.my-sm-0(type='submit', disabled) Part-A
                         button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Part-B
     div(style="margin-top:45px;margin-left:50px;margin-right:50px")
+        a.btn.btn-primary(style='margin-bottom:25px', href=`/application2?action=edit&no=${no}`, role="button") Back
         h3 Experience
         form(role='form', action=`/application3?action=${action}&no=${no}`,method="post")
             if (no)
