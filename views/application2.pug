@@ -327,9 +327,14 @@ html
                         form(action='/my',method='GET')  
                             button.btn.btn-primary(type='submit') Back
                     
+script
+    | var education_row = '
+    +teaching_default
+    | ' ;
+    | var pdf_row = '
+    +pdf_default 
+    | ' ;
 script.
-    var education_row = '<div class="form-group row"><div class="col-sm-1"><input class="form-control" id="degree" type="text" name="degree" placeholder="Degree" required=""></div><div class="col-sm-3"><input class="form-control" id="subject" type="text" name="subject" placeholder="Subject" required=""></div><div class="col-sm-3"><input class="form-control" id="university" type="text" name="university" placeholder="University" required=""></div><div class="col-sm-1"><input class="form-control" id="grade" type="text" name="grade" placeholder="%" required=""></div><div class="col-sm-2"><select class="form-control" id="divison" name="divison" onchange="divisonChange(this);"><option value="">Select Divison</option><option value="I">I </option><option value="II">II</option><option value="III">III</option></select></div><div class="col-sm-2"><input class="form-control" id="yop" type="text" name="yop" placeholder="Year" required=""></div></div>';
-    var pdf_row = '<div class="form-group row">                       <div class="col-sm-5"><input class="form-control" id="pdf_university" type="text" name="pdf_university" placeholder="University"></div><div class="col-sm-5"><div class="row"><div class="col-sm-6"><input class="form-control" id="pdf_duration_from" type="date" name="pdf_duration_from"></div><div class="col-sm-6"> <input class="form-control" id="pdf_duration_to" type="date" name="pdf_duration_to"></div></div></div></div>';
     function add_row(id,row){
         $(id).append(row);
     }

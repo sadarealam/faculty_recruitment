@@ -823,8 +823,7 @@ html
                     label.col-sm-1.col-form-label Credit Points Claimed
                 mixin wfdp_default
                     .form-group.row
-                        .col-sm-3
-                            //input#fdp_post.form-control(type='text',name='fdp_post',placeholder="")
+                        .col-sm-3                            
                             select#fdp_post.form-control(name='fdp_post')
                                 option(value='') Select Coordinator or Convener
                                 option(value='Coordinator') Coordinator 
@@ -843,8 +842,7 @@ html
                             input#fdp_creditclaimed.form-control(type='number',name='fdp_creditclaimed',step="0.1",placeholder="")
                 mixin wfdp(credit,i)
                     .form-group.row
-                        .col-sm-3
-                            //input#fdp_post.form-control(type='text',name='fdp_post',value=`${credit.fdp_post[i]}`)
+                        .col-sm-3                           
                             select.form-control(id=`fdp_post${i}`,name=`fdp_post`)
                                 option(value='') Select Coordinator or Convener
                                 option(value='Coordinator') Coordinator 
@@ -1450,31 +1448,103 @@ html
                     .col-sm-10
                     .col-sm-2
                         button.btn.btn-primary(type='submit') Submit Part-B
-script.
-    var research_row = '<div class="form-group row"><div class="col-sm-2"><input class="form-control" id="research_project_title" type="text" name="research_project_title" placeholder=""></div><div class="col-sm-1">                  <select class="form-control" id="reserch_project_pi" name="reserch_project_pi"><option value="">Select</option><option value="PI">PI</option><option value="Co-PI">Co-PI</option></select></div><div class="col-sm-3"><input class="form-control" id="research_project_agency" type="text" name="research_project_agency" placeholder=""></div><div class="col-sm-1"><input class="form-control" id="research_project_amount" type="number" name="research_project_amount"></div><div class="col-sm-4"><div class="row"><div class="col-sm-6">                    <input class="form-control" id="research_project_periodfrom" type="date" name="research_project_periodfrom" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="research_project_periodto" type="date" name="research_project_periodto"></div></div></div><div class="col-sm-1"><input class="form-control" id="research_project_creditclaimed" type="number" name="research_project_creditclaimed" placeholder="" step="0.1"></div></div>';
-    var patent_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="patent_title" type="text" name="patent_title" placeholder=""></div><div class="col-sm-2">                           <select class="form-control" id="patent_pi" name="patent_pi"><option value="">Select PI &amp; CO-PI</option><option value="PI">PI</option><option value="Co-PI">Co-PI</option></select></div><div class="col-sm-2"><input class="form-control" id="patent_no" type="text" name="patent_no" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="patent_authority" type="text" name="patent_authority"></div><div class="col-sm-1">                           <input class="form-control" id="patent_creditclaimed" type="number" name="patent_creditclaimed" placeholder="" step="0.1"></div></div>';
-    var consultancy_row= '<div class="form-group row">                       <div class="col-sm-3"><input class="form-control" id="consultancy_project_title" type="text" name="consultancy_project_title" placeholder=""></div><div class="col-sm-1">                           <select class="form-control" id="consultancy_pi" name="consultancy_pi"><option value="">Select PI &amp; CO-PI</option><option value="PI">PI</option><option value="Co-PI">Co-PI</option></select></div><div class="col-sm-2"><input class="form-control" id="consultancy_project_agency" type="text" name="consultancy_project_agency" placeholder=""></div><div class="col-sm-1"><input class="form-control" id="consultancy_project_amount" type="number" name="consultancy_project_amount"></div><div class="col-sm-4"><div class="row"><div class="col-sm-6">                       <input class="form-control" id="consultancy_project_periodfrom" type="date" name="consultancy_project_periodfrom" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="consultancy_project_periodto" type="date" name="consultancy_project_periodto" placeholder=""></div></div></div><div class="col-sm-1"><input class="form-control" id="consultancy_project_creditclaimed" type="number" name="consultancy_project_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var phd_row = '<div class="form-group row"><div class="col-sm-2"><input class="form-control" id="phd_credit_name" type="text" name="phd_credit_name" placeholder=""></div><div class="col-sm-2">                         <select class="form-control" id="phd_credit_pi" name="phd_credit_pi"><option value="">Select Supervisor and Co-supervisor</option><option value="Supervisor">Supervisor</option><option value="Co-supervisor">Co-supervisor</option></select></div><div class="col-sm-3"><input class="form-control" id="phd_credit_title" type="text" name="phd_credit_title" placeholder=""></div><div class="col-sm-1">                           <select class="form-control" id="phd_credit_awarded" name="phd_credit_awarded"><option value="">Select </option><option value="Submitted">Submitted</option><option value="Awarded">Awarded</option></select></div><div class="col-sm-3"><input class="form-control" id="phd_credit_yoa" type="text" name="phd_credit_yoa"></div><div class="col-sm-1">                         <input class="form-control" id="phd_creditclaimed" type="number" name="phd_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var sci_row = '<div class="form-group row"><div class="col-sm-3"><input class="form-control" id="sci_paper_title" type="text" name="sci_paper_title" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="sci_paper_journal" type="text" name="sci_paper_journal" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="sci_paper_volume" type="text" name="sci_paper_volume"></div><div class="col-sm-2">               <div class="row">           <div class="col-sm-6"><input class="form-control" id="sci_author_from" type="number" name="sci_author_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="sci_author_total" type="number" name="sci_author_total" placeholder=""></div></div></div><div class="col-sm-1">                           <select class="form-control" id="sci_main_supervisor" name="sci_main_supervisor"><option value="">Select </option><option value="Yes">Yes</option><option value="No">No</option></select></div><div class="col-sm-1">                           <input class="form-control" id="sci_main_creditclaimed" type="number" name="sci_main_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var scopus_row = '<div class="form-group row"><div class="col-sm-3"><input class="form-control" id="scopus_paper_title" type="text" name="scopus_paper_title" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="scopus_paper_journal" type="text" name="scopus_paper_journal" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="scopus_paper_volume" type="text" name="scopus_paper_volume"></div><div class="col-sm-2">        <div class="row"> <div class="col-sm-6">                  <input class="form-control" id="scopus_author_from" type="number" name="scopus_author_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="scopus_author_total" type="number" name="scopus_author_total" placeholder=""></div></div></div><div class="col-sm-1">                           <select class="form-control" id="scopus_main_supervisor" name="scopus_main_supervisor"><option value="">Select </option><option value="Yes">Yes</option><option value="No">No               </option></select></div><div class="col-sm-1">                           <input class="form-control" id="scopus_main_creditclaimed" type="number" name="scopus_main_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var conference_row = '<div class="form-group row"><div class="col-sm-3"><input class="form-control" id="conference_paper_title" type="text" name="conference_paper_title" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="conference_detail" type="text" name="conference_detail" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="conference_paper_volume" type="text" name="conference_paper_volume"></div><div class="col-sm-2">                     <div class="row"><div class="col-sm-6">     <input class="form-control" id="conference_author_from" type="number" name="conference_author_from" placeholder="Position"></div><div class="col-sm-6"><input class="form-control" id="conference_author_total" type="number" name="conference_author_total" placeholder="Total"></div></div></div><div class="col-sm-1">                           <select class="form-control" id="conference_main_supervisor" name="conference_main_supervisor"><option value="">Select </option><option value="Yes">Yes</option><option value="No">No                                           </option></select></div><div class="col-sm-1">                           <input class="form-control" id="conference_main_creditclaimed" type="number" name="conference_main_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var ilar_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="institute_post" type="text" name="institute_post" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="institute_duration_from" type="date" name="institute_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="institute_duration_to" type="date" name="institute_duration_to" placeholder=""></div></div></div><div class="col-sm-2"><input class="form-control" id="institute_nos" type="number" name="institute_nos"></div><div class="col-sm-2">                           <input class="form-control" id="institute_creditclaimed" type="number" name="institute_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var oilar_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="other_institute_post" type="text" name="other_institute_post" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="other_institute_duration_from" type="date" name="other_institute_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="other_institute_duration_to" type="date" name="other_institute_duration_to" placeholder=""></div></div></div><div class="col-sm-2"><input class="form-control" id="other_institute_nos" type="number" name="other_institute_nos"></div><div class="col-sm-2">                           <input class="form-control" id="other_institute_creditclaimed" type="number" name="other_institute_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var ccscsp_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="chairman_institute_post" type="text" name="chairman_institute_post" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="chairman_institute_duration_from" type="date" name="chairman_institute_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="chairman_institute_duration_to" type="date" name="chairman_institute_duration_to" placeholder=""></div></div></div><div class="col-sm-2"><input class="form-control" id="chairman_institute_nos" type="number" name="chairman_institute_nos"></div><div class="col-sm-2">                           <input class="form-control" id="chairman_institute_creditclaimed" type="number" name="chairman_institute_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var daihod_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="department_post" type="text" name="department_post" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="department_duration_from" type="date" name="department_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="department_duration_to" type="date" name="department_duration_to" placeholder=""></div></div></div><div class="col-sm-2"><input class="form-control" id="department_nos" type="text" name="department_nos"></div><div class="col-sm-2">                           <input class="form-control" id="department_creditclaimed" type="number" name="department_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var wfdp_row = '<div class="form-group row"><div class="col-sm-3"><select class="form-control" id="fdp_post" name="fdp_post"><option value="">Select Coordinator or Convener</option><option value="Coordinator">Coordinator </option><option value="Convener">Convener</option></select></div><div class="col-sm-3"><input class="form-control" id="fdp_detail" type="text" name="fdp_detail" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="fdp_duration_from" type="date" name="fdp_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="fdp_duration_to" type="date" name="fdp_duration_to" placeholder=""></div></div></div><div class="col-sm-1"><input class="form-control" id="fdp_nos" type="number" name="fdp_nos"></div><div class="col-sm-1">                           <input class="form-control" id="fdp_creditclaimed" type="number" name="fdp_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var cplgian_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="national_program_detail" type="text" name="national_program_detail" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="national_program_duration_from" type="date" name="national_program_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="national_program_duration_to" type="date" name="national_program_duration_to" placeholder=""></div></div></div><div class="col-sm-2"><input class="form-control" id="natinal_program_nos" type="text" name="natinal_program_nos"></div><div class="col-sm-2">                           <input class="form-control" id="national_program_creditclaimed" type="number" name="national_program_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var nicocs_row =  '<div class="form-group row"><div class="col-sm-3">                         <select class="form-control" id="national_conference_post1" name="national_conference_post"><option value="">Select Chairman or Secretary</option><option value="Chairman">Chairman </option><option value="Secretary">Secretary        </option></select></div><div class="col-sm-3">           <input class="form-control" id="national_conference_detail" type="text" name="national_conference_detail" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="national_conference_duration_from" type="date" name="national_conference_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="national_conference_duration_to" type="date" name="national_conference_duration_to" placeholder=""></div></div></div><div class="col-sm-1"><input class="form-control" id="national_conference_nos" type="text" name="national_conference_nos"></div><div class="col-sm-1">                           <input class="form-control" id="national_conference_creditclaimed" type="number" name="national_conference_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var lsoa_row = '<div class="form-group row"><div class="col-sm-3"><input class="form-control" id="over_service_designation" type="text" name="over_service_designation" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="over_service_org" type="text" name="over_service_org" placeholder=""></div><div class="col-sm-4"><div class="row"><div class="col-sm-6"><input class="form-control" id="over_service_duration_from" type="date" name="over_service_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="over_service_duration_to" type="date" name="over_service_duration_to" placeholder=""></div></div></div><div class="col-sm-1"><input class="form-control" id="over_service_nos" type="text" name="over_service_nos"></div><div class="col-sm-1">                           <input class="form-control" id="over_service_creditclaimed" type="number" name="over_service_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var eonl_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="lab_estl_name" type="text" name="lab_estl_name" placeholder=""></div><div class="col-sm-4"><input class="form-control" id="lab_estl_org" type="text" name="lab_estl_org" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="lab_estl_years" type="number" name="lab_estl_years"></div><div class="col-sm-2">                           <input class="form-control" id="lab_estl_creditclaimed" type="number" name="lab_estl_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var ttoa_row = '<div class="form-group row"><div class="col-sm-3"><input class="form-control" id="over_teach_course" type="text" name="over_teach_course" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="over_teach_cpoints" type="number" name="over_teach_cpoints" placeholder=""></div><div class="col-sm-3"><input class="form-control" id="over_teach_department" type="text" name="over_teach_department" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="over_teach_credit" type="number" name="over_teach_credit"></div><div class="col-sm-1">                           <input class="form-control" id="over_teach_creditclaimed" type="number" name="over_teach_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var pgdg_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="post_grade_candidate" type="text" name="post_grade_candidate" placeholder=""></div><div class="col-sm-4"><input class="form-control" id="post_grade_title" type="text" name="post_grade_title" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="post_grade_yoa" type="number" name="post_grade_yoa"></div><div class="col-sm-2">                           <input class="form-control" id="post_grade_creditclaimed" type="number" name="post_grade_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var ugpg_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="under_grade_candidate" type="text" name="under_grade_candidate" placeholder=""></div><div class="col-sm-4"><input class="form-control" id="under_grade_title" type="text" name="under_grade_title" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="under_grade_yoa" type="number" name="under_grade_yoa"></div><div class="col-sm-2">                           <input class="form-control" id="under_grade_creditclaimed" type="number" name="under_grade_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var trbp_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="text_book_title" type="text" name="text_book_title" placeholder=""></div><div class="col-sm-4"><input class="form-control" id="text_book_publisher" type="text" name="text_book_publisher" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="text_book_yop" type="number" name="text_book_yop"></div><div class="col-sm-2">                           <input class="form-control" id="text_book_creditclaimed" type="number" name="text_book_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var trbpn_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="book_national_title" type="text" name="book_national_title" placeholder=""></div><div class="col-sm-4"><input class="form-control" id="book_national_publisher" type="text" name="book_national_publisher" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="book_national_yop" type="number" name="book_national_yop"></div><div class="col-sm-2">                           <input class="form-control" id="book_national_creditclaimed" type="number" name="book_national_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var soa_row = '<div class="form-group row"><div class="col-sm-5"><input class="form-control" id="outreach_name" type="text" name="outreach_name" placeholder=""></div><div class="col-sm-5"><div class="row"><div class="col-sm-6"><input class="form-control" id="outreach_duration_from" type="date" name="outreach_duration_from" placeholder=""></div><div class="col-sm-6"><input class="form-control" id="outreach_duration_to" type="date" name="outreach_duration_to" placeholder=""></div></div></div><div class="col-sm-2">                           <input class="form-control" id="out_reach_creditclaimed" type="number" name="out_reach_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var fiff_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="fellow_name" type="text" name="fellow_name" placeholder=""></div><div class="col-sm-4"><input class="form-control" id="fellow_doa" type="date" name="fellow_doa" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="fellow_tdoa" type="number" name="fellow_tdoa"></div><div class="col-sm-2">                           <input class="form-control" id="fellow_creditclaimed" type="number" name="fellow_creditclaimed" step="0.1" placeholder=""></div></div>';
-    var pper_row = '<div class="form-group row"><div class="col-sm-4"><input class="form-control" id="tpo_name" type="text" name="tpo_name" placeholder=""></div><div class="col-sm-4"><input class="form-control" id="tpo_more" type="number" name="tpo_more" placeholder=""></div><div class="col-sm-2"><input class="form-control" id="tpo_less" type="number" name="tpo_less"></div><div class="col-sm-2">                           <input class="form-control" id="tpo_creditclaimed" type="number" name="tpo_creditclaimed" step="0.1" placeholder=""></div></div>';
-    function add_row(id,row){
-        $(id).append(row);
-    }
+script
+    | var research_row = '
+    +research_default
+    | ';
+
+    | var patent_row = '
+    +patent_default
+    | ';
+
+    | var consultancy_row= '
+    +consultancy_default
+    |   ';
+
+    |   var phd_row = '
+    +phd_default
+    |   ';
+
+    |   var sci_row = '
+    +sci_default
+    |   ';
+
+    |   var scopus_row = '
+    +scopus_default
+    |   ';
+
+    |   var conference_row = '
+    +conference_default
+    |   ';
+
+    |   var ilar_row = '
+    +ilar_default
+    |   ';
+
+    |   var oilar_row = '
+    +oilar_default
+    |   ';
+
+    |   var ccscsp_row = '
+    +ccscsp_default
+    |   ';
+
+    |   var daihod_row = '
+    +daihod_default
+    |   ';
+
+    |   var wfdp_row = '
+    +wfdp_default
+    |   ';
+
+    |   var cplgian_row = '
+    +cplgian_default
+    |   ';
+
+    |   var nicocs_row =  '
+    +nicocs_default
+    |   ';
+
+    |   var lsoa_row = '
+    +lsoa_default
+    |   ';
+
+    |   var eonl_row = '    
+    +eonl_default
+    |   ';
+
+    |   var ttoa_row = '
+    +ttoa_default
+    |   ';
+
+    |   var pgdg_row = '
+    +pgdg_default
+    |   ';
+
+    |   var ugpg_row = '
+    +ugpg_default
+    |   ';
+
+    |   var trbp_row = '
+    +trbp_default
+    |   ';
+
+    |   var trbpn_row = '
+    +trbpn_default
+    |   ';
+
+    |   var soa_row = '
+    +soa_default
+    |   ';
+
+    |   var fiff_row = '
+    +fiff_default
+    |   ';
+
+    |   var pper_row = '
+    +pper_default
+    |   ';
+    
+    |function add_row(id,row){
+    |    $(id).append(row);
+    |}
