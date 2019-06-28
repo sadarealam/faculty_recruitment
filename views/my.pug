@@ -17,7 +17,7 @@ mixin application_row(application)
                     a.btn.btn-warning(style='margin-left:5px',href=`/print2?action=view&no=${application.no}`, role="button") Print B
                 //.col-sm-3
                 //application.status == 'T' && application.status == 'T' && 
-                if (  application.status != 'Submitted')
+                if (application.statusA == 'T' && application.statusB == 'T' &&  application.status != 'Submitted')
                     button.btn.btn-success(style='margin-left:5px', data-toggle='modal', data-target='#exampleModal',data-whatever=`${application.no}`) Submit
 
 
