@@ -1548,3 +1548,11 @@ script
     |function add_row(id,row){
     |    $(id).append(row);
     |}
+
+script. 
+    //datePickerId.max = new Date().toISOString().split("T")[0];
+    $(document).ready(function() {
+        document.getElementById('last_promotion_date').max = new Date().toISOString().split("T")[0];
+        document.getElementById('basic_pay_on').min = 0;
+         
+    });
